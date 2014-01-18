@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Program">
+      <UniqueIdentifier>{7e0613f4-e433-4e84-bfd2-0ec716a03bf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory Tracking">
+      <UniqueIdentifier>{8d13590d-baf2-425d-8c8e-c3e3d3f8cdf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collections">
+      <UniqueIdentifier>{873db502-807c-44f8-85f7-c086390338bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{be6ee046-6312-4229-b4d3-aa938d580f63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Functions">
+      <UniqueIdentifier>{ee814a3b-df0d-4db0-9c4a-b4b32ef57da2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arc\ArcTypes.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\ArcPlatform.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\ArcCoreVersion.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\ArcCore.h" />
+    <ClInclude Include="Arc\ArrayList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\StringFunctions.h">
+      <Filter>Utilities\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\MathFunctions.h">
+      <Filter>Utilities\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\ManagedObject.h">
+      <Filter>Memory Tracking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\RandomFunctions.h">
+      <Filter>Utilities\Functions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arc\StringFunctions.cpp">
+      <Filter>Utilities\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\RandomFunctions.cpp">
+      <Filter>Utilities\Functions</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

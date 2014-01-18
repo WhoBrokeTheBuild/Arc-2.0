@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{eb3c2b67-a2a7-4014-ac01-00d931d31158}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arc\ArcEffectVersion.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\ArcEffect.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arc\ArcEffect.cpp" />
+  </ItemGroup>
+</Project>
