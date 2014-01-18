@@ -18,14 +18,44 @@
  * 
  */
 
-#ifndef ARC_DATA_ARC_DATA
-#define ARC_DATA_ARC_DATA
+#ifndef ARC_DATA_CSV_ROW_H
+#define ARC_DATA_CSV_ROW_H
 
-#include "ArcDataVersion.h"
+#include <Arc/ArcCore.h>
+#include <Arc/ManagedObject.h>
 
-#include "CSVDocument.h"
-//#include "JSONDocument.h"
-//#include "XMLDocument.h"
-//#include "ArcMLDocument.h"
+namespace Arc
+{
 
-#endif // ARC_DATA_ARC_DATA
+class CSVDocument;
+
+class CSVRow
+	: public ManagedObject
+{
+public:
+
+	string getCol( const int& index );
+	string getCol( const string& index );
+
+	ArrayList<string> getCols( void );
+	ArrayList<string> getCols( const int& start, const int& end );
+	ArrayList<string> getCols( const ArrayList<int>& indexes );
+	ArrayList<string> getCols( const ArrayList<string>& indexes );
+
+	virtual ~CSVRow( void );
+
+	virtual inline string getClassName( void ) const { return "CSV Row"; }
+
+private:
+
+	CSVRow( void );
+
+	CSVDocument* mp_Document;
+
+	ArrayList<string> m_Cols;
+
+}; // class CSVRow
+
+}; // namespace Arc
+
+#endif // ARC_DATA_CSV_ROW_H

@@ -10,9 +10,22 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arc\ArcGame.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Arc\ArcGameVersion.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arc\ArcGame.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9168FFE9-54A2-49DE-8B4C-79D357D44AF2}</ProjectGuid>
-    <RootNamespace>ArcData</RootNamespace>
+    <ProjectGuid>{5EACCAD8-C14D-4186-867E-31056B85DB6E}</ProjectGuid>
+    <RootNamespace>ArcGame</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -39,7 +52,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../ArcCore;$(IncludePath)</IncludePath>
+    <IncludePath>../ArcCore;../ArcAudio;../ArcGraphics;$(IncludePath)</IncludePath>
     <OutDir>..\..\Debug\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -64,23 +77,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Arc\ArcData.h" />
-    <ClInclude Include="Arc\ArcDataVersion.h" />
-    <ClInclude Include="Arc\CSVDocument.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Arc\CSVRow.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Arc\ArcData.cpp" />
-    <ClCompile Include="Arc\CSVDocument.cpp" />
-    <ClCompile Include="Arc\CSVRow.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

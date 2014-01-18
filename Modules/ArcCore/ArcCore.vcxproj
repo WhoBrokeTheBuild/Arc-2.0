@@ -18,6 +18,7 @@
     <ClInclude Include="Arc\ArcCoreVersion.h" />
     <ClInclude Include="Arc\ArrayList.h" />
     <ClInclude Include="Arc\ManagedObject.h" />
+    <ClInclude Include="Arc\Map.h" />
     <ClInclude Include="Arc\MathFunctions.h" />
     <ClInclude Include="Arc\ArcPlatform.h" />
     <ClInclude Include="Arc\RandomFunctions.h">

@@ -11,8 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9168FFE9-54A2-49DE-8B4C-79D357D44AF2}</ProjectGuid>
-    <RootNamespace>ArcData</RootNamespace>
+    <ProjectGuid>{6362294C-3FD1-47B6-B7BB-F8DBB82638B5}</ProjectGuid>
+    <RootNamespace>ArcScript</RootNamespace>
+    <ProjectName>ArcScript</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -65,21 +66,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Arc\ArcData.h" />
-    <ClInclude Include="Arc\ArcDataVersion.h" />
-    <ClInclude Include="Arc\CSVDocument.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Arc\CSVRow.h">
+    <ClInclude Include="Arc\ArcScript.h" />
+    <ClInclude Include="Arc\ArcScriptVersion.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Arc\ArcData.cpp" />
-    <ClCompile Include="Arc\CSVDocument.cpp" />
-    <ClCompile Include="Arc\CSVRow.cpp" />
+    <ClCompile Include="Arc\ArcScript.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

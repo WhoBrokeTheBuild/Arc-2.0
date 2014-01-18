@@ -43,12 +43,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Modules\ArcCore;..\Modules\ArcAudio;..\Modules\ArcData;..\Modules\ArcEffect;..\Modules\ArcGraphics;..\Modules\ArcNet;..\Modules\ArcUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Modules\ArcCore;..\Modules\ArcAudio;..\Modules\ArcData;..\Modules\ArcEffect;..\Modules\ArcGraphics;..\Modules\ArcNet;..\Modules\ArcUI;..\Modules\ArcGame;..\Modules\ArcScript;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../Debug/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ArcCore.lib;ArcAudio.lib;ArcData.lib;ArcEffect.lib;ArcGraphics.lib;ArcNet.lib;ArcUI.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ArcCore.lib;ArcAudio.lib;ArcData.lib;ArcEffect.lib;ArcGraphics.lib;ArcNet.lib;ArcUI.lib;ArcGame.lib;ArcScript.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>

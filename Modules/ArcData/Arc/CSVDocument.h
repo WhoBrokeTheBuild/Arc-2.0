@@ -18,14 +18,43 @@
  * 
  */
 
-#ifndef ARC_DATA_ARC_DATA
-#define ARC_DATA_ARC_DATA
+#ifndef ARC_DATA_CSV_DOCUMENT_H
+#define ARC_DATA_CSV_DOCUMENT_H
 
-#include "ArcDataVersion.h"
+#include <Arc/ArcCore.h>
+#include <Arc/ManagedObject.h>
 
-#include "CSVDocument.h"
-//#include "JSONDocument.h"
-//#include "XMLDocument.h"
-//#include "ArcMLDocument.h"
+#include "CSVRow.h"
 
-#endif // ARC_DATA_ARC_DATA
+namespace Arc
+{
+
+class CSVDocument
+	: public ManagedObject
+{
+public:
+
+	static CSVDocument LoadFile( const string& filename );
+	static CSVDocument LoadFileWithHeadings( const string& filename );
+	static CSVDocument LoadString( const string& data );
+	static CSVDocument LoadStringWithHeadings( const string& data );
+
+	virtual ~CSVDocument( void );
+
+	virtual inline string getClassName( void ) const { return "CSV Document"; }
+
+private:
+
+	CSVDocument( void );
+
+	bool m_UseHeadings;
+
+	Map<string, int> m_Headings;
+
+	ArrayList<CSVRow> m_Rows;
+
+}; // class CSVDocument
+
+}; // namespace Arc
+
+#endif // ARC_DATA_CSV_DOCUMENT_H

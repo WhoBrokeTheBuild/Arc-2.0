@@ -7,6 +7,8 @@
 #include <Arc/ArcGraphics.h>
 #include <Arc/ArcNet.h>
 #include <Arc/ArcUI.h>
+#include <Arc/ArcGame.h>
+#include <Arc/ArcScript.h>
 
 using namespace std;
 using namespace Arc;
@@ -246,7 +248,9 @@ int main( int argc, char* argv[] )
 	cout << "Using Arc Effect Version: " << ArcEffect_GetVersionString() << endl;
 	cout << "Using Arc Graphics Version: " << ArcGraphics_GetVersionString() << endl;
 	cout << "Using Arc Net Version: " << ArcNet_GetVersionString() << endl;
-	cout << "Using Arc UI Version: " << ArcUI_GetVersionString() << endl << endl;
+	cout << "Using Arc UI Version: " << ArcUI_GetVersionString() << endl;
+	cout << "Using Arc Game Version: " << ArcGame_GetVersionString() << endl;
+	cout << "Using Arc Scripting Version: " << ArcScript_GetVersionString() << endl << endl;
 
 	Arc_InitRandom();
 
