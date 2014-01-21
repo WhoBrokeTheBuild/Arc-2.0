@@ -21,9 +21,7 @@
 #ifndef ARC_CORE_MANAGED_OBJECT_H
 #define ARC_CORE_MANAGED_OBJECT_H
 
-#include <string>
-
-using std::string;
+#include "Types.h"
 
 namespace Arc
 {
@@ -38,7 +36,35 @@ public:
 
 	virtual inline ~ManagedObject( void ) { }
 
-	virtual inline string getClassName( void ) const = 0;
+	virtual string getClassName( void ) const = 0;
+
+	// Normal new operator
+	void* operator new  ( size_t size );
+	void* operator new[]( size_t size );
+
+	// Operator for placement new, takes in the filename and line number 
+	void* operator new  ( size_t size, int lineNumber, const char *filename );
+	void* operator new[]( size_t size, int lineNumber, const char *filename );
+
+	// Normal delete operator
+	void operator delete  ( void *ptr);
+	void operator delete[]( void *ptr);
+
+	// Required because of the placement new operator, should not be used
+	inline void operator delete  ( void *ptr, int lineNumber, const char *filename ) { ::operator delete(ptr); }
+	inline void operator delete[]( void *ptr, int lineNumber, const char *filename ) { ::operator delete(ptr); }
+
+#ifdef ARC_DEBUG_BUILD
+
+// Used to pass the filename and line number into the placement new operator
+#define New new(__LINE__, __FILE__)
+
+#else
+
+// When not debugging, use the normal new operator
+#define New new
+
+#endif
 
 }; // class ArcManagedObject
 

@@ -27,13 +27,13 @@
 namespace Arc
 {
 
-	void Arc_InitRandom( void );
+void Arc_InitRandom( void );
 
-	int Arc_RandInt( int min, int max );
+int Arc_RandInt( int min, int max );
 
-	float Arc_RandFloat( float min, float max );
+float Arc_RandFloat( float min, float max );
 
-	double Arc_RandDouble( double min, double max );
+double Arc_RandDouble( double min, double max );
 
 }; // namespace Arc
 

@@ -22,7 +22,7 @@
 #define ARC_SCRIPT_ARC_SCRIPT_VERSION_H
 
 #include <Arc/ArcCore.h>
-#include <Arc/ArcTypes.h>
+#include <Arc/Types.h>
 
 namespace Arc
 {

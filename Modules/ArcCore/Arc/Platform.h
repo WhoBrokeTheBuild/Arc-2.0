@@ -19,8 +19,8 @@
  * Platform specific defines and functions.
  */
 
-#ifndef ARC_CORE_ARC_PLATFORM_H
-#define ARC_CORE_ARC_PLATFORM_H
+#ifndef ARC_CORE_PLATFORM_H
+#define ARC_CORE_PLATFORM_H
 
 namespace Arc
 {
@@ -43,7 +43,16 @@ namespace Arc
 
 #endif
 
+#if defined(_DEBUG) || defined(DEBUG)
+
+#define ARC_DEBUG_BUILD
+
+#elif defined(_RELEASE) || defined(RELEASE)
+
+#define ARC_RELEASE_BUILD
+
+#endif
 
 }; // namespace Arc
 
-#endif // ARC_CORE_ARC_PLATFORM_H
+#endif // ARC_CORE_PLATFORM_H

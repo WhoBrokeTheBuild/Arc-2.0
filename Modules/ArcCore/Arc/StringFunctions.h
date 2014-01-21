@@ -21,62 +21,63 @@
 #ifndef ARC_CORE_STRING_FUNCTIONS_H
 #define ARC_CORE_STRING_FUNCTIONS_H
 
-#include "ArcTypes.h"
+#include "Types.h"
 #include "ArrayList.h"
 
 namespace Arc
 {
-	extern const size_t StringBadLength;
-	extern const size_t StringBadPosition;
 
-	string Arc_StringBasename( const string& path );
+extern const size_t StringBadLength;
+extern const size_t StringBadPosition;
 
-	void Arc_StringToLower( string& str );
+string Arc_StringBasename( const string& path );
 
-	void Arc_StringToUpper( string& str );
+void Arc_StringToLower( string& str );
 
-	inline string Arc_StringGetLower( const string& str )
-	{
-		string copy = str;
-		Arc_StringToLower(copy);
-		return copy;
-	}
+void Arc_StringToUpper( string& str );
 
-	inline string Arc_StringGetUpper( const string& str )
-	{
-		string copy = str;
-		Arc_StringToUpper(copy);
-		return copy;
-	}
+inline string Arc_StringGetLower( const string& str )
+{
+	string copy = str;
+	Arc_StringToLower(copy);
+	return copy;
+}
 
-	void Arc_StringUCWords( string& str );
+inline string Arc_StringGetUpper( const string& str )
+{
+	string copy = str;
+	Arc_StringToUpper(copy);
+	return copy;
+}
 
-	void Arc_StringUCFirst( string& str );
+void Arc_StringUCWords( string& str );
 
-	string Arc_StringGetUCWords( const string& str );
+void Arc_StringUCFirst( string& str );
 
-	string Arc_StringGetUCFirst( const string& str );
+string Arc_StringGetUCWords( const string& str );
 
-	int Arc_StringReplaceNext( string& str, const string& search, const string& replace );
+string Arc_StringGetUCFirst( const string& str );
 
-	int Arc_StringReplaceAll( string& str, const string& search, const string& replace );
+int Arc_StringReplaceNext( string& str, const string& search, const string& replace );
 
-	string Arc_Substring( const string& str, const unsigned int& begin, const int& maxLength = -1 );
+int Arc_StringReplaceAll( string& str, const string& search, const string& replace );
 
-	inline bool Arc_StringContains( const string& str, const char& search )
-	{
-		return (str.find(search) != StringBadPosition);
-	}
+string Arc_Substring( const string& str, const unsigned int& begin, const int& maxLength = -1 );
 
-	inline bool Arc_StringContains( const string& str, const string& search )
-	{
-		return (str.find(search) != StringBadPosition);
-	}
+inline bool Arc_StringContains( const string& str, const char& search )
+{
+	return (str.find(search) != StringBadPosition);
+}
 
-	ArrayList<string> Arc_StringSplit( const string& str, const char& sep, 
-		const int& limit = -1 );
+inline bool Arc_StringContains( const string& str, const string& search )
+{
+	return (str.find(search) != StringBadPosition);
+}
 
-	string Arc_StringJoin( const string& glue, const ArrayList<string>& pieces );
+ArrayList<string> Arc_StringSplit( const string& str, const char& sep, 
+	const int& limit = -1 );
+
+string Arc_StringJoin( const string& glue, const ArrayList<string>& pieces );
 
 }; // namespace Arc
 

@@ -190,7 +190,7 @@ bool Arc::Map<K, T, Sort>::containsKey( const K& key )
 {
     ConstIterator it = m_Map.find(key);
 
-    return (it != cend());
+    return (it != itConstEnd());
 }
 
 template <class K, class T, typename Sort>
@@ -198,7 +198,7 @@ bool Arc::Map<K, T, Sort>::containsValue( const T& value )
 {
     ConstIterator it;
 
-    for (it = cbegin(); it != cend(); ++it)
+    for (it = itConstBegin(); it != itConstEnd(); ++it)
     {
         if (it->second == value)
             return true;
@@ -212,7 +212,7 @@ K& Arc::Map<K, T, Sort>::getIndexOf( T& item )
 {
     ConstIterator it;
 
-    for (it = cbegin(); it != cend(); ++it)
+    for (it = itConstBegin(); it != itConstEnd(); ++it)
     {
         if (it->second == item)
             return it->first;

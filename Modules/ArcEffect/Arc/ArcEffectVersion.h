@@ -22,7 +22,7 @@
 #define ARC_EFFECT_ARC_EFFECT_VERSION_H
 
 #include <Arc/ArcCore.h>
-#include <Arc/ArcTypes.h>
+#include <Arc/Types.h>
 
 namespace Arc
 {

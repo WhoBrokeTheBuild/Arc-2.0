@@ -21,36 +21,100 @@
 #ifndef ARC_CORE_MEMORY_TRACKER_H
 #define ARC_CORE_MEMORY_TRACKER_H
 
-#include <string>
+#include <iostream>
 
-#include "MemoryTracker.h"
-
-using std::string;
-
-bool Arc_InitMemoryTracker( void );
-void Arc_CleanupMemoryTracker( void );
+#include "Types.h"
+#include "Map.h"
 
 namespace Arc
 {
+
+bool Arc_InitMemoryTracker( void );
+
+void Arc_CleanupMemoryTracker( void );
+
+class ManagedObject;
 
 class MemoryTracker
 {
 
 	friend bool Arc_InitMemoryTracker( void );
+	friend void Arc_CleanupMemoryTracker( void );
+	friend class ManagedObject;
 
 private:
 
-public:
+	struct AllocationRecord
+	{
+		int Num;
 
-	inline MemoryTracker( void ) { }
+		int LineNum;
+
+		size_t Size;
+
+		string Filename;
+
+		AllocationRecord(int num, size_t size, int lineNum, string filename)
+			: Num(num),
+			  LineNum(lineNum),
+			  Size(size),
+			  Filename(filename)
+		{ }
+
+	}; // struct AllocationRecord
+
+	unsigned int m_AllocationIndex;
+
+	Map<ManagedObject*, AllocationRecord> m_Allocations;
+
+	inline MemoryTracker( void )
+		: m_AllocationIndex(),
+	      m_Allocations()
+	{ }
 
 	inline ~MemoryTracker( void ) { }
 
+	MemoryTracker( const MemoryTracker& );
+	MemoryTracker& operator=( const MemoryTracker& );
+
+public:
+
 	inline string getClassName( void ) const { return "Arc Memory Tracker"; }
+
+	void addAllocation( ManagedObject *ptr, size_t size, int lineNumber, string filename );
+
+	bool removeAllocation( ManagedObject *ptr );
+
+	inline int getNumAllocations( void ) { return m_Allocations.getSize(); }
+
+	inline void printAllocations( void ) { printAllocations(std::cout); }
+
+	void printAllocations( std::ostream& stream );
 
 }; // class MemoryTracker
 
 extern MemoryTracker* gp_MemoryTracker;
+
+inline unsigned int Arc_GetMemoryAllocationCount( void )
+{
+	if (gp_MemoryTracker)
+		return gp_MemoryTracker->getNumAllocations();
+
+	return -1;
+}
+
+inline void Arc_PrintMemoryAllocations( void )
+{
+	if (gp_MemoryTracker)
+		gp_MemoryTracker->printAllocations();
+}
+
+inline void Arc_PrintMemoryAllocations( std::ostream& stream )
+{
+	if (gp_MemoryTracker)
+		gp_MemoryTracker->printAllocations(stream);
+}
+
 
 } // namespace Arc
 

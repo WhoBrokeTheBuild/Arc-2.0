@@ -19,17 +19,14 @@
  * Define a standard set of types
  */
 
-#ifndef ARC_CORE_ARC_TYPES_H
-#define ARC_CORE_ARC_TYPES_H
+#ifndef ARC_CORE_TYPES_H
+#define ARC_CORE_TYPES_H
 
-#include "ArcPlatform.h"
+#include "Platform.h"
 
 #include <string>
 
 using std::string;
-
-#define ARC_TRUE  1
-#define ARC_FALSE 0
 
 #if defined(ARC_OS_WINDOWS)
 
@@ -47,4 +44,4 @@ typedef unsigned long long uint64_t;
 
 #endif
 
-#endif // ARC_CORE_ARC_TYPES_H
+#endif // ARC_CORE_TYPES_H

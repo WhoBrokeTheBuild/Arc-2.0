@@ -261,6 +261,9 @@ int main( int argc, char* argv[] )
 
 	cout << endl << "Passed " << testsPassed << "/" << testsTotal << " Tests" << endl << endl;
 
+	if (Arc_GetMemoryAllocationCount() > 0)
+		Arc_PrintMemoryAllocations();
+
 	system("PAUSE");
 
 	return 0;

@@ -18,12 +18,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arc\ArcTypes.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Arc\ArcPlatform.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="Arc\ArcCoreVersion.h">
       <Filter>Utilities</Filter>
     </ClInclude>
@@ -49,6 +43,15 @@
     <ClInclude Include="Arc\MemoryTracker.h">
       <Filter>Memory Tracking</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\Exceptions.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\Types.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\Platform.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\StringFunctions.cpp">
@@ -61,5 +64,8 @@
       <Filter>Memory Tracking</Filter>
     </ClCompile>
     <ClCompile Include="Arc\ArcCore.cpp" />
+    <ClCompile Include="Arc\ManagedObject.cpp">
+      <Filter>Memory Tracking</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

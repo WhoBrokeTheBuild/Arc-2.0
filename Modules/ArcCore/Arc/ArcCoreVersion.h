@@ -22,7 +22,7 @@
 #ifndef ARC_CORE_ARC_VERSION_H
 #define ARC_CORE_ARC_VERSION_H
 
-#include "ArcTypes.h"
+#include "Types.h"
 
 #include <cstdio>
 

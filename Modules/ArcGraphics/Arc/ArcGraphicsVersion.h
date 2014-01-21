@@ -22,7 +22,7 @@
 #define ARC_GRAPHICS_ARC_GRAPHICS_VERSION_H
 
 #include <Arc/ArcCore.h>
-#include <Arc/ArcTypes.h>
+#include <Arc/Types.h>
 
 namespace Arc
 {

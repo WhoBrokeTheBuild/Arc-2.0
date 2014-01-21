@@ -21,8 +21,9 @@
 #ifndef ARC_CORE_ARC_CORE_H
 #define ARC_CORE_ARC_CORE_H
 
-#include "ArcPlatform.h"
-#include "ArcTypes.h"
+#include "Platform.h"
+#include "Types.h"
+
 #include "ArcCoreVersion.h"
 
 // Collections
@@ -33,6 +34,8 @@
 #include "MathFunctions.h"
 #include "StringFunctions.h"
 #include "RandomFunctions.h"
+
+#include "MemoryTracker.h"
 
 namespace Arc
 {

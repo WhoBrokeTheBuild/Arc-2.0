@@ -17,20 +17,25 @@
     </ClInclude>
     <ClInclude Include="Arc\ArcCoreVersion.h" />
     <ClInclude Include="Arc\ArrayList.h" />
+    <ClInclude Include="Arc\Exceptions.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Arc\ManagedObject.h" />
     <ClInclude Include="Arc\Map.h" />
     <ClInclude Include="Arc\MathFunctions.h" />
-    <ClInclude Include="Arc\ArcPlatform.h" />
+    <ClInclude Include="Arc\Platform.h" />
     <ClInclude Include="Arc\MemoryTracker.h" />
     <ClInclude Include="Arc\RandomFunctions.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Arc\StringFunctions.h" />
-    <ClInclude Include="Arc\ArcTypes.h" />
+    <ClInclude Include="Arc\Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcCore.cpp" />
+    <ClCompile Include="Arc\ManagedObject.cpp" />
     <ClCompile Include="Arc\MemoryTracker.cpp" />
     <ClCompile Include="Arc\RandomFunctions.cpp" />
     <ClCompile Include="Arc\StringFunctions.cpp" />

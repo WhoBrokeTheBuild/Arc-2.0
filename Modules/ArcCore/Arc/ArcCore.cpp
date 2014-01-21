@@ -1,9 +1,8 @@
 #include "ArcCore.h"
 
 #include "RandomFunctions.h"
-#include "MemoryTracker.h"
 
-bool Arc_InitCore( void )
+bool Arc::Arc_InitCore( void )
 {
 	bool success = false;
 
