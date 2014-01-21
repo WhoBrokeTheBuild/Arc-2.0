@@ -18,27 +18,40 @@
  * 
  */
 
-#ifndef ARC_CORE_ARC_CORE_H
-#define ARC_CORE_ARC_CORE_H
+#ifndef ARC_CORE_MEMORY_TRACKER_H
+#define ARC_CORE_MEMORY_TRACKER_H
 
-#include "ArcPlatform.h"
-#include "ArcTypes.h"
-#include "ArcCoreVersion.h"
+#include <string>
 
-// Collections
-#include "ArrayList.h"
-#include "Map.h"
+#include "MemoryTracker.h"
 
-// Functions
-#include "MathFunctions.h"
-#include "StringFunctions.h"
-#include "RandomFunctions.h"
+using std::string;
+
+bool Arc_InitMemoryTracker( void );
+void Arc_CleanupMemoryTracker( void );
 
 namespace Arc
 {
 
-bool Arc_InitCore( void );
+class MemoryTracker
+{
+
+	friend bool Arc_InitMemoryTracker( void );
+
+private:
+
+public:
+
+	inline MemoryTracker( void ) { }
+
+	inline ~MemoryTracker( void ) { }
+
+	inline string getClassName( void ) const { return "Arc Memory Tracker"; }
+
+}; // class MemoryTracker
+
+extern MemoryTracker* gp_MemoryTracker;
 
 } // namespace Arc
 
-#endif // ARC_CORE_ARC_CORE_H
+#endif // ARC_CORE_MEMORY_TRACKER_H

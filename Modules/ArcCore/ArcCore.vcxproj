@@ -21,6 +21,7 @@
     <ClInclude Include="Arc\Map.h" />
     <ClInclude Include="Arc\MathFunctions.h" />
     <ClInclude Include="Arc\ArcPlatform.h" />
+    <ClInclude Include="Arc\MemoryTracker.h" />
     <ClInclude Include="Arc\RandomFunctions.h">
       <SubType>
       </SubType>
@@ -29,6 +30,8 @@
     <ClInclude Include="Arc\ArcTypes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Arc\ArcCore.cpp" />
+    <ClCompile Include="Arc\MemoryTracker.cpp" />
     <ClCompile Include="Arc\RandomFunctions.cpp" />
     <ClCompile Include="Arc\StringFunctions.cpp" />
   </ItemGroup>

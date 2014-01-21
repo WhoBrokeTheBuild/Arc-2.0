@@ -251,8 +251,8 @@ int main( int argc, char* argv[] )
 	cout << "Using Arc UI Version: " << ArcUI_GetVersionString() << endl;
 	cout << "Using Arc Game Version: " << ArcGame_GetVersionString() << endl;
 	cout << "Using Arc Scripting Version: " << ArcScript_GetVersionString() << endl << endl;
-
-	Arc_InitRandom();
+	
+	Arc_InitCore();
 
 	cout << "== Running Unit Tests ==" << endl << endl;
 

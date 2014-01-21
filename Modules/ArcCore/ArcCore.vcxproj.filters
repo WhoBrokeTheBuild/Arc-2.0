@@ -46,6 +46,9 @@
     <ClInclude Include="Arc\Map.h">
       <Filter>Collections</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\MemoryTracker.h">
+      <Filter>Memory Tracking</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\StringFunctions.cpp">
@@ -54,5 +57,9 @@
     <ClCompile Include="Arc\RandomFunctions.cpp">
       <Filter>Utilities\Functions</Filter>
     </ClCompile>
+    <ClCompile Include="Arc\MemoryTracker.cpp">
+      <Filter>Memory Tracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\ArcCore.cpp" />
   </ItemGroup>
 </Project>

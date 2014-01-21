@@ -27,19 +27,20 @@ using std::string;
 
 namespace Arc
 {
-	class ManagedObject
-	{
-	protected:
 
-		inline ManagedObject( void ) { }
+class ManagedObject
+{
+protected:
 
-	public:
+	inline ManagedObject( void ) { }
 
-		virtual inline ~ManagedObject( void ) { }
+public:
 
-		virtual inline string getClassName( void ) const = 0;
+	virtual inline ~ManagedObject( void ) { }
 
-	}; // class ArcManagedObject
+	virtual inline string getClassName( void ) const = 0;
+
+}; // class ArcManagedObject
 
 } // namespace Arc
 
