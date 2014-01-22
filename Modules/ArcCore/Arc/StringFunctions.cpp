@@ -3,7 +3,7 @@
 const size_t Arc::StringBadPosition = string::npos;
 const size_t Arc::StringBadLength = string::npos;
 
-string Arc::Arc_StringBasename( const string& path )
+string Arc::Arc_Basename( const string& path )
 {
 	char splitString = (path.find("\\") != StringBadPosition ? '\\' : '/');
 
@@ -26,24 +26,36 @@ void Arc::Arc_StringToUpper( string& str )
 
 void Arc::Arc_StringUCWords( string& str )
 {
-	// TODO(sdl.slane@gmail.com): Implement
+	if (str.length() == 0)
+		return;
+
+	str[0] = toupper(str[0]);
+
+	for (unsigned int i = 1; i < str.length(); ++i)
+		if (str[i - 1] == ' ')
+			str[i] = toupper(str[i]);
 }
 
 void Arc::Arc_StringUCFirst( string& str )
 {
-	// TODO(sdl.slane@gmail.com): Implement
+	if (str.length() == 0)
+		return;
+
+	str[0] = toupper(str[0]);
 }
 
 string Arc::Arc_StringGetUCWords( const string& str )
 {
-	// TODO(sdl.slane@gmail.com): Implement
-	return "";
+	string newStr = str;
+	Arc_StringUCWords(newStr);
+	return newStr;
 }
 
 string Arc::Arc_StringGetUCFirst( const string& str )
 {
-	// TODO(sdl.slane@gmail.com): Implement
-	return "";
+	string newStr = str;
+	Arc_StringUCFirst(newStr);
+	return newStr;
 }
 
 Arc::ArrayList<string> Arc::Arc_StringSplit( const string& str, const char& sep, const int& limit /*= -1 */ )

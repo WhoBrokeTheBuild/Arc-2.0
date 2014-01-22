@@ -30,7 +30,7 @@ namespace Arc
 extern const size_t StringBadLength;
 extern const size_t StringBadPosition;
 
-string Arc_StringBasename( const string& path );
+string Arc_Basename( const string& path );
 
 void Arc_StringToLower( string& str );
 

@@ -53,7 +53,7 @@ void Arc::MemoryTracker::printAllocations( std::ostream& stream )
 		stream << "#" << it->second.Num
 			   << ": (address: #" << it->first << ") "
 			   << it->first->getClassName() << "\n"
-			   << "\t In " << Arc_StringBasename(it->second.Filename)
+			   << "\t In " << Arc_Basename(it->second.Filename)
 			   << " On Line " << it->second.LineNum << "\n";
 	}
 }

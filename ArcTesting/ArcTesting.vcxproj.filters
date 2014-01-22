@@ -3,4 +3,14 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{b2663e14-82f6-49bc-a9d5-6789a97a60ed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StringFunctionsTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

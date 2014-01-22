@@ -107,28 +107,105 @@ public:
 	/*
 	 * @returns: Half of the X value
 	 */
-    virtual inline float getHalfX( void ) const { return (m_X * 0.5f); }
+    inline float getHalfX( void ) const { return (getX() * 0.5f); }
 
 	/*
 	 * @returns: Half of the Y value
 	 */
-    virtual inline float getHalfY( void ) const { return (m_Y * 0.5f); }
+    inline float getHalfY( void ) const { return (getY() * 0.5f); }
 
 	/* Normalizes the vector and stores the new values in X and Y
 	 */
-	virtual void normalize( void );
+	void normalize( void );
 		
 	/* Gets a normalized copy of this vector
 	 *
 	 * @returns: A normalized copy of this vector
 	 */
-	virtual Vector2 getNormalized( void );
+	Vector2 getNormalized( void );
+
+	inline float getLengthSquared( void )
+	{
+		return (m_X * m_X) + (m_Y * m_Y);
+	}
+
+	inline float getLength( void )
+	{
+		return sqrtf(getLengthSquared());
+	}
 		
 	inline void operator=( const Vector2& rhs )
 	{
 		m_X = rhs.m_X;
 		m_Y = rhs.m_Y;
 	}
+
+	inline Vector2& operator+=( const Vector2& rhs )
+	{
+		m_X += rhs.m_X;
+		m_Y += rhs.m_Y;
+	}
+
+	inline Vector2& operator-=( const Vector2& rhs )
+	{
+		m_X -= rhs.m_X;
+		m_Y -= rhs.m_Y;
+	}
+
+	inline Vector2& operator*=( const Vector2& rhs )
+	{
+		m_X *= rhs.m_X;
+		m_Y *= rhs.m_Y;
+	}
+
+	inline Vector2& operator/=( const Vector2& rhs )
+	{
+		m_X /= rhs.m_X;
+		m_Y /= rhs.m_Y;
+	}
+
+	inline Vector2& operator*=( float value )
+	{
+		m_X *= value;
+		m_Y *= value;
+	}
+
+	inline Vector2& operator/=( float value )
+	{
+		m_X /= value;
+		m_Y /= value;
+	}
+
+	inline bool operator==( const Vector2& rhs ) const
+	{
+		return (m_X == rhs.m_X && m_Y == rhs.m_Y);
+	}
+
+	inline bool operator!=( const Vector2& rhs ) const
+	{
+		return ! (*this == rhs);
+	}
+
+	inline bool operator<( const Vector2& rhs ) const
+	{
+		return (m_X < rhs.m_X && m_Y < rhs.m_Y);
+	}
+
+	inline bool operator>( const Vector2& rhs ) const
+	{
+		return (m_X > rhs.m_X && m_Y > rhs.m_Y);
+	}
+
+	inline bool operator<=( const Vector2& rhs ) const
+	{
+		return (m_X <= rhs.m_X && m_Y <= rhs.m_Y);
+	}
+
+	inline bool operator>=( const Vector2& rhs ) const
+	{
+		return (m_X >= rhs.m_X && m_Y >= rhs.m_Y);
+	}
+
 
 protected:
 

@@ -41,7 +41,7 @@ public:
 
 	virtual ~CSVDocument( void );
 
-	virtual inline string getClassName( void ) const { return "CSV Document"; }
+	virtual inline string getClassName( void ) const { return "Arc CSV Document"; }
 
 private:
 
