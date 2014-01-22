@@ -177,7 +177,7 @@ bool Arc::ArrayList<T>::hasIndex( const int& index ) const
 	if (isEmpty())
 		return false;
 
-	return (Arc_between(index, 0, (const int)getSize() - 1));
+	return (Arc_Between(index, 0, (const int)getSize() - 1));
 }
 
 template <class T>

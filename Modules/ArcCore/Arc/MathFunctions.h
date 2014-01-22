@@ -32,9 +32,23 @@ namespace Arc
  * @returns: True if the value is between the min and max values or equal to either, False otherwise
  */ 
 template <class Number>
-static inline bool Arc_between( Number value, Number min, Number max ) 
+static inline bool Arc_Between( Number value, Number min, Number max ) 
 { 
 	return ( value >= min && value <= max); 
+}
+
+/* Calculates a linear interpolation
+ *
+ * @param start: The number to start at, returned when fraction is 0
+ * @param end: The number to end at, returned when fraction is 1
+ * @param fraction: The value from 0 to 1 to interpolate between the two numbers where
+ *     a value of 0 will return the start number, and a value of 1 will return the end
+ * @returns: A number between the start and end values, determined by the fraction amount
+ */
+template <class Number>
+static inline Number Arc_Lerp( Number start, Number end, float fraction) 
+{
+	return (Number)( start + (end - start) * fraction );
 }
 
 }; // namespace Arc

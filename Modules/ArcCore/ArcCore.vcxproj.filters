@@ -16,6 +16,9 @@
     <Filter Include="Utilities\Functions">
       <UniqueIdentifier>{ee814a3b-df0d-4db0-9c4a-b4b32ef57da2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\Geometry">
+      <UniqueIdentifier>{4b9b7485-cfc9-4297-aae1-40860cb7f2d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arc\ArcCoreVersion.h">
@@ -52,6 +55,9 @@
     <ClInclude Include="Arc\Platform.h">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\Vector2.h">
+      <Filter>Utilities\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\StringFunctions.cpp">
@@ -66,6 +72,9 @@
     <ClCompile Include="Arc\ArcCore.cpp" />
     <ClCompile Include="Arc\ManagedObject.cpp">
       <Filter>Memory Tracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\Vector2.cpp">
+      <Filter>Utilities\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
