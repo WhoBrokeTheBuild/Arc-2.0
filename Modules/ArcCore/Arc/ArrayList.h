@@ -106,6 +106,9 @@ public:
 	template <class InputIterator>
 	inline void assign( InputIterator first, InputIterator last ) { m_List.assign(first, last); updateSize(); }
 
+	template <class InputIterator>
+	inline ArrayList<T>* insert( Iterator pos, InputIterator first, InputIterator last ) { m_List.insert(pos, first, last); updateSize(); return this; }
+
 	void clear( void );
 
     bool remove( const T& item );

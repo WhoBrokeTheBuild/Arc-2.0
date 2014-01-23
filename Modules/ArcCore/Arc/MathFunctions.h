@@ -32,7 +32,7 @@ namespace Arc
  * @returns: True if the value is between the min and max values or equal to either, False otherwise
  */ 
 template <class Number>
-static inline bool Arc_Between( Number value, Number min, Number max ) 
+inline bool Arc_Between( Number value, Number min, Number max ) 
 { 
 	return ( value >= min && value <= max); 
 }
@@ -46,10 +46,35 @@ static inline bool Arc_Between( Number value, Number min, Number max )
  * @returns: A number between the start and end values, determined by the fraction amount
  */
 template <class Number>
-static inline Number Arc_Lerp( Number start, Number end, float fraction) 
+inline Number Arc_Lerp( Number start, Number end, float fraction) 
 {
 	return (Number)( start + (end - start) * fraction );
 }
+
+template <class Number>
+inline Number Arc_Clamp(Number value, Number min, Number max) 
+{
+	return ( ( value > max ) ? max : ( ( value < min ) ? min : value ) ); 
+}
+
+template <class Number>
+inline int Arc_Sign( Number value ) 
+{ 
+	return ( value > 0 ? 1 : ( value < 0 ? -1 : 0 ) );
+}
+
+float Arc_Floor(float value, int accuracy);
+
+float Arc_Nearest(float value, int accuracy);
+
+float Arc_Ceil(float value, int accuracy);
+
+double Arc_Floor(double value, int accuracy);
+
+double Arc_Nearest(double value, int accuracy);
+
+double Arc_Ceil(double value, int accuracy);
+
 
 }; // namespace Arc
 

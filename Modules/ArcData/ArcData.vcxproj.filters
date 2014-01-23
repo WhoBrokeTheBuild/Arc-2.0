@@ -16,6 +16,18 @@
     <Filter Include="ArcML">
       <UniqueIdentifier>{daec4f44-e703-4a7c-94a4-0c8855eee818}</UniqueIdentifier>
     </Filter>
+    <Filter Include="COLLADA">
+      <UniqueIdentifier>{70d0407b-7fe3-4307-b8e5-2475283b01fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FBX">
+      <UniqueIdentifier>{93ac22b4-f7b9-447a-ba32-81255d25c191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OBJ">
+      <UniqueIdentifier>{4b02e862-ad51-4344-9917-803ced415055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PLY">
+      <UniqueIdentifier>{9beceb72-2a91-4529-81d8-8ad074a5737b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arc\ArcDataVersion.h">
@@ -28,6 +40,12 @@
     <ClInclude Include="Arc\CSVRow.h">
       <Filter>CSV</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\OBJDocument.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\OBJFace.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
@@ -36,6 +54,12 @@
     </ClCompile>
     <ClCompile Include="Arc\CSVRow.cpp">
       <Filter>CSV</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\OBJFace.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\OBJDocument.cpp">
+      <Filter>OBJ</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

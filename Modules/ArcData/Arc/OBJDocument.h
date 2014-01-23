@@ -18,44 +18,46 @@
  * 
  */
 
-#ifndef ARC_DATA_CSV_ROW_H
-#define ARC_DATA_CSV_ROW_H
+#ifndef ARC_DATA_CSV_DOCUMENT_H
+#define ARC_DATA_CSV_DOCUMENT_H
 
 #include <Arc/ArcCore.h>
 #include <Arc/ManagedObject.h>
 
+#include <Arc/Buffer.h>
+
+#include "OBJFace.h"
+
 namespace Arc
 {
 
-class CSVDocument;
-
-class CSVRow
+class OBJDocument
 	: public ManagedObject
 {
 public:
 
-	string getCol( const int& index );
-	string getCol( const string& index );
+	static OBJDocument LoadFile( const string& filename );
 
-	ArrayList<string> getCols( void );
-	ArrayList<string> getCols( const int& start, const int& end );
-	ArrayList<string> getCols( const ArrayList<int>& indexes );
-	ArrayList<string> getCols( const ArrayList<string>& indexes );
+	static OBJDocument LoadString( const string& data );
 
-	virtual ~CSVRow( void );
+	static OBJDocument LoadBuffer( Buffer& data );
 
-	virtual inline string getClassName( void ) const { return "CSV Row"; }
+	virtual ~OBJDocument( void );
+
+	virtual inline string getClassName( void ) const { return "Arc OBJ Document"; }
 
 private:
 
-	CSVRow( CSVDocument& document );
+	OBJDocument( void );
 
-	CSVDocument* mp_Document;
+	ArrayList<Vector3> m_Vertexes;
 
-	ArrayList<string> m_Cols;
+	ArrayList<Vector3> m_Normals;
 
-}; // class CSVRow
+	ArrayList<OBJFace> m_Faces;
+
+}; // class CSVDocument
 
 }; // namespace Arc
 
-#endif // ARC_DATA_CSV_ROW_H
+#endif // ARC_DATA_CSV_DOCUMENT_H

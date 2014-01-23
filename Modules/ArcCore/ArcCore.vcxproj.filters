@@ -7,20 +7,23 @@
     <Filter Include="Memory Tracking">
       <UniqueIdentifier>{8d13590d-baf2-425d-8c8e-c3e3d3f8cdf5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Collections">
-      <UniqueIdentifier>{873db502-807c-44f8-85f7-c086390338bf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utilities">
       <UniqueIdentifier>{be6ee046-6312-4229-b4d3-aa938d580f63}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utilities\Functions">
       <UniqueIdentifier>{ee814a3b-df0d-4db0-9c4a-b4b32ef57da2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utilities\Geometry">
+    <Filter Include="Collections">
+      <UniqueIdentifier>{873db502-807c-44f8-85f7-c086390338bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
       <UniqueIdentifier>{4b9b7485-cfc9-4297-aae1-40860cb7f2d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utilities\Testing">
+    <Filter Include="Testing">
       <UniqueIdentifier>{9529dbdc-16f6-48db-a2f2-a7fdd5ba27cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{66a1dec8-04ba-41b0-a5e2-622aaf9b43c1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -49,9 +52,6 @@
     <ClInclude Include="Arc\MemoryTracker.h">
       <Filter>Memory Tracking</Filter>
     </ClInclude>
-    <ClInclude Include="Arc\Exceptions.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="Arc\Types.h">
       <Filter>Utilities</Filter>
     </ClInclude>
@@ -59,19 +59,22 @@
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Arc\Vector2.h">
-      <Filter>Utilities\Geometry</Filter>
+      <Filter>Geometry</Filter>
     </ClInclude>
     <ClInclude Include="Arc\Vector4.h">
-      <Filter>Utilities\Geometry</Filter>
+      <Filter>Geometry</Filter>
     </ClInclude>
     <ClInclude Include="Arc\Vector3.h">
-      <Filter>Utilities\Geometry</Filter>
+      <Filter>Geometry</Filter>
     </ClInclude>
     <ClInclude Include="Arc\TestGroup.h">
-      <Filter>Utilities\Testing</Filter>
+      <Filter>Testing</Filter>
     </ClInclude>
     <ClInclude Include="Arc\TestResult.h">
-      <Filter>Utilities\Testing</Filter>
+      <Filter>Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\Buffer.h">
+      <Filter>Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,13 +92,16 @@
       <Filter>Memory Tracking</Filter>
     </ClCompile>
     <ClCompile Include="Arc\Vector2.cpp">
-      <Filter>Utilities\Geometry</Filter>
+      <Filter>Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Arc\Vector4.cpp">
-      <Filter>Utilities\Geometry</Filter>
+      <Filter>Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Arc\Vector3.cpp">
-      <Filter>Utilities\Geometry</Filter>
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\Buffer.cpp">
+      <Filter>Data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

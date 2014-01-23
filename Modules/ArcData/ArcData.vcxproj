@@ -75,11 +75,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Arc\OBJDocument.h" />
+    <ClInclude Include="Arc\OBJFace.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
     <ClCompile Include="Arc\CSVDocument.cpp" />
     <ClCompile Include="Arc\CSVRow.cpp" />
+    <ClCompile Include="Arc\OBJDocument.cpp" />
+    <ClCompile Include="Arc\OBJFace.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
