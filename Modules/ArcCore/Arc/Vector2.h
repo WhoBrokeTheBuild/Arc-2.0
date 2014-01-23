@@ -1,17 +1,17 @@
-/* This file is part of Arc.
+/* This file is part of ArcCore.
  * 
- * Arc is free software; you can redistribute it and/or
+ * ArcCore is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  * 
- * Arc is distributed in the hope that it will be useful,
+ * ArcCore is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  * 
  * You should have received a copy of the GNU Lesser General Public
- * License along with Arc; if not, write to the Free Software
+ * License along with ArcCore; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  * 
  * Author: Stephen Lane-Walsh
@@ -45,7 +45,7 @@ public:
 
 	static Vector2 NEGATIVE_ONE;
 
-	inline Vector2( const float& x, const float& y)
+	inline Vector2( const float& x, const float& y )
 		: m_X(x),
 		  m_Y(y)
 	{ }
@@ -116,7 +116,7 @@ public:
 
 	/* Normalizes the vector and stores the new values in X and Y
 	 */
-	void normalize( void );
+	virtual void normalize( void );
 		
 	/* Gets a normalized copy of this vector
 	 *
@@ -124,84 +124,90 @@ public:
 	 */
 	Vector2 getNormalized( void );
 
-	inline float getLengthSquared( void )
+	virtual inline float getLengthSquared( void )
 	{
 		return (m_X * m_X) + (m_Y * m_Y);
 	}
 
-	inline float getLength( void )
+	virtual inline float getLength( void )
 	{
 		return sqrtf(getLengthSquared());
 	}
 		
-	inline void operator=( const Vector2& rhs )
+	virtual inline void operator=( const Vector2& rhs )
 	{
 		m_X = rhs.m_X;
 		m_Y = rhs.m_Y;
 	}
 
-	inline Vector2& operator+=( const Vector2& rhs )
+	virtual inline Vector2& operator+=( const Vector2& rhs )
 	{
 		m_X += rhs.m_X;
 		m_Y += rhs.m_Y;
+		return *this;
 	}
 
-	inline Vector2& operator-=( const Vector2& rhs )
+	virtual inline Vector2& operator-=( const Vector2& rhs )
 	{
 		m_X -= rhs.m_X;
 		m_Y -= rhs.m_Y;
+		return *this;
 	}
 
-	inline Vector2& operator*=( const Vector2& rhs )
+	virtual inline Vector2& operator*=( const Vector2& rhs )
 	{
 		m_X *= rhs.m_X;
 		m_Y *= rhs.m_Y;
+		return *this;
 	}
 
-	inline Vector2& operator/=( const Vector2& rhs )
+	virtual inline Vector2& operator/=( const Vector2& rhs )
 	{
 		m_X /= rhs.m_X;
 		m_Y /= rhs.m_Y;
+		return *this;
 	}
 
-	inline Vector2& operator*=( float value )
+	virtual inline Vector2& operator*=( float value )
 	{
 		m_X *= value;
 		m_Y *= value;
+		return *this;
 	}
 
-	inline Vector2& operator/=( float value )
+	virtual inline Vector2& operator/=( float value )
 	{
 		m_X /= value;
 		m_Y /= value;
+		return *this;
 	}
 
-	inline bool operator==( const Vector2& rhs ) const
+	virtual inline bool operator==( const Vector2& rhs ) const
 	{
 		return (m_X == rhs.m_X && m_Y == rhs.m_Y);
 	}
 
-	inline bool operator!=( const Vector2& rhs ) const
+	virtual inline bool operator!=( const Vector2& rhs ) const
 	{
 		return ! (*this == rhs);
 	}
 
-	inline bool operator<( const Vector2& rhs ) const
+	virtual inline bool operator<( const Vector2& rhs ) const
 	{
 		return (m_X < rhs.m_X && m_Y < rhs.m_Y);
 	}
 
-	inline bool operator>( const Vector2& rhs ) const
+	virtual inline bool operator>( const Vector2& rhs ) const
 	{
 		return (m_X > rhs.m_X && m_Y > rhs.m_Y);
 	}
 
-	inline bool operator<=( const Vector2& rhs ) const
+	virtual inline bool operator<=( const Vector2& rhs ) const
 	{
 		return (m_X <= rhs.m_X && m_Y <= rhs.m_Y);
 	}
 
-	inline bool operator>=( const Vector2& rhs ) const
+	virtual inline bool operator>=( const Vector2& rhs ) const
 	{
 		return (m_X >= rhs.m_X && m_Y >= rhs.m_Y);
 	}

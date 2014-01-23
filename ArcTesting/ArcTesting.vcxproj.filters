@@ -12,5 +12,8 @@
     <ClInclude Include="StringFunctionsTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="RandomFunctionsTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

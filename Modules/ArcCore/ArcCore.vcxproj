@@ -16,6 +16,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Arc\ArcCoreVersion.h" />
+    <ClInclude Include="Arc\TestGroup.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Arc\ArrayList.h" />
     <ClInclude Include="Arc\Exceptions.h">
       <SubType>
@@ -31,11 +35,17 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Arc\StringFunctions.h" />
+    <ClInclude Include="Arc\TestResult.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Arc\Types.h" />
     <ClInclude Include="Arc\Vector2.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Arc\Vector3.h" />
+    <ClInclude Include="Arc\Vector4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcCore.cpp" />
@@ -44,6 +54,8 @@
     <ClCompile Include="Arc\RandomFunctions.cpp" />
     <ClCompile Include="Arc\StringFunctions.cpp" />
     <ClCompile Include="Arc\Vector2.cpp" />
+    <ClCompile Include="Arc\Vector3.cpp" />
+    <ClCompile Include="Arc\Vector4.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{12F65C0E-ADBE-470A-AA00-EE6F19C380C0}</ProjectGuid>

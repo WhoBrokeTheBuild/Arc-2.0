@@ -4,5 +4,5 @@
 
 string Arc::CSVRow::getCol(const string& index)
 {
-
+	return "";
 }
