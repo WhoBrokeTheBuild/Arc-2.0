@@ -46,9 +46,19 @@ public:
 
 	virtual inline string getClassName( void ) const { return "Arc OBJ Document"; }
 
+	inline Vector3 getVertex( const int& index ) const { return (m_Vertexes.hasIndex(index) ? m_Vertexes[index] : Vector3::NEGATIVE_ONE); }
+
+	inline Vector3 getNormal( const int& index ) const { return (m_Normals.hasIndex(index) ? m_Normals[index] : Vector3::NEGATIVE_ONE); }
+
+	inline OBJFace getFace( const int& index ) const { return (m_Faces.hasIndex(index) ? m_Faces[index] : OBJFace(this)); }
+
 private:
 
-	OBJDocument( void );
+	OBJDocument( void )
+		: m_Vertexes(),
+		  m_Normals(),
+		  m_Faces()
+	{ }
 
 	ArrayList<Vector3> m_Vertexes;
 

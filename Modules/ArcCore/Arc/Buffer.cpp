@@ -24,9 +24,9 @@ bool Arc::Buffer::setDataFromStream( std::istream& stream )
 void Arc::Buffer::setDataFromBuffer( const char* buffer, unsigned int size )
 {
 	clear();
-	_buffer.resize(_buffer.getSize() + size + 1, 0);
-	_buffer.assign(buffer, buffer + size);
-	_endOfUsed = size;
+	m_Buffer.resize(m_Buffer.getSize() + size + 1, 0);
+	m_Buffer.assign(buffer, buffer + size);
+	m_EndOfUsed = size;
 }
 
 void Arc::Buffer::setDataFromString( const string& text )
@@ -43,17 +43,17 @@ void Arc::Buffer::setDataFromStringWithLength( const string& text )
 
 void Arc::Buffer::appendBuffer( const Buffer& other )
 {
-	appendBuffer(&(other._buffer[0]), other.getFullSize());
+	appendBuffer(&(other.m_Buffer[0]), other.getFullSize());
 }
 
 void Arc::Buffer::appendBuffer( const char* buffer, unsigned int size )
 {
-	if (_endOfUsed + size >= _buffer.getSize())
-		_buffer.resize(_endOfUsed + size + 1);
+	if (m_EndOfUsed + size >= m_Buffer.getSize())
+		m_Buffer.resize(m_EndOfUsed + size + 1);
 
-	_buffer.insert(_buffer.itBegin() + _endOfUsed, buffer, buffer + size);
-	_endOfUsed += size;
-	_buffer[_endOfUsed + 1] = 0;
+	m_Buffer.insert(m_Buffer.itBegin() + m_EndOfUsed, buffer, buffer + size);
+	m_EndOfUsed += size;
+	m_Buffer[m_EndOfUsed + 1] = 0;
 }
 
 bool Arc::Buffer::appendDataFromStream( std::istream& stream )
@@ -71,14 +71,14 @@ bool Arc::Buffer::appendDataFromStream( std::istream& stream )
 		stream.read(tmp_buffer, TMP_BUFFER_SIZE);
 		n = stream.gcount();
 
-		if (_endOfUsed + n > size)
+		if (m_EndOfUsed + n > size)
 		{
-			std::streamsize overflow = (_endOfUsed + n) - size;
-			_buffer.resize((unsigned int)(size + overflow + 1), 0);
+			std::streamsize overflow = (m_EndOfUsed + n) - size;
+			m_Buffer.resize((unsigned int)(size + overflow + 1), 0);
 		}
 
-		memcpy(&(_buffer[0]) + _endOfUsed, tmp_buffer, (unsigned int)n);
-		_endOfUsed += unsigned(n);
+		memcpy(&(m_Buffer[0]) + m_EndOfUsed, tmp_buffer, (unsigned int)n);
+		m_EndOfUsed += unsigned(n);
 
 		if ( ! stream )
 			break;
@@ -94,36 +94,36 @@ bool Arc::Buffer::writeToStream( std::ostream& stream ) const
 		return false;
 
 	// Ignore trailing 0 for strings
-	stream.write(&_buffer[0], _buffer.getSize() - 1);
+	stream.write(&m_Buffer[0], m_Buffer.getSize() - 1);
 	return true;
 }
 
 void Arc::Buffer::clear( void )
 {
-	_endOfUsed = 0;
-	_readIndex = 0;
-	_buffer.resize(1);
-	_buffer[0] = 0;
+	m_EndOfUsed = 0;
+	m_ReadIndex = 0;
+	m_Buffer.resize(1);
+	m_Buffer[0] = 0;
 }
 
 string Arc::Buffer::getText( void ) const
 {
-	if (_buffer.isEmpty())
+	if (m_Buffer.isEmpty())
 		return "";
 
-	return &_buffer[0];
+	return &m_Buffer[0];
 }
 
 void Arc::Buffer::resize( long size )
 {
-	if (_endOfUsed > unsigned(size))
-		_endOfUsed = size;
+	if (m_EndOfUsed > unsigned(size))
+		m_EndOfUsed = size;
 
-	if (_readIndex > unsigned(size))
-		_readIndex = size;
+	if (m_ReadIndex > unsigned(size))
+		m_ReadIndex = size;
 
-	_buffer.resize(size + 1);
-	_buffer.getBack() = 0;
+	m_Buffer.resize(size + 1);
+	m_Buffer.getBack() = 0;
 }
 
 Arc::Buffer& Arc::Buffer::operator=( const string& text )
@@ -137,8 +137,8 @@ string Arc::Buffer::readNextString( unsigned int size )
 	if (endOfBuffer())
 		return string();
 
-	string val = readStringAt(_readIndex, size);
-	_readIndex += size;
+	string val = readStringAt(m_ReadIndex, size);
+	m_ReadIndex += size;
 	return val;
 }
 
@@ -147,9 +147,19 @@ string Arc::Buffer::readNextStringWithLength( void )
 	if (endOfBuffer())
 		return string();
 
-	string val = readStringWithLengthAt(_readIndex);
-	_readIndex += sizeof(short); // For the string length stored in the buffer
-	_readIndex += val.length();
+	string val = readStringWithLengthAt(m_ReadIndex);
+	m_ReadIndex += sizeof(short); // For the string length stored in the buffer
+	m_ReadIndex += val.length() + 1;
+	return val;
+}
+
+string Arc::Buffer::readNextLine( void )
+{
+	if (endOfBuffer())
+		return false;
+
+	string val = readLineAt(m_ReadIndex);
+	m_ReadIndex += val.length() + 1;
 	return val;
 }
 
@@ -158,8 +168,8 @@ bool Arc::Buffer::readNextBool( void )
 	if (endOfBuffer())
 		return false;
 
-	bool val = readBoolAt(_readIndex);
-	_readIndex += sizeof(bool);
+	bool val = readBoolAt(m_ReadIndex);
+	m_ReadIndex += sizeof(bool);
 	return val;
 }
 
@@ -168,8 +178,8 @@ short Arc::Buffer::readNextShort( void )
 	if (endOfBuffer())
 		return 0;
 
-	short val = readShortAt(_readIndex);
-	_readIndex += sizeof(short);
+	short val = readShortAt(m_ReadIndex);
+	m_ReadIndex += sizeof(short);
 	return val;
 }
 
@@ -178,8 +188,8 @@ int Arc::Buffer::readNextInt( void )
 	if (endOfBuffer())
 		return 0;
 
-	int val = readIntAt(_readIndex);
-	_readIndex += sizeof(int);
+	int val = readIntAt(m_ReadIndex);
+	m_ReadIndex += sizeof(int);
 	return val;
 }
 
@@ -188,8 +198,8 @@ long Arc::Buffer::readNextLong( void )
 	if (endOfBuffer())
 		return 0;
 
-	long val = readLongAt(_readIndex);
-	_readIndex += sizeof(long);
+	long val = readLongAt(m_ReadIndex);
+	m_ReadIndex += sizeof(long);
 	return val;
 }
 
@@ -198,8 +208,8 @@ char Arc::Buffer::readNextChar( void )
 	if (endOfBuffer())
 		return '\0';
 
-	char val = readCharAt(_readIndex);
-	_readIndex += sizeof(char);
+	char val = readCharAt(m_ReadIndex);
+	m_ReadIndex += sizeof(char);
 	return val;
 }
 
@@ -208,8 +218,8 @@ float Arc::Buffer::readNextFloat( void )
 	if (endOfBuffer())
 		return 0.0f;
 
-	float val = readFloatAt(_readIndex);
-	_readIndex += sizeof(float);
+	float val = readFloatAt(m_ReadIndex);
+	m_ReadIndex += sizeof(float);
 	return val;
 }
 
@@ -218,8 +228,8 @@ double Arc::Buffer::readNextDouble( void )
 	if (endOfBuffer())
 		return 0.0;
 
-	double val = readDoubleAt(_readIndex);
-	_readIndex += sizeof(double);
+	double val = readDoubleAt(m_ReadIndex);
+	m_ReadIndex += sizeof(double);
 	return val;
 }
 
@@ -227,7 +237,7 @@ string Arc::Buffer::readStringAt( unsigned long offset, unsigned int size )
 {
 	char* buffer = new char[size + 1];
 
-	memcpy(buffer, &(_buffer[0]) + offset, size);
+	memcpy(buffer, &(m_Buffer[0]) + offset, size);
 
 	buffer[size] = '\0';
 	string data = string(buffer);
@@ -243,51 +253,72 @@ string Arc::Buffer::readStringWithLengthAt( unsigned long offset )
 	return readStringAt(offset + sizeof(short), size);
 }
 
+string Arc::Buffer::readLineAt( unsigned long offset )
+{
+	unsigned long index = offset;
+	unsigned long endOfLine = 0;
+	while (index < m_EndOfUsed)
+	{
+		if (m_Buffer[index] == '\n')
+		{
+			endOfLine = index;
+			break;
+		}
+
+		index++;
+	}
+
+	if (endOfLine == 0)
+		return string();
+
+	return readStringAt(offset, endOfLine - offset);
+}
+
 bool Arc::Buffer::readBoolAt( unsigned long offset )
 {
 	bool val;
-	memcpy(&val, &(_buffer[0]) + offset, sizeof(bool));
+	memcpy(&val, &(m_Buffer[0]) + offset, sizeof(bool));
 	return val;
 }
 
 short Arc::Buffer::readShortAt( unsigned long offset )
 {
 	short val;
-	memcpy(&val, &(_buffer[0]) + offset, sizeof(short));
+	memcpy(&val, &(m_Buffer[0]) + offset, sizeof(short));
 	return val;
 }
 
 int Arc::Buffer::readIntAt( unsigned long offset )
 {
 	int val;
-	memcpy(&val, &(_buffer[0]) + offset, sizeof(int));
+	memcpy(&val, &(m_Buffer[0]) + offset, sizeof(int));
 	return val;
 }
 
 long Arc::Buffer::readLongAt( unsigned long offset )
 {
 	long val;
-	memcpy(&val, &(_buffer[0]) + offset, sizeof(long));
+	memcpy(&val, &(m_Buffer[0]) + offset, sizeof(long));
 	return val;
 }
 
 char Arc::Buffer::readCharAt( unsigned long offset )
 {
 	char val;
-	memcpy(&val, &(_buffer[0]) + offset, sizeof(char));
+	memcpy(&val, &(m_Buffer[0]) + offset, sizeof(char));
 	return val;
 }
 
 float Arc::Buffer::readFloatAt( unsigned long offset )
 {
 	float val;
-	memcpy(&val, &(_buffer[0]) + offset, sizeof(float));
+	memcpy(&val, &(m_Buffer[0]) + offset, sizeof(float));
 	return val;
 }
 
 double Arc::Buffer::readDoubleAt( unsigned long offset )
 {
 	double val;
-	memcpy(&val, &(_buffer[0]) + offset, sizeof(double));
+	memcpy(&val, &(m_Buffer[0]) + offset, sizeof(double));
 	return val;
 }

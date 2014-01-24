@@ -12,6 +12,15 @@ Arc::OBJDocument Arc::OBJDocument::LoadString( const string& data )
 
 Arc::OBJDocument Arc::OBJDocument::LoadBuffer( Buffer& data )
 {
-	// TODO(sdl.slane@gmail.com): Implement
-	return OBJDocument();
+	OBJDocument doc;
+	string line;
+
+	while ( ! data.endOfBuffer())
+	{
+		line = data.readNextLine();
+
+		std::cout << line << std::endl;
+	}
+
+	return doc;
 }

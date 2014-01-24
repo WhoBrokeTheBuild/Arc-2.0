@@ -36,6 +36,9 @@ class OBJDocument;
 class OBJFace
 	: public ManagedObject
 {
+
+	friend class OBJDocument;
+
 public:
 
 	virtual ~OBJFace( void );
@@ -46,25 +49,19 @@ public:
 
 	inline int getNumNormals( void ) const { return m_VertexIndexes.getSize(); }
 
-	inline Vector3 getVertex( int ind ) const { return (m_VertexIndexes.hasIndex(ind) ? m_VertexIndexes[ind] : Vector3::ZERO); }
-
-	inline Vector3 getNormal( int ind ) const { return (m_NormalIndexes.hasIndex(ind) ? m_NormalIndexes[ind] : Vector3::ZERO); }
+	Vector3 getVertex( const int& index ) const;
+	
+	Vector3 getNormal( const int& index ) const;
 
 private:
 
-	inline OBJFace( OBJDocument& document )
-		: m_Document(document)
+	inline OBJFace( const OBJDocument* pDocument )
+		: mp_Document(pDocument)
 	{ }
 
-	inline void addVertex( int vertexInd, int normalInd = -1 )
-	{
-		m_VertexIndexes.add(vertexInd);
+	void addVertex( int vertexInd, int normalInd = -1 );
 
-		if (normalInd != -1)
-			m_NormalIndexes.add(normalInd);
-	}
-
-	OBJDocument& m_Document;
+	const OBJDocument* mp_Document;
 
 	ArrayList<int> m_VertexIndexes;
 

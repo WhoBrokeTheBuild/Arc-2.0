@@ -34,31 +34,20 @@ namespace Arc
 class Buffer :
 	public ManagedObject
 {
-protected:
-
-	// Memory Buffer to store data in
-	ArrayList<char> _buffer;
-
-	// End of used memory buffer
-	unsigned long _endOfUsed;
-
-	// Index for reading from the buffer
-	unsigned long _readIndex;
-
 public:
 
 	inline Buffer( void )
-		: _buffer(),
-			_endOfUsed(),
-			_readIndex()
+		: m_Buffer(),
+		  m_EndOfUsed(),
+		  m_ReadIndex()
 	{
 		clear();
 	}
 
 	inline Buffer( const Buffer& other )
-		: _buffer(other._buffer),
-			_endOfUsed(other._endOfUsed),
-			_readIndex(other._readIndex)
+		: m_Buffer(other.m_Buffer),
+		  m_EndOfUsed(other.m_EndOfUsed),
+		  m_ReadIndex(other.m_ReadIndex)
 	{ }
 
 	Buffer( const char* buffer, unsigned int size );
@@ -77,7 +66,7 @@ public:
 		return buff;
 	}
 
-	inline void setDataFromBuffer( const Buffer& other ) { _buffer = other._buffer; }
+	inline void setDataFromBuffer( const Buffer& other ) { m_Buffer = other.m_Buffer; }
 	bool setDataFromStream( std::istream& stream );
 	void setDataFromBuffer( const char* buffer, unsigned int size );
 	void setDataFromString( const string& text );
@@ -135,6 +124,7 @@ public:
 
 	string readNextString( unsigned int size );
 	string readNextStringWithLength( void );
+	string readNextLine( void );
 	bool readNextBool( void );
 	short readNextShort( void );
 	int readNextInt( void );
@@ -143,10 +133,11 @@ public:
 	float readNextFloat( void );
 	double readNextDouble( void );
 
-	inline bool endOfBuffer( void ) { return (_readIndex >= _endOfUsed); }
+	inline bool endOfBuffer( void ) { return (m_ReadIndex >= m_EndOfUsed); }
 
 	string readStringAt( unsigned long offset, unsigned int size );
 	string readStringWithLengthAt( unsigned long offset );
+	string readLineAt( unsigned long offset );
 	bool readBoolAt( unsigned long offset );
 	short readShortAt( unsigned long offset );
 	int readIntAt( unsigned long offset );
@@ -157,8 +148,8 @@ public:
 
 	bool writeToStream( std::ostream& stream ) const;
 
-	inline void setEndOfUsed( unsigned int index ) { _endOfUsed = Arc_Clamp((int)index, 0, (int)_buffer.getSize() - 1); }
-	inline void setReadIndex( unsigned int index ) { _readIndex = Arc_Clamp((int)index, 0, (int)_buffer.getSize() - 1); }
+	inline void setEndOfUsed( unsigned int index ) { m_EndOfUsed = Arc_Clamp((int)index, 0, (int)m_Buffer.getSize() - 1); }
+	inline void setReadIndex( unsigned int index ) { m_ReadIndex = Arc_Clamp((int)index, 0, (int)m_Buffer.getSize() - 1); }
 
 	inline void resetReadIndex( void ) { setReadIndex(0); }
 
@@ -168,11 +159,11 @@ public:
 	Buffer& operator=( const string& text );
 
 	void resize( long size );
-	inline long getFullSize( void ) const { return _buffer.getSize() - 1; }
-	inline long getUsedSize( void ) const { return _endOfUsed; }
+	inline long getFullSize( void ) const { return m_Buffer.getSize() - 1; }
+	inline long getUsedSize( void ) const { return m_EndOfUsed; }
 
-	inline char* getRawBuffer( void ) { return (char*)&(_buffer[0]); }
-	inline char* getRawBuffer( void ) const { return (char*)&(_buffer[0]); }
+	inline char* getRawBuffer( void ) { return (char*)&(m_Buffer[0]); }
+	inline char* getRawBuffer( void ) const { return (char*)&(m_Buffer[0]); }
 
 	friend inline std::ostream& operator<<( std::ostream& stream, const Buffer& buffer)
 	{
@@ -185,6 +176,17 @@ public:
 		buffer.appendDataFromStream(stream);
 		return stream;
 	}
+
+protected:
+
+	// Memory Buffer to store data in
+	ArrayList<char> m_Buffer;
+
+	// End of used memory buffer
+	unsigned long m_EndOfUsed;
+
+	// Index for reading from the buffer
+	unsigned long m_ReadIndex;
 
 }; // class Buffer
 
