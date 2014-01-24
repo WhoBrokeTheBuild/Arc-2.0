@@ -15,5 +15,8 @@
     <ClInclude Include="RandomFunctionsTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="OBJDocumentTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

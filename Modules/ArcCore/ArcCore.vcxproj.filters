@@ -76,6 +76,9 @@
     <ClInclude Include="Arc\Buffer.h">
       <Filter>Data</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\ParseFunctions.h">
+      <Filter>Utilities\Functions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\StringFunctions.cpp">
@@ -102,6 +105,9 @@
     </ClCompile>
     <ClCompile Include="Arc\Buffer.cpp">
       <Filter>Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\ParseFunctions.cpp">
+      <Filter>Utilities\Functions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

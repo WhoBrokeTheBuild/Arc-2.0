@@ -18,13 +18,16 @@
  * 
  */
 
-#ifndef ARC_DATA_CSV_DOCUMENT_H
-#define ARC_DATA_CSV_DOCUMENT_H
+#ifndef ARC_DATA_OBJ_DOCUMENT_H
+#define ARC_DATA_OBJ_DOCUMENT_H
+
+#include <cstdlib>
 
 #include <Arc/ArcCore.h>
 #include <Arc/ManagedObject.h>
 
 #include <Arc/Buffer.h>
+#include <Arc/ParseFunctions.h>
 
 #include "OBJFace.h"
 
@@ -42,25 +45,50 @@ public:
 
 	static OBJDocument LoadBuffer( Buffer& data );
 
-	virtual ~OBJDocument( void );
+	OBJDocument( const OBJDocument& rhs )
+		: m_Vertices(rhs.m_Vertices),
+		  m_Normals(rhs.m_Normals),
+		  m_Faces(rhs.m_Faces)
+	{
+		OBJFace* pFace;
+		for (auto it = m_Faces.itBegin(); it != m_Faces.itEnd(); ++it)
+		{
+			pFace = &(*it);
+			pFace->setDocument(this);
+		}
+	}
+
+	virtual inline ~OBJDocument( void ) { }
 
 	virtual inline string getClassName( void ) const { return "Arc OBJ Document"; }
 
-	inline Vector3 getVertex( const int& index ) const { return (m_Vertexes.hasIndex(index) ? m_Vertexes[index] : Vector3::NEGATIVE_ONE); }
+	inline unsigned int getNumVertices( void ) const { return m_Vertices.getSize(); }
+
+	inline unsigned int getNumNormals( void ) const { return m_Normals.getSize(); }
+
+	inline unsigned int getNumFaces( void ) const { return m_Faces.getSize(); }
+
+	inline Vector3 getVertex( const int& index ) const { return (m_Vertices.hasIndex(index) ? m_Vertices[index] : Vector3::NEGATIVE_ONE); }
 
 	inline Vector3 getNormal( const int& index ) const { return (m_Normals.hasIndex(index) ? m_Normals[index] : Vector3::NEGATIVE_ONE); }
 
-	inline OBJFace getFace( const int& index ) const { return (m_Faces.hasIndex(index) ? m_Faces[index] : OBJFace(this)); }
+	inline const OBJFace& getFace( const int& index ) const { return (m_Faces.hasIndex(index) ? m_Faces[index] : OBJFace::INVALID); }
 
 private:
 
 	OBJDocument( void )
-		: m_Vertexes(),
+		: m_Vertices(),
 		  m_Normals(),
 		  m_Faces()
 	{ }
 
-	ArrayList<Vector3> m_Vertexes;
+	inline void addVertex( const Vector3& vertex ) { m_Vertices.add(vertex); }
+
+	inline void addNormal( const Vector3& normal ) { m_Normals.add(normal); }
+
+	inline void addFace( const OBJFace& face ) { m_Faces.add(face); }
+
+	ArrayList<Vector3> m_Vertices;
 
 	ArrayList<Vector3> m_Normals;
 
@@ -70,4 +98,4 @@ private:
 
 }; // namespace Arc
 
-#endif // ARC_DATA_CSV_DOCUMENT_H
+#endif // ARC_DATA_OBJ_DOCUMENT_H

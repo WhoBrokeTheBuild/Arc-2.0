@@ -62,7 +62,8 @@ int Arc_StringReplaceNext( string& str, const string& search, const string& repl
 
 int Arc_StringReplaceAll( string& str, const string& search, const string& replace );
 
-string Arc_Substring( const string& str, const unsigned int& begin, const int& maxLength = -1 );
+string Arc_Substring( const string& str, const unsigned int& begin, 
+					  const int& maxLength = -1 );
 
 inline bool Arc_StringContains( const string& str, const char& search )
 {
@@ -74,8 +75,16 @@ inline bool Arc_StringContains( const string& str, const string& search )
 	return (str.find(search) != StringBadPosition);
 }
 
-ArrayList<string> Arc_StringSplit( const string& str, const char& sep, 
-	const int& limit = -1 );
+ArrayList<string> Arc_StringSplit( const string& str, const string& sep, 
+								   const int& limit = -1 );
+
+inline ArrayList<string> Arc_StringSplit( const string& str, const char& sep, 
+								          const int& limit = -1 )
+{
+	string newSep;
+	newSep += sep;
+	return Arc_StringSplit(str, newSep, limit);
+}
 
 string Arc_StringJoin( const string& glue, const ArrayList<string>& pieces );
 

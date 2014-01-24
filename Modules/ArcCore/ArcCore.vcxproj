@@ -17,6 +17,10 @@
     </ClInclude>
     <ClInclude Include="Arc\ArcCoreVersion.h" />
     <ClInclude Include="Arc\Buffer.h" />
+    <ClInclude Include="Arc\ParseFunctions.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Arc\TestGroup.h">
       <SubType>
       </SubType>
@@ -49,6 +53,7 @@
     <ClCompile Include="Arc\Buffer.cpp" />
     <ClCompile Include="Arc\ManagedObject.cpp" />
     <ClCompile Include="Arc\MemoryTracker.cpp" />
+    <ClCompile Include="Arc\ParseFunctions.cpp" />
     <ClCompile Include="Arc\RandomFunctions.cpp" />
     <ClCompile Include="Arc\StringFunctions.cpp" />
     <ClCompile Include="Arc\Vector2.cpp" />

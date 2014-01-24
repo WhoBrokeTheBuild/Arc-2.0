@@ -123,7 +123,14 @@ TestResult Test_Arc_StringSplit( void )
 	ArrayList<string> splitResult = Arc_StringSplit(testSplit, ',');
 
 	if (splitResult[0] != "a" || splitResult[1] != "b" || splitResult[2] != "c")
-		return TestGroup::Failure("Invalid Result");
+		return TestGroup::Failure("Invalid Result with character separator");
+
+	testSplit = "a//b//c";
+
+	splitResult = Arc_StringSplit(testSplit, "//");
+
+	if (splitResult[0] != "a" || splitResult[1] != "b" || splitResult[2] != "c")
+		return TestGroup::Failure("Invalid Result with string separator");
 
 	return TestGroup::Success();
 }

@@ -58,20 +58,30 @@ string Arc::Arc_StringGetUCFirst( const string& str )
 	return newStr;
 }
 
-Arc::ArrayList<string> Arc::Arc_StringSplit( const string& str, const char& sep, const int& limit /*= -1 */ )
+Arc::ArrayList<string> Arc::Arc_StringSplit( const string& str, const string& sep, const int& limit /*= -1 */ )
 {
 	ArrayList<string> stringParts;
 
 	unsigned int lastEnd = 0;
-	for (unsigned int i = 0; i < str.size(); ++i)
+	for (unsigned int i = 0; i < str.length(); ++i)
 	{
-		if (str[i] == sep)
+		bool check = true;
+		for (unsigned int j = 0; j < sep.length(); ++j)
+		{
+			if (str[i + j] != sep[j])
+			{
+				check = false;
+				break;
+			}
+		}
+
+		if (check)
 		{
 			if (limit != -1 && stringParts.getSize() >= (unsigned)limit - 1)
 				break;
 
 			stringParts.add(str.substr(lastEnd, i - lastEnd));
-			lastEnd = i + 1;
+			lastEnd = i + sep.length();
 		}
 	}
 

@@ -27,5 +27,6 @@
 //#include "JSONDocument.h"
 //#include "XMLDocument.h"
 //#include "ArcMLDocument.h"
+#include "OBJDocument.h"
 
 #endif // ARC_DATA_ARC_DATA

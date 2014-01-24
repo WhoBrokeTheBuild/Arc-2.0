@@ -12,6 +12,7 @@
 
 #include "StringFunctionsTests.h"
 #include "RandomFunctionsTests.h"
+#include "OBJDocumentTests.h"
 
 using namespace std;
 using namespace Arc;
@@ -37,6 +38,7 @@ int main( int argc, char* argv[] )
 
 	TestGroup_Arc_StringFunctions(unitTests);
 	TestGroup_Arc_RandomFunctions(unitTests);
+	TestGroup_Arc_OBJDocument(unitTests);
 
 	unitTests.runTests(true);
 

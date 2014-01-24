@@ -41,11 +41,21 @@ class OBJFace
 
 public:
 
-	virtual ~OBJFace( void );
+	static OBJFace INVALID;
+
+	inline OBJFace( const OBJFace& rhs )
+		: mp_Document(rhs.mp_Document),
+		  m_VertexIndexes(rhs.m_VertexIndexes),
+		  m_NormalIndexes(rhs.m_NormalIndexes)
+	{ }
+
+	virtual inline ~OBJFace( void ) { }
 
 	virtual inline string getClassName( void ) const { return "Arc OBJ Face"; }
 
-	inline int getNumVertexes( void ) const { return m_VertexIndexes.getSize(); }
+	inline bool isValid( void ) const { return (mp_Document != nullptr); }
+
+	inline int getNumVertices( void ) const { return m_VertexIndexes.getSize(); }
 
 	inline int getNumNormals( void ) const { return m_VertexIndexes.getSize(); }
 
@@ -56,10 +66,18 @@ public:
 private:
 
 	inline OBJFace( const OBJDocument* pDocument )
-		: mp_Document(pDocument)
+		: mp_Document(pDocument),
+		  m_VertexIndexes(),
+		  m_NormalIndexes()
 	{ }
 
 	void addVertex( int vertexInd, int normalInd = -1 );
+
+	inline void addVertexIndex( const int& vertexIndex ) { m_VertexIndexes.add(vertexIndex); }
+
+	inline void addNormalIndex( const int& normalIndex ) { m_NormalIndexes.add(normalIndex); }
+
+	inline void setDocument( const OBJDocument* pDocument ) { mp_Document = pDocument; }
 
 	const OBJDocument* mp_Document;
 
