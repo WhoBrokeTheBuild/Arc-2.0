@@ -58,6 +58,63 @@ string Arc::Arc_StringGetUCFirst( const string& str )
 	return newStr;
 }
 
+void Arc::Arc_TrimLeft( string& str )
+{
+	int end = -1;
+	for (unsigned int i = 0; i < str.length(); ++i)
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\r' && str[i] != '\n')
+		{
+			end = i;
+			break;
+		}
+	}
+
+	if (end != -1)
+	{
+		str = Arc_Substring(str, end);
+	}
+}
+
+void Arc::Arc_TrimRight( string& str )
+{
+	int start = -1;
+	for (unsigned int i = str.length() - 1; i >= 0; --i)
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\r' && str[i] != '\n')
+		{
+			start = i + 1;
+			break;
+		}
+	}
+
+	if (start != -1)
+	{
+		str = Arc_Substring(str, 0, start);
+	}
+}
+
+string Arc::Arc_GetTrimLeft( const string& str )
+{
+	string newStr = str;
+	Arc_TrimLeft(newStr);
+	return newStr;
+}
+
+string Arc::Arc_GetTrimRight( const string& str )
+{
+	string newStr = str;
+	Arc_TrimRight(newStr);
+	return newStr;
+}
+
+string Arc::Arc_GetTrim( const string& str )
+{
+	string newStr = str;
+	Arc_Trim(newStr);
+	return newStr;
+}
+
 Arc::ArrayList<string> Arc::Arc_StringSplit( const string& str, const string& sep, const int& limit /*= -1 */ )
 {
 	ArrayList<string> stringParts;

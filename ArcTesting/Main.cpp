@@ -13,6 +13,7 @@
 #include "StringFunctionsTests.h"
 #include "RandomFunctionsTests.h"
 #include "OBJDocumentTests.h"
+#include <Arc/FBXDocument.h>
 
 using namespace std;
 using namespace Arc;
@@ -41,6 +42,8 @@ int main( int argc, char* argv[] )
 	TestGroup_Arc_OBJDocument(unitTests);
 
 	unitTests.runTests(true);
+
+	FBXDocument doc = FBXDocument::LoadFile("Assets/cube-ascii.fbx", FBXDocument::FBX_TYPE_ASCII);
 
 	cout << endl << "Passed " << unitTests.getNumPassed() << "/" << unitTests.getNumTests() << " Tests" << endl << endl;
 

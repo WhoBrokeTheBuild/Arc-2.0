@@ -46,6 +46,21 @@
     <ClInclude Include="Arc\OBJFace.h">
       <Filter>OBJ</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\FBXDocument.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\FBXProperty.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\FBXModel.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\FBXHeader.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\FBXTimeStamp.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
@@ -60,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="Arc\OBJDocument.cpp">
       <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\FBXDocument.cpp">
+      <Filter>FBX</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

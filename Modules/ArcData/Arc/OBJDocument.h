@@ -94,7 +94,7 @@ private:
 
 	ArrayList<OBJFace> m_Faces;
 
-}; // class CSVDocument
+}; // class OBJDocument
 
 } // namespace Arc
 

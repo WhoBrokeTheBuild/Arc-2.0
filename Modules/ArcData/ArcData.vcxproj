@@ -67,11 +67,25 @@
   <ItemGroup>
     <ClInclude Include="Arc\ArcData.h" />
     <ClInclude Include="Arc\ArcDataVersion.h" />
+    <ClInclude Include="Arc\FBXModel.h" />
+    <ClInclude Include="Arc\FBXHeader.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Arc\CSVDocument.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Arc\CSVRow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Arc\FBXDocument.h" />
+    <ClInclude Include="Arc\FBXProperty.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Arc\FBXTimeStamp.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -82,6 +96,7 @@
     <ClCompile Include="Arc\ArcData.cpp" />
     <ClCompile Include="Arc\CSVDocument.cpp" />
     <ClCompile Include="Arc\CSVRow.cpp" />
+    <ClCompile Include="Arc\FBXDocument.cpp" />
     <ClCompile Include="Arc\OBJDocument.cpp" />
     <ClCompile Include="Arc\OBJFace.cpp" />
   </ItemGroup>

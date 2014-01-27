@@ -58,6 +58,22 @@ string Arc_StringGetUCWords( const string& str );
 
 string Arc_StringGetUCFirst( const string& str );
 
+void Arc_TrimLeft( string& str );
+
+void Arc_TrimRight( string& str );
+
+inline void Arc_Trim( string& str )
+{
+	Arc_TrimLeft(str);
+	Arc_TrimRight(str);
+}
+
+string Arc_GetTrimLeft( const string& str );
+
+string Arc_GetTrimRight( const string& str );
+
+string Arc_GetTrim( const string& str );
+
 int Arc_StringReplaceNext( string& str, const string& search, const string& replace );
 
 int Arc_StringReplaceAll( string& str, const string& search, const string& replace );

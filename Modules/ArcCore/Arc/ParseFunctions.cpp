@@ -57,7 +57,7 @@ double Arc::Arc_ParseDouble( const string& str )
 
 bool Arc::Arc_ParseBool( const string& str )
 {
-	if (Arc_StringGetLower(str) == "true")
+	if (Arc_StringGetLower(str) == "true" || Arc_ParseInt(str) == 1)
 		return true;
 
 	return false;

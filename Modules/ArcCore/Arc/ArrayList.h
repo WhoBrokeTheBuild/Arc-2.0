@@ -162,7 +162,7 @@ bool Arc::ArrayList<T>::contains( const T& item ) const
 	if (isEmpty())
 		return false;
 
-	return (m_List.find(itConstBegin(), itConstEnd(), item) != itConstEnd());
+	return (find(itConstBegin(), itConstEnd(), item) != itConstEnd());
 }
 
 template <class T>

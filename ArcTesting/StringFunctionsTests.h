@@ -1,6 +1,8 @@
 #include <Arc/StringFunctions.h>
 #include <Arc/TestGroup.h>
 
+#include <iostream>
+
 using namespace Arc;
 
 TestResult Test_Arc_Basename( void )
@@ -116,6 +118,78 @@ TestResult Test_Arc_StringUCFirst( void )
 	return TestGroup::Success();
 }
 
+TestResult Test_Arc_TrimLeft( void )
+{
+	string testTrim = "\r\n\t  hello world  \r\n\t";
+
+	Arc_TrimLeft(testTrim);
+
+	if (testTrim != "hello world  \r\n\t")
+		return TestGroup::Failure("Invalid Result");
+
+	return TestGroup::Success();
+}
+
+TestResult Test_Arc_TrimRight( void )
+{
+	string testTrim = "\r\n\t  hello world  \r\n\t";
+
+	Arc_TrimRight(testTrim);
+
+	if (testTrim != "\r\n\t  hello world")
+		return TestGroup::Failure("Invalid Result");
+
+	return TestGroup::Success();
+}
+
+TestResult Test_Arc_Trim( void )
+{
+	string testTrim = "\r\n\t  hello world  \r\n\t";
+
+	Arc_Trim(testTrim);
+
+	if (testTrim != "hello world")
+		return TestGroup::Failure("Invalid Result");
+
+	return TestGroup::Success();
+}
+
+TestResult Test_Arc_GetTrimLeft( void )
+{
+	string testTrim = "\r\n\t  hello world  \r\n\t";
+
+	string result = Arc_GetTrimLeft(testTrim);
+
+	if (result != "hello world  \r\n\t")
+		return TestGroup::Failure("Invalid Result");
+
+	return TestGroup::Success();
+}
+
+TestResult Test_Arc_GetTrimRight( void )
+{
+	string testTrim = "\r\n\t  hello world  \r\n\t";
+
+	string result = Arc_GetTrimRight(testTrim);
+
+	if (result != "\r\n\t  hello world")
+		return TestGroup::Failure("Invalid Result");
+
+	return TestGroup::Success();
+}
+
+TestResult Test_Arc_GetTrim( void )
+{
+	string testTrim = "\r\n\t  hello world  \r\n\t";
+
+	string result = Arc_GetTrim(testTrim);
+
+	if (result != "hello world")
+		return TestGroup::Failure("Invalid Result");
+
+	return TestGroup::Success();
+}
+
 TestResult Test_Arc_StringSplit( void )
 {
 	string testSplit = "a,b,c";
@@ -195,17 +269,32 @@ TestResult Test_Arc_StringReplaceNext( void )
 void TestGroup_Arc_StringFunctions( TestGroup& test )
 {
 	test.addTest("Arc_Basename",          Test_Arc_Basename);
+
 	test.addTest("Arc_StringGetLower",    Test_Arc_StringGetLower);
 	test.addTest("Arc_StringToLower",     Test_Arc_StringToLower);
+
 	test.addTest("Arc_StringGetUpper",    Test_Arc_StringGetUpper);
 	test.addTest("Arc_StringToUpper",     Test_Arc_StringToUpper);
+
 	test.addTest("Arc_StringGetUCWords",  Test_Arc_StringGetUCWords);
 	test.addTest("Arc_StringUCWords",	  Test_Arc_StringUCWords);
+
 	test.addTest("Arc_StringGetUCFirst",  Test_Arc_StringGetUCFirst);
 	test.addTest("Arc_StringUCFirst",     Test_Arc_StringUCFirst);
+
+	test.addTest("Arc_TrimLeft",          Test_Arc_TrimLeft);
+	test.addTest("Arc_TrimRight",         Test_Arc_TrimRight);
+	test.addTest("Arc_Trim",              Test_Arc_Trim);
+
+	test.addTest("Arc_GetTrimLeft",       Test_Arc_GetTrimLeft);
+	test.addTest("Arc_GetTrimRight",      Test_Arc_GetTrimRight);
+	test.addTest("Arc_GetTrim",           Test_Arc_GetTrim);
+
 	test.addTest("Arc_StringSplit",       Test_Arc_StringSplit);
 	test.addTest("Arc_StringJoin",        Test_Arc_StringJoin);
+
 	test.addTest("Arc_Substring",         Test_Arc_Substring);
+
 	test.addTest("Arc_StringReplaceAll",  Test_Arc_StringReplaceAll);
 	test.addTest("Arc_StringReplaceNext", Test_Arc_StringReplaceNext);
 }
