@@ -2,12 +2,14 @@
 
 Arc::OBJDocument Arc::OBJDocument::LoadFile( const string& filename )
 {
-	return LoadBuffer(Buffer::LoadFromFile(filename));
+    Buffer buff = Buffer::LoadFromFile(filename);
+	return OBJDocument::LoadBuffer(buff);
 }
 
 Arc::OBJDocument Arc::OBJDocument::LoadString( const string& data )
 {
-	return LoadBuffer(Buffer(data));
+    Buffer buff = Buffer(data);
+	return OBJDocument::LoadBuffer(buff);
 }
 
 Arc::OBJDocument Arc::OBJDocument::LoadBuffer( Buffer& data )

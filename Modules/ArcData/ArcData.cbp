@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ArcData" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="Project/;Project/Utilities/;Project/CSV/;Project/XML/;Project/JSON/;Project/OBJ/;Project/FBX/;Project/PLY/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/ArcData" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-pedantic-errors" />
+					<Add option="-pedantic" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+				</Compiler>
+				<Linker>
+					<Add directory="../ArcCore/bin/Debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/ArcData" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-O3" />
+					<Add option="-D_RELEASE" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../ArcCore/bin/Release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="../ArcCore" />
+		</Compiler>
+		<Linker>
+			<Add library="ArcCore" />
+		</Linker>
+		<Unit filename="Arc/ArcData.cpp">
+			<Option virtualFolder="Project/" />
+		</Unit>
+		<Unit filename="Arc/ArcData.h">
+			<Option virtualFolder="Project/" />
+		</Unit>
+		<Unit filename="Arc/ArcDataVersion.h">
+			<Option virtualFolder="Project/Utilities/" />
+		</Unit>
+		<Unit filename="Arc/CSVDocument.cpp">
+			<Option virtualFolder="Project/CSV/" />
+		</Unit>
+		<Unit filename="Arc/CSVDocument.h">
+			<Option virtualFolder="Project/CSV/" />
+		</Unit>
+		<Unit filename="Arc/CSVRow.cpp">
+			<Option virtualFolder="Project/CSV/" />
+		</Unit>
+		<Unit filename="Arc/CSVRow.h">
+			<Option virtualFolder="Project/CSV/" />
+		</Unit>
+		<Unit filename="Arc/OBJDocument.cpp">
+			<Option virtualFolder="Project/OBJ/" />
+		</Unit>
+		<Unit filename="Arc/OBJDocument.h">
+			<Option virtualFolder="Project/OBJ/" />
+		</Unit>
+		<Unit filename="Arc/OBJFace.cpp">
+			<Option virtualFolder="Project/OBJ/" />
+		</Unit>
+		<Unit filename="Arc/OBJFace.h">
+			<Option virtualFolder="Project/OBJ/" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

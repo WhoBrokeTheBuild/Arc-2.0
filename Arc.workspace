@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="Modules/ArcCore/ArcCore.cbp" />
+		<Project filename="Modules/ArcData/ArcData.cbp" />
+		<Project filename="Modules/ArcAudio/ArcAudio.cbp" />
+		<Project filename="Modules/ArcGraphics/ArcGraphics.cbp" />
+		<Project filename="Modules/ArcEffect/ArcEffect.cbp" />
+		<Project filename="Modules/ArcGame/ArcGame.cbp" />
+		<Project filename="Modules/ArcNet/ArcNet.cbp" />
+		<Project filename="Modules/ArcScript/ArcScript.cbp" />
+		<Project filename="Modules/ArcUI/ArcUI.cbp" />
+		<Project filename="ArcTesting/ArcTesting.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

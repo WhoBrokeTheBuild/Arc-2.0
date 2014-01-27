@@ -1,0 +1,91 @@
+# depslib dependency file v1.0
+1390029435 source:/run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcGraphics/Arc/ArcGraphics.cpp
+	"ArcGraphics.h"
+
+1390028335 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcGraphics/Arc/ArcGraphics.h
+	"ArcGraphicsVersion.h"
+
+1390772159 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcGraphics/Arc/ArcGraphicsVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390773139 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ArcCore.h
+	"Platform.h"
+	"Types.h"
+	"ArcCoreVersion.h"
+	"ArrayList.h"
+	"Map.h"
+	"MathFunctions.h"
+	"StringFunctions.h"
+	"RandomFunctions.h"
+	"ParseFunctions.h"
+	"Vector2.h"
+	"Vector3.h"
+	"Vector4.h"
+	"MemoryTracker.h"
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Platform.h
+
+1390284498 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Types.h
+	"Platform.h"
+	<string>
+
+1390284519 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ArcCoreVersion.h
+	"Types.h"
+	<cstdio>
+
+1390769920 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ArrayList.h
+	"ManagedObject.h"
+	"MathFunctions.h"
+	<vector>
+	<string>
+
+1390287292 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ManagedObject.h
+	"Types.h"
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/MathFunctions.h
+
+1390286650 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Map.h
+	"ManagedObject.h"
+	<map>
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/StringFunctions.h
+	"Types.h"
+	"ArrayList.h"
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/RandomFunctions.h
+	<cstdlib>
+	<ctime>
+
+1390770050 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Vector2.h
+	<sstream>
+	<cmath>
+	"ManagedObject.h"
+	"Types.h"
+	"RandomFunctions.h"
+	"MathFunctions.h"
+
+1390770013 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Vector3.h
+	<sstream>
+	"Vector2.h"
+	"Types.h"
+	"RandomFunctions.h"
+	"MathFunctions.h"
+
+1390770024 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Vector4.h
+	<sstream>
+	"Vector3.h"
+	"Types.h"
+	"RandomFunctions.h"
+	"MathFunctions.h"
+
+1390287144 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/MemoryTracker.h
+	<iostream>
+	"Types.h"
+	"Map.h"
+
+1390770899 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ParseFunctions.h
+	<sstream>
+	"StringFunctions.h"
+	"Types.h"
+

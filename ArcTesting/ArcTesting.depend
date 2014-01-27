@@ -1,0 +1,206 @@
+# depslib dependency file v1.0
+1390543899 source:/run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/ArcTesting/Main.cpp
+	<iostream>
+	<Arc/ArcCore.h>
+	<Arc/ArcAudio.h>
+	<Arc/ArcData.h>
+	<Arc/ArcEffect.h>
+	<Arc/ArcGraphics.h>
+	<Arc/ArcNet.h>
+	<Arc/ArcUI.h>
+	<Arc/ArcGame.h>
+	<Arc/ArcScript.h>
+	"StringFunctionsTests.h"
+	"RandomFunctionsTests.h"
+	"OBJDocumentTests.h"
+
+1390773139 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ArcCore.h
+	"Platform.h"
+	"Types.h"
+	"ArcCoreVersion.h"
+	"ArrayList.h"
+	"Map.h"
+	"MathFunctions.h"
+	"StringFunctions.h"
+	"RandomFunctions.h"
+	"ParseFunctions.h"
+	"Vector2.h"
+	"Vector3.h"
+	"Vector4.h"
+	"MemoryTracker.h"
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Platform.h
+
+1390284498 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Types.h
+	"Platform.h"
+	<string>
+
+1390284519 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ArcCoreVersion.h
+	"Types.h"
+	<cstdio>
+
+1390769920 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ArrayList.h
+	"ManagedObject.h"
+	"MathFunctions.h"
+	<vector>
+	<string>
+
+1390287292 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ManagedObject.h
+	"Types.h"
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/MathFunctions.h
+
+1390286650 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Map.h
+	"ManagedObject.h"
+	<map>
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/StringFunctions.h
+	"Types.h"
+	"ArrayList.h"
+
+1390769949 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/RandomFunctions.h
+	<cstdlib>
+	<ctime>
+
+1390770050 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Vector2.h
+	<sstream>
+	<cmath>
+	"ManagedObject.h"
+	"Types.h"
+	"RandomFunctions.h"
+	"MathFunctions.h"
+
+1390770013 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Vector3.h
+	<sstream>
+	"Vector2.h"
+	"Types.h"
+	"RandomFunctions.h"
+	"MathFunctions.h"
+
+1390770024 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Vector4.h
+	<sstream>
+	"Vector3.h"
+	"Types.h"
+	"RandomFunctions.h"
+	"MathFunctions.h"
+
+1390287144 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/MemoryTracker.h
+	<iostream>
+	"Types.h"
+	"Map.h"
+
+1390028043 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcAudio/Arc/ArcAudio.h
+	"ArcAudioVersion.h"
+
+1390772151 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcAudio/Arc/ArcAudioVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390528169 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcData/Arc/ArcData.h
+	"ArcDataVersion.h"
+	"CSVDocument.h"
+	"OBJDocument.h"
+
+1390770905 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcData/Arc/ArcDataVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390770923 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcData/Arc/CSVDocument.h
+	<Arc/ArcCore.h>
+	<Arc/ManagedObject.h>
+	"CSVRow.h"
+
+1390770923 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcData/Arc/CSVRow.h
+	<Arc/ArcCore.h>
+	<Arc/ManagedObject.h>
+
+1390770923 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcData/Arc/OBJDocument.h
+	<cstdlib>
+	<Arc/ArcCore.h>
+	<Arc/ManagedObject.h>
+	<Arc/Buffer.h>
+	<Arc/ParseFunctions.h>
+	"OBJFace.h"
+
+1390771042 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/Buffer.h
+	<iostream>
+	<fstream>
+	<cstring>
+	"ManagedObject.h"
+	"ArrayList.h"
+
+1390770899 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/ParseFunctions.h
+	<sstream>
+	"StringFunctions.h"
+	"Types.h"
+
+1390770923 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcData/Arc/OBJFace.h
+	<Arc/ArcCore.h>
+	<Arc/ManagedObject.h>
+	<Arc/Buffer.h>
+	"CSVRow.h"
+
+1390028335 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcEffect/Arc/ArcEffect.h
+	"ArcEffectVersion.h"
+
+1390772168 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcEffect/Arc/ArcEffectVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390028335 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcGraphics/Arc/ArcGraphics.h
+	"ArcGraphicsVersion.h"
+
+1390772159 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcGraphics/Arc/ArcGraphicsVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390028335 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcNet/Arc/ArcNet.h
+	"ArcNetVersion.h"
+
+1390772179 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcNet/Arc/ArcNetVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390028335 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcUI/Arc/ArcUI.h
+	"ArcUIVersion.h"
+
+1390772192 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcUI/Arc/ArcUIVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390072262 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcGame/Arc/ArcGame.h
+	"ArcGameVersion.h"
+
+1390772174 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcGame/Arc/ArcGameVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390072809 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcScript/Arc/ArcScript.h
+	"ArcScriptVersion.h"
+
+1390772183 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcScript/Arc/ArcScriptVersion.h
+	<Arc/ArcCore.h>
+	<Arc/Types.h>
+
+1390545214 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/ArcTesting/StringFunctionsTests.h
+	<Arc/StringFunctions.h>
+	<Arc/TestGroup.h>
+
+1390772937 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/TestGroup.h
+	<iostream>
+	"ManagedObject.h"
+	"Types.h"
+	"Map.h"
+	"TestResult.h"
+
+1390772658 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/Modules/ArcCore/Arc/TestResult.h
+	"Types.h"
+
+1390468526 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/ArcTesting/RandomFunctionsTests.h
+	<Arc/RandomFunctions.h>
+	<Arc/TestGroup.h>
+
+1390543882 /run/media/stephen/BC5ED4AB5ED46026/Users/Stephen/Desktop/Repositories/Arc-2.0/ArcTesting/OBJDocumentTests.h
+	<Arc/OBJDocument.h>
+	<Arc/TestGroup.h>
+

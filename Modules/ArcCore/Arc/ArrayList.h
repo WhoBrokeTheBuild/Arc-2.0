@@ -1,22 +1,22 @@
 /* This file is part of ArcCore.
- * 
+ *
  * ArcCore is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * ArcCore is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with ArcCore; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
- * 
+ *
  * Author: Stephen Lane-Walsh
- * 
- * This file contains the ArcArrayList class which is a collection that stores 
+ *
+ * This file contains the ArcArrayList class which is a collection that stores
  * it's data in an array and modifies said array on insert/delete.
  */
 
@@ -36,7 +36,7 @@ namespace Arc
 {
 
 template <class T>
-class ArrayList 
+class ArrayList
 	: public ManagedObject
 {
 public:
@@ -96,7 +96,7 @@ public:
 	T popFront( void );
 
 	T popBack( void );
-		
+
 	void insertAt( const T& item, const int& index );
 
 	inline void resize( unsigned int size, const T& value = T()) { m_List.resize(size, value); updateSize(); }
@@ -186,7 +186,7 @@ bool Arc::ArrayList<T>::hasIndex( const int& index ) const
 template <class T>
 void Arc::ArrayList<T>::insertAt( const T& item, const int& index )
 {
-	_list.insert(_list.begin() + index, item);
+	m_List.insert(m_List.begin() + index, item);
 	updateSize();
 }
 
@@ -247,7 +247,7 @@ bool Arc::ArrayList<T>::removeAt( const unsigned int& index )
     if ( ! hasIndex(index))
         return false;
 
-	m_List.erase(begin() + index);
+	m_List.erase(itBegin() + index);
 	updateSize();
     return true;
 }

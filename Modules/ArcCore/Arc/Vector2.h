@@ -1,27 +1,28 @@
 /* This file is part of ArcCore.
- * 
+ *
  * ArcCore is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * ArcCore is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with ArcCore; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
- * 
+ *
  * Author: Stephen Lane-Walsh
- * 
+ *
  */
 
 #ifndef ARC_CORE_VECTOR_2_H
 #define ARC_CORE_VECTOR_2_H
 
 #include <sstream>
+#include <cmath>
 
 #include "ManagedObject.h"
 
@@ -70,9 +71,9 @@ public:
 		ss << "[X: " << m_X << ", Y: " << m_Y << "]";
 		return ss.str();
 	}
-	
+
 	/* Generate a random Vector2 between the min and max values
-	 * 
+	 *
 	 * @param minX: The minimum X value to be generated randomly
 	 * @param minY: The minimum Y value to be generated randomly
 	 * @param maxX: The maximum X value to be generated randomly
@@ -83,9 +84,9 @@ public:
 	{
 		return Vector2(Arc_RandFloat(minX, maxX), Arc_RandFloat(minY, maxY));
 	}
-	
+
 	/* Lerp between the start and end vectors by the fraction amount
-	 * 
+	 *
 	 * @param start: The starting values
 	 * @param end: The ending values
 	 * @param fraction: The amount to lerp between the values, should be between 0 and 1
@@ -117,7 +118,7 @@ public:
 	/* Normalizes the vector and stores the new values in X and Y
 	 */
 	virtual void normalize( void );
-		
+
 	/* Gets a normalized copy of this vector
 	 *
 	 * @returns: A normalized copy of this vector
@@ -131,9 +132,9 @@ public:
 
 	virtual inline float getLength( void )
 	{
-		return sqrtf(getLengthSquared());
+		return (float)std::sqrt(getLengthSquared());
 	}
-		
+
 	virtual inline void operator=( const Vector2& rhs )
 	{
 		m_X = rhs.m_X;
@@ -221,6 +222,6 @@ protected:
 
 };
 
-}; // namespace Arc
+} // namespace Arc
 
 #endif // ARC_CORE_VECTOR_2_H

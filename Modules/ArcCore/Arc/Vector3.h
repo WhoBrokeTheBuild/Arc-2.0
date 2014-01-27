@@ -1,21 +1,21 @@
 /* This file is part of ArcCore.
- * 
+ *
  * ArcCore is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * ArcCore is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with ArcCore; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
- * 
+ *
  * Author: Stephen Lane-Walsh
- * 
+ *
  */
 
 #ifndef ARC_CORE_VECTOR_3_H
@@ -70,9 +70,9 @@ public:
 		ss << "[X: " << m_X << ", Y: " << m_Y << ", Z: " << m_Z << "]";
 		return ss.str();
 	}
-	
+
 	/* Generate a random Vector3 between the min and max values
-	 * 
+	 *
 	 * @param minX: The minimum X value to be generated randomly
 	 * @param minY: The minimum Y value to be generated randomly
 	 * @param minZ: The minimum Z value to be generated randomly
@@ -85,9 +85,9 @@ public:
 	{
 		return Vector3(Arc_RandFloat(minX, maxX), Arc_RandFloat(minY, maxY), Arc_RandFloat(minZ, maxZ));
 	}
-	
+
 	/* Lerp between the start and end vectors by the fraction amount
-	 * 
+	 *
 	 * @param start: The starting values
 	 * @param end: The ending values
 	 * @param fraction: The amount to lerp between the values, should be between 0 and 1
@@ -110,7 +110,7 @@ public:
 	/* Normalizes the vector and stores the new values in X, Y, and Z
 	 */
 	virtual void normalize( void );
-		
+
 	/* Gets a normalized copy of this vector
 	 *
 	 * @returns: A normalized copy of this vector
@@ -122,11 +122,6 @@ public:
 		return (m_X * m_X) + (m_Y * m_Y) + (m_Z * m_Z);
 	}
 
-	virtual inline float getLength( void )
-	{
-		return sqrtf(getLengthSquared());
-	}
-		
 	virtual inline void operator=( const Vector3& rhs )
 	{
 		Vector2::operator=(rhs);
@@ -212,6 +207,6 @@ protected:
 
 };
 
-}; // namespace Arc
+} // namespace Arc
 
 #endif // ARC_CORE_VECTOR_3_H

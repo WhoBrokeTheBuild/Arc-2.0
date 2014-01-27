@@ -66,7 +66,7 @@ bool Arc::Buffer::appendDataFromStream( std::istream& stream )
 	char tmp_buffer[TMP_BUFFER_SIZE];
 	std::streamsize size = getFullSize();
 	std::streamsize n = 0;
-	do 
+	do
 	{
 		stream.read(tmp_buffer, TMP_BUFFER_SIZE);
 		n = stream.gcount();
@@ -82,7 +82,7 @@ bool Arc::Buffer::appendDataFromStream( std::istream& stream )
 
 		if ( ! stream )
 			break;
-	} 
+	}
 	while (n > 0);
 
 	return true;
