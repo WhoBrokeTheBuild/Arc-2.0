@@ -33,6 +33,9 @@ using std::pair;
 namespace Arc
 {
 
+template <class T>
+class ArrayList;
+
 template <class K, class T, typename Sort = less<K>>
 class Map 
 	: public ManagedObject
@@ -111,22 +114,29 @@ public:
     bool removeAllValues ( const T& value );
 
     inline T& at( const K& key ) { return m_Map[key]; }
+
     inline T& at( const K& key ) const { return m_Map[key]; }
 
-    bool containsKey( const K& key );
+    bool containsKey( const K& key ) const;
 
-    bool containsValue( const T& value );
+    bool containsValue( const T& value ) const;
 
     inline bool isEmpty( void ) const { return (m_Size == 0); }
 
 	// Get the index of a value
-    K& getIndexOf( T& item );
+    K& getIndexOf( T& item ) const;
 
     inline size_t getSize( void ) const { return m_Size; }
+
+	ArrayList<K> getKeys( void ) const;
+
+	ArrayList<T> getValues( void ) const;
 
 }; // class Map<T, K, Sort>
 
 } // namespace Arc
+
+#include "ArrayList.h"
 
 template <class K, class T, typename Sort>
 void Arc::Map<K, T, Sort>::add( const K& key, const T& item )
@@ -146,9 +156,7 @@ bool Arc::Map<K, T, Sort>::removeKey( const K& key )
 template <class K, class T, typename Sort>
 bool Arc::Map<K, T, Sort>::removeFirstValue( const T& value )
 {
-    Iterator it;
-
-    for (it = itBegin(); it != itEnd(); ++it)
+	for (auto it = itBegin(); it != itEnd(); ++it)
     {
         if (it->second == value)
         {
@@ -163,10 +171,8 @@ bool Arc::Map<K, T, Sort>::removeFirstValue( const T& value )
 template <class K, class T, typename Sort>
 bool Arc::Map<K, T, Sort>::removeAllValues( const T& value )
 {
-    Iterator it;
-
     bool found = false;
-    for (it = itBegin(); it != itEnd(); ++it)
+    for (auto it = itBegin(); it != itEnd(); ++it)
     {
         if (it->second == value)
         {
@@ -186,19 +192,17 @@ void Arc::Map<K, T, Sort>::clear( void )
 }
 
 template <class K, class T, typename Sort>
-bool Arc::Map<K, T, Sort>::containsKey( const K& key )
+bool Arc::Map<K, T, Sort>::containsKey( const K& key ) const
 {
-    ConstIterator it = m_Map.find(key);
+    auto it = m_Map.find(key);
 
     return (it != itConstEnd());
 }
 
 template <class K, class T, typename Sort>
-bool Arc::Map<K, T, Sort>::containsValue( const T& value )
+bool Arc::Map<K, T, Sort>::containsValue( const T& value ) const
 {
-    ConstIterator it;
-
-    for (it = itConstBegin(); it != itConstEnd(); ++it)
+    for (auto it = itConstBegin(); it != itConstEnd(); ++it)
     {
         if (it->second == value)
             return true;
@@ -208,17 +212,37 @@ bool Arc::Map<K, T, Sort>::containsValue( const T& value )
 }
 
 template <class K, class T, typename Sort>
-K& Arc::Map<K, T, Sort>::getIndexOf( T& item )
+K& Arc::Map<K, T, Sort>::getIndexOf( T& item ) const
 {
-    ConstIterator it;
-
-    for (it = itConstBegin(); it != itConstEnd(); ++it)
+    for (auto it = itConstBegin(); it != itConstEnd(); ++it)
     {
         if (it->second == item)
             return it->first;
     }
 
     return K();
+}
+
+template <class K, class T, typename Sort>
+Arc::ArrayList<K> Arc::Map<K, T, Sort>::getKeys( void ) const
+{
+	ArrayList<K> keys;
+
+	for (auto it = itConstBegin(); it != itConstEnd(); ++it)
+		keys.add(it->first);
+
+	return keys;
+}
+
+template <class K, class T, typename Sort>
+Arc::ArrayList<T> Arc::Map<K, T, Sort>::getValues( void ) const
+{
+	ArrayList<T> values;
+
+	for (auto it = itConstBegin(); it != itConstEnd(); ++it)
+		keys.add(it->second);
+
+	return values;
 }
 
 #endif // ARC_CORE_MAP_H

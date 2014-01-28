@@ -21,8 +21,10 @@
 #ifndef ARC_DATA_FBX_MODEL_H
 #define ARC_DATA_FBX_MODEL_H
 
+#include <Arc/ArcCore.h>
 #include <Arc/ManagedObject.h>
-#include <Arc/Map.h>
+
+#include "FBXProperty.h"
 
 namespace Arc
 {
@@ -32,15 +34,53 @@ class FBXModel
 {
 public:
 
+	static FBXModel INVALID;
+
+	inline FBXModel( void )
+		: m_ID(),
+		  m_Name(),
+		  m_Properties(),
+		  m_Vertices()
+	{ }
+
+	inline FBXModel( const string& id )
+		: m_ID(id),
+		  m_Name(),
+		  m_Properties(),
+		  m_Vertices()
+	{ }
+
 	virtual inline string getClassName( void ) const { return "Arc FBX Model"; }
+
+	inline string getID( void ) const { return m_ID; }
+
+	inline void setID( string val ) { m_ID = val; }
+
+	inline string getName( void ) const { return m_Name; }
+
+	inline void setName( string val ) { m_Name = val; }
+
+	inline Map<string, FBXProperty> getProperties( void ) { return m_Properties; }
+
+	inline bool hasProperty( const string& name ) { return m_Properties.containsKey(name); }
+
+	inline FBXProperty& getProperty( const string& name ) { return (hasProperty(name) ? m_Properties[name] : FBXProperty::INVALID); }
+
+	inline void addVertex( Vector3 vertex ) { m_Vertices.add(vertex); }
+
+	inline unsigned int getNumVertices( void ) const { return m_Vertices.getSize(); }
+
+	inline Vector3 getVertex( const int& index ) const { return (m_Vertices.hasIndex(index) ? m_Vertices[index] : Vector3::NEGATIVE_ONE); }
 
 private:
 
-	string m_Name;
-
 	string m_ID;
 
+	string m_Name;
 
+	Map<string, FBXProperty> m_Properties;
+
+	ArrayList<Vector3> m_Vertices;
 
 }; // class FBXModel
 

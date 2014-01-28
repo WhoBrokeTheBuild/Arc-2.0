@@ -60,6 +60,9 @@ string Arc::Arc_StringGetUCFirst( const string& str )
 
 void Arc::Arc_TrimLeft( string& str )
 {
+	if (str.length() == 0)
+		return;
+
 	int end = -1;
 	for (unsigned int i = 0; i < str.length(); ++i)
 	{
@@ -78,8 +81,11 @@ void Arc::Arc_TrimLeft( string& str )
 
 void Arc::Arc_TrimRight( string& str )
 {
+	if (str.length() == 0)
+		return;
+
 	int start = -1;
-	for (unsigned int i = str.length() - 1; i >= 0; --i)
+	for (int i = str.length() - 1; i >= 0; --i)
 	{
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\r' && str[i] != '\n')
 		{

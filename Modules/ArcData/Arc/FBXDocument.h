@@ -30,6 +30,8 @@
 #include <Arc/ParseFunctions.h>
 
 #include "FBXHeader.h"
+#include "FBXDefinitions.h"
+#include "FBXObjects.h"
 
 namespace Arc
 {
@@ -40,6 +42,8 @@ class FBXDocument
 	: public ManagedObject
 {
 public:
+
+	static FBXDocument INVALID;
 
 	static FBXType FBX_TYPE_ASCII;
 
@@ -53,6 +57,8 @@ public:
 
 	FBXDocument( const FBXDocument& rhs )
 		: m_Header(rhs.m_Header),
+		  m_Definitions(rhs.m_Definitions),
+		  m_Objects(rhs.m_Objects),
 		  m_CreationTime(rhs.m_CreationTime),
 		  m_Creator(rhs.m_Creator)
 	{ }
@@ -63,13 +69,35 @@ public:
 
 	inline FBXHeader& getHeader( void ) { return m_Header; }
 
+	inline FBXDefinitions& getDefinitions( void ) { return m_Definitions; }
+
+	inline FBXObjects& getObjects( void ) { return m_Objects; }
+
+	inline string getCreationTime( void ) const { return m_CreationTime; }
+
+	inline void setCreationTime( string creationTime ) { m_CreationTime = creationTime; }
+
+	inline string getCreator( void ) const { return m_Creator; }
+
+	inline void setCreator( string creator ) { m_Creator = creator; }
+
 private:
 
 	FBXDocument( void )
 	{ }
 
+	static void StripQuotes( string& str );
+
+	static FBXDocument LoadBufferASCII( Buffer& data );
+
+	static FBXDocument LoadBufferBinary( Buffer& data );
+
 	FBXHeader m_Header;
 
+	FBXDefinitions m_Definitions;
+
+	FBXObjects m_Objects;
+	
 	string m_CreationTime;
 
 	string m_Creator;

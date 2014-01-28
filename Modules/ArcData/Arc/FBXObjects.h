@@ -18,36 +18,44 @@
  * 
  */
 
-#ifndef ARC_DATA_FBX_PROPERTY_H
-#define ARC_DATA_FBX_PROPERTY_H
+#ifndef ARC_DATA_FBX_OBJECTS_H
+#define ARC_DATA_FBX_OBJECTS_H
 
+#include <Arc/ArcCore.h>
 #include <Arc/ManagedObject.h>
+
+#include "FBXModel.h"
 
 namespace Arc
 {
 
-class FBXProperty
+class FBXObjects
 	: public ManagedObject
 {
 public:
 
-	static FBXProperty INVALID;
-
-	inline FBXProperty( void )
-		: m_ID(),
-		  m_Type()
+	inline FBXObjects( void )
+		: m_Models()
 	{ }
 
-	virtual inline string getClassName( void ) const { return "Arc FBX Property"; }
+	inline FBXObjects( const FBXObjects& rhs )
+		: m_Models(rhs.m_Models)
+	{ }
+
+	virtual inline string getClassName( void ) const { return "Arc FBX Objects"; }
+
+	inline bool hasModel( const string& id ) { return m_Models.containsKey(id); }
+
+	inline void addModel( const string& id ) { m_Models.add(id, FBXModel(id)); }
+
+	inline FBXModel& getModel( const string& id ) { return (hasModel(id) ? m_Models[id] : FBXModel::INVALID); }
 
 private:
 
-	string m_Type;
+	Map<string, FBXModel> m_Models;
 
-	string m_ID;
-
-}; // class FBXProperty
+}; // class FBXObjects
 
 } // namespace Arc
 
-#endif // ARC_DATA_FBX_PROPERTY_H
+#endif // ARC_DATA_FBX_OBJECTS_H

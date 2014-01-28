@@ -51,7 +51,7 @@ public:
 		  m_Flags(rhs.m_Flags)
 	{ }
 
-	virtual inline string getClassName( void ) const { return "Arc FBX Object"; }
+	virtual inline string getClassName( void ) const { return "Arc FBX Header"; }
 
 	inline unsigned int getVersion( void ) const { return m_Version; }
 
@@ -71,9 +71,9 @@ public:
 
 	inline bool hasFlag( const string& flag ) { return m_Flags.containsKey(flag); }
 
-	inline bool getFlag( const string& flag ) { return (m_Flags.containsKey(flag) ? m_Flags[flag] : false); }
+	inline bool getFlag( const string& flag ) { return (hasFlag(flag) ? m_Flags[flag] : false); }
 
-	inline void setFlag( const string& flag, const bool& value ) { (m_Flags.containsKey(flag) ? m_Flags[flag] = value : m_Flags.add(flag, value)); }
+	inline void setFlag( const string& flag, const bool& value ) { (hasFlag(flag) ? m_Flags[flag] = value : m_Flags.add(flag, value)); }
 
 private:
 

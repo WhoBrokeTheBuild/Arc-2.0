@@ -18,5 +18,8 @@
     <ClInclude Include="OBJDocumentTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="FBXDocumentTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

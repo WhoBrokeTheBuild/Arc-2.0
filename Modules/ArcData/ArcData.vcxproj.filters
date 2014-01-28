@@ -61,6 +61,12 @@
     <ClInclude Include="Arc\FBXTimeStamp.h">
       <Filter>FBX</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\FBXDefinitions.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\FBXObjects.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
@@ -77,6 +83,15 @@
       <Filter>OBJ</Filter>
     </ClCompile>
     <ClCompile Include="Arc\FBXDocument.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\FBXDefinitions.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\FBXProperty.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\FBXModel.cpp">
       <Filter>FBX</Filter>
     </ClCompile>
   </ItemGroup>
