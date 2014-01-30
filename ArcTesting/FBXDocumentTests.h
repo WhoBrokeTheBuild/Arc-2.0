@@ -115,10 +115,12 @@ TestResult Arc_FBXDocument_ASCII_SimpleCube( void )
 		"    Model:  \"Model::Cube\", \"Cube\" {\n"
 		"        Vertices: 1.000000,1.000000,-1.000000,1.000000,-1.000000,-1.000000,-1.000000,-1.000000,-1.000000,-1.000000,1.000000,-1.000000,\n"
 		"                  1.000000,1.000000,1.000000,1.000000,-1.000000,1.000000,-1.000000,-1.000000,1.000000,-1.000000,1.000000,1.000000\n"
+		"        PolygonVertexIndex: 0,1,2,-3,4,7,6,-5,0,4,5,-1,1,5,6,-2,2,6,7,-3,4,0,3,-7\n"
 		"    }\n"
 		"}\n";
 
 	const unsigned int NUM_VERTICES = 8;
+	const unsigned int NUM_FACES = 6;
 
 	const Vector3 vertices[NUM_VERTICES] = {
 		Vector3( 1.0f, 1.0f,-1.0f),
@@ -129,6 +131,15 @@ TestResult Arc_FBXDocument_ASCII_SimpleCube( void )
 		Vector3( 1.0f,-1.0f, 1.0f),
 		Vector3(-1.0f,-1.0f, 1.0f),
 		Vector3(-1.0f, 1.0f, 1.0f),
+	};
+
+	const int faces[NUM_FACES][4] = {
+		{ 0, 1, 2, 3 },
+		{ 4, 7, 6, 5 },
+		{ 0, 4, 5, 1 },
+		{ 1, 5, 6, 2 },
+		{ 2, 6, 7, 3 },
+		{ 4, 0, 3, 7 },
 	};
 
 	FBXDocument doc = FBXDocument::LoadString(cube, FBXDocument::FBX_TYPE_ASCII);
@@ -142,6 +153,7 @@ TestResult Arc_FBXDocument_ASCII_SimpleCube( void )
 		return TestGroup::Failure("Invalid number of vertices");
 
 	bool correctVerts = true;
+	bool correctFaces = true;
 
 	for (unsigned int i = 0; i < NUM_VERTICES; ++i)
 	{
@@ -154,6 +166,27 @@ TestResult Arc_FBXDocument_ASCII_SimpleCube( void )
 
 	if ( ! correctVerts)
 		return TestGroup::Failure("Invalid vertex data");
+
+	for (unsigned int i = 0; i < NUM_FACES; ++i)
+	{
+		if (model.getFaceNumVertices(i) != 4)
+		{
+			correctFaces = false;
+			break;
+		}
+
+		for (unsigned int j = 0; j < 4; ++j)
+		{
+			if (model.getFaceVertex(i, j) != vertices[faces[i][j]])
+			{
+				correctFaces = false;
+				break;
+			}
+		}
+	}
+
+	if ( ! correctFaces)
+		return TestGroup::Failure("Invalid face data");
 
 	return TestGroup::Success();
 }

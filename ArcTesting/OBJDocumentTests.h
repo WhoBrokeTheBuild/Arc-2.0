@@ -37,12 +37,12 @@ TestResult Arc_OBJDocument_SimpleCube( void )
 	};
 
 	const int faces[NUM_FACES][4] = {
-		{ 1, 2, 3, 4 },
-		{ 5, 8, 7, 6 },
+		{ 0, 1, 2, 3 },
+		{ 4, 7, 6, 5 },
+		{ 0, 4, 5, 1 },
 		{ 1, 5, 6, 2 },
 		{ 2, 6, 7, 3 },
-		{ 3, 7, 8, 4 },
-		{ 5, 1, 4, 8 },
+		{ 4, 0, 3, 7 },
 	};
 
 	OBJDocument doc = OBJDocument::LoadString(cube);
@@ -80,7 +80,7 @@ TestResult Arc_OBJDocument_SimpleCube( void )
 
 		for (unsigned int j = 0; j < 4; ++j)
 		{
-			if (face.getVertex(j) != doc.getVertex(faces[i][j] - 1))
+			if (face.getVertex(j) != vertices[faces[i][j]])
 			{
 				correctFaces = false;
 				break;

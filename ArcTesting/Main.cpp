@@ -46,8 +46,6 @@ int main( int argc, char* argv[] )
 
 	unitTests.runTests(true);
 
-	PLYDocument doc = PLYDocument::LoadFile("Assets/cube.ply");
-
 	cout << endl << "Passed " << unitTests.getNumPassed() << "/" << unitTests.getNumTests() << " Tests" << endl << endl;
 
 	if (Arc_GetMemoryAllocationCount() > 0)

@@ -40,14 +40,16 @@ public:
 		: m_ID(),
 		  m_Name(),
 		  m_Properties(),
-		  m_Vertices()
+		  m_Vertices(),
+		  m_Faces()
 	{ }
 
 	inline FBXModel( const string& id )
 		: m_ID(id),
 		  m_Name(),
 		  m_Properties(),
-		  m_Vertices()
+		  m_Vertices(),
+		  m_Faces()
 	{ }
 
 	virtual inline string getClassName( void ) const { return "Arc FBX Model"; }
@@ -72,6 +74,12 @@ public:
 
 	inline Vector3 getVertex( const int& index ) const { return (m_Vertices.hasIndex(index) ? m_Vertices[index] : Vector3::NEGATIVE_ONE); }
 
+	inline void addFace( const ArrayList<int>& face ) { m_Faces.add(face); }
+
+	inline int getFaceNumVertices( const int& index ) const { return (m_Faces.hasIndex(index) ? m_Faces[index].getSize() : -1); }
+
+	Vector3 getFaceVertex( const int& faceInd, const int& vertInd ) { return (m_Faces.hasIndex(faceInd) && m_Faces[faceInd].hasIndex(vertInd) ? getVertex(m_Faces[faceInd][vertInd]) : Vector3::NEGATIVE_ONE); }
+
 private:
 
 	string m_ID;
@@ -81,6 +89,8 @@ private:
 	Map<string, FBXProperty> m_Properties;
 
 	ArrayList<Vector3> m_Vertices;
+
+	ArrayList<ArrayList<int>> m_Faces;
 
 }; // class FBXModel
 

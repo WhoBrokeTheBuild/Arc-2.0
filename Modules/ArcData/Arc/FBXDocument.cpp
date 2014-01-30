@@ -291,6 +291,26 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 								}
 							}
 						}
+						else if (key == "PolygonVertexIndex")
+						{
+							ArrayList<string> parts = Arc_StringSplit(val, ',');
+							ArrayList<int> inds;
+
+							for (unsigned int i = 0; i < parts.getSize(); ++i)
+							{
+								if (parts.getSize() == 0)
+									continue;
+
+								int ind = abs(Arc_ParseInt(parts[i]));
+								inds.add(ind);
+
+								if (parts[i][0] == '-')
+								{
+									model.addFace(inds);
+									inds.clear();
+								}
+							}
+						}
 					}
 				}
 			}
