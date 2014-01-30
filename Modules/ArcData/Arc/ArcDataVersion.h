@@ -29,7 +29,7 @@ namespace Arc
 
 #define ARC_DATA_MAJOR_VERSION 0
 #define ARC_DATA_MINOR_VERSION 1
-#define ARC_DATA_PATCH_VERSION 0
+#define ARC_DATA_PATCH_VERSION 5
 
 inline uint8_t ArcData_GetMajorVersion( void )
 {

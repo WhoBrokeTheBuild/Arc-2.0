@@ -28,5 +28,7 @@
 //#include "XMLDocument.h"
 //#include "ArcMLDocument.h"
 #include "OBJDocument.h"
+#include "FBXDocument.h"
+#include "PLYDocument.h"
 
 #endif // ARC_DATA_ARC_DATA
