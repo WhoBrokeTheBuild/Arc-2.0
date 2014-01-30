@@ -74,6 +74,12 @@ public:
 
 	inline const OBJFace& getFace( const int& index ) const { return (m_Faces.hasIndex(index) ? m_Faces[index] : OBJFace::INVALID); }
 
+	inline void addVertex( const Vector3& vertex ) { m_Vertices.add(vertex); }
+
+	inline void addNormal( const Vector3& normal ) { m_Normals.add(normal); }
+
+	inline void addFace( const OBJFace& face ) { m_Faces.add(face); }
+
 private:
 
 	OBJDocument( void )
@@ -81,12 +87,6 @@ private:
 		  m_Normals(),
 		  m_Faces()
 	{ }
-
-	inline void addVertex( const Vector3& vertex ) { m_Vertices.add(vertex); }
-
-	inline void addNormal( const Vector3& normal ) { m_Normals.add(normal); }
-
-	inline void addFace( const OBJFace& face ) { m_Faces.add(face); }
 
 	ArrayList<Vector3> m_Vertices;
 

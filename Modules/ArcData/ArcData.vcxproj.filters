@@ -67,6 +67,18 @@
     <ClInclude Include="Arc\FBXObjects.h">
       <Filter>FBX</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\PLYDocument.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\PLYElementType.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\PLYPropertyTypes.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\PLYElement.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
@@ -93,6 +105,18 @@
     </ClCompile>
     <ClCompile Include="Arc\FBXModel.cpp">
       <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\PLYDocument.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\PLYElementType.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\PLYPropertyTypes.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\PLYElement.cpp">
+      <Filter>PLY</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

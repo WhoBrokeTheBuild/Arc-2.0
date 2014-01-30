@@ -13,6 +13,7 @@
 #include "StringFunctionsTests.h"
 #include "RandomFunctionsTests.h"
 #include "OBJDocumentTests.h"
+#include "PLYDocumentTests.h"
 #include "FBXDocumentTests.h"
 
 using namespace std;
@@ -40,9 +41,12 @@ int main( int argc, char* argv[] )
 	TestGroup_Arc_StringFunctions(unitTests);
 	TestGroup_Arc_RandomFunctions(unitTests);
 	TestGroup_Arc_OBJDocument(unitTests);
+	TestGroup_Arc_PLYDocument(unitTests);
 	TestGroup_Arc_FBXDocument(unitTests);
 
 	unitTests.runTests(true);
+
+	PLYDocument doc = PLYDocument::LoadFile("Assets/cube.ply");
 
 	cout << endl << "Passed " << unitTests.getNumPassed() << "/" << unitTests.getNumTests() << " Tests" << endl << endl;
 

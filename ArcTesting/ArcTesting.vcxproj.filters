@@ -21,5 +21,8 @@
     <ClInclude Include="FBXDocumentTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="PLYDocumentTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

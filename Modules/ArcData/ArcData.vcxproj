@@ -96,6 +96,19 @@
     </ClInclude>
     <ClInclude Include="Arc\OBJDocument.h" />
     <ClInclude Include="Arc\OBJFace.h" />
+    <ClInclude Include="Arc\PLYDocument.h" />
+    <ClInclude Include="Arc\PLYElement.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Arc\PLYElementType.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Arc\PLYPropertyTypes.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
@@ -107,6 +120,10 @@
     <ClCompile Include="Arc\FBXProperty.cpp" />
     <ClCompile Include="Arc\OBJDocument.cpp" />
     <ClCompile Include="Arc\OBJFace.cpp" />
+    <ClCompile Include="Arc\PLYDocument.cpp" />
+    <ClCompile Include="Arc\PLYElement.cpp" />
+    <ClCompile Include="Arc\PLYElementType.cpp" />
+    <ClCompile Include="Arc\PLYPropertyTypes.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
