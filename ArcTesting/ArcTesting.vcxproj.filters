@@ -24,5 +24,8 @@
     <ClInclude Include="PLYDocumentTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="StandardTypesTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

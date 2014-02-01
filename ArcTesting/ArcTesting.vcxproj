@@ -79,6 +79,7 @@
     <ClInclude Include="OBJDocumentTests.h" />
     <ClInclude Include="PLYDocumentTests.h" />
     <ClInclude Include="RandomFunctionsTests.h" />
+    <ClInclude Include="StandardTypesTests.h" />
     <ClInclude Include="StringFunctionsTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

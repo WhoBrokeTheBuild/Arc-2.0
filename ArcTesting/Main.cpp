@@ -10,6 +10,7 @@
 #include <Arc/ArcGame.h>
 #include <Arc/ArcScript.h>
 
+#include "StandardTypesTests.h"
 #include "StringFunctionsTests.h"
 #include "RandomFunctionsTests.h"
 #include "OBJDocumentTests.h"
@@ -38,6 +39,7 @@ int main( int argc, char* argv[] )
 
 	TestGroup unitTests;
 
+	TestGroup_Arc_StandardTypes(unitTests);
 	TestGroup_Arc_StringFunctions(unitTests);
 	TestGroup_Arc_RandomFunctions(unitTests);
 	TestGroup_Arc_OBJDocument(unitTests);

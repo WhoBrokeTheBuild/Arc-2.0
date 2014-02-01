@@ -34,18 +34,38 @@ class CSVDocument
 {
 public:
 
-	static CSVDocument LoadFile( const string& filename );
-	static CSVDocument LoadFileWithHeadings( const string& filename );
-	static CSVDocument LoadString( const string& data );
-	static CSVDocument LoadStringWithHeadings( const string& data );
+	inline CSVDocument( void )
+		: m_UseHeadings(false),
+		  m_Headings(),
+		  m_Rows()
+	{ }
+
+	explicit inline CSVDocument( const CSVDocument& rhs )
+		: m_UseHeadings(rhs.m_UseHeadings),
+		  m_Headings(rhs.m_Headings),
+		  m_Rows(rhs.m_Rows)
+	{ }
+
+	virtual inline void operator=( const CSVDocument& rhs)
+	{
+		m_UseHeadings = rhs.m_UseHeadings;
+		m_Headings = rhs.m_Headings;
+		m_Rows = rhs.m_Rows;
+	}
 
 	virtual ~CSVDocument( void );
 
 	virtual inline string getClassName( void ) const { return "Arc CSV Document"; }
 
-private:
+	void loadFile( const string& filename );
 
-	CSVDocument( void );
+	void loadFileWithHeadings( const string& filename );
+
+	void loadString( const string& data );
+
+	void loadStringWithHeadings( const string& data );
+
+private:
 
 	bool m_UseHeadings;
 
