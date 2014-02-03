@@ -72,6 +72,8 @@ public:
 
 	inline unsigned int getNumVertices( void ) const { return m_Vertices.getSize(); }
 
+	inline unsigned int getNumFaces( void ) const { return m_Faces.getSize(); }
+
 	inline Vector3 getVertex( const int& index ) const { return (m_Vertices.hasIndex(index) ? m_Vertices[index] : Vector3::NEGATIVE_ONE); }
 
 	inline void addFace( const ArrayList<int>& face ) { m_Faces.add(face); }

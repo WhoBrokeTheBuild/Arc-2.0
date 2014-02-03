@@ -301,7 +301,9 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 								if (parts.getSize() == 0)
 									continue;
 
-								int ind = abs(Arc_ParseInt(parts[i]));
+								int ind = Arc_ParseInt(parts[i]);
+								if (Arc_Sign(ind) == -1)
+									ind = abs(ind) - 1;
 								inds.add(ind);
 
 								if (parts[i][0] == '-')
