@@ -19,9 +19,6 @@
     <Filter Include="COLLADA">
       <UniqueIdentifier>{70d0407b-7fe3-4307-b8e5-2475283b01fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FBX">
-      <UniqueIdentifier>{93ac22b4-f7b9-447a-ba32-81255d25c191}</UniqueIdentifier>
-    </Filter>
     <Filter Include="OBJ">
       <UniqueIdentifier>{4b02e862-ad51-4344-9917-803ced415055}</UniqueIdentifier>
     </Filter>
@@ -46,27 +43,6 @@
     <ClInclude Include="Arc\OBJFace.h">
       <Filter>OBJ</Filter>
     </ClInclude>
-    <ClInclude Include="Arc\FBXDocument.h">
-      <Filter>FBX</Filter>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXProperty.h">
-      <Filter>FBX</Filter>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXModel.h">
-      <Filter>FBX</Filter>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXHeader.h">
-      <Filter>FBX</Filter>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXTimeStamp.h">
-      <Filter>FBX</Filter>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXDefinitions.h">
-      <Filter>FBX</Filter>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXObjects.h">
-      <Filter>FBX</Filter>
-    </ClInclude>
     <ClInclude Include="Arc\PLYDocument.h">
       <Filter>PLY</Filter>
     </ClInclude>
@@ -79,11 +55,11 @@
     <ClInclude Include="Arc\PLYElement.h">
       <Filter>PLY</Filter>
     </ClInclude>
-    <ClInclude Include="Arc\OBJMaterial.h">
-      <Filter>OBJ</Filter>
+    <ClInclude Include="Arc\XMLDocument.h">
+      <Filter>XML</Filter>
     </ClInclude>
-    <ClInclude Include="Arc\OBJObject.h">
-      <Filter>OBJ</Filter>
+    <ClInclude Include="Arc\XMLElement.h">
+      <Filter>XML</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -100,18 +76,6 @@
     <ClCompile Include="Arc\OBJDocument.cpp">
       <Filter>OBJ</Filter>
     </ClCompile>
-    <ClCompile Include="Arc\FBXDocument.cpp">
-      <Filter>FBX</Filter>
-    </ClCompile>
-    <ClCompile Include="Arc\FBXDefinitions.cpp">
-      <Filter>FBX</Filter>
-    </ClCompile>
-    <ClCompile Include="Arc\FBXProperty.cpp">
-      <Filter>FBX</Filter>
-    </ClCompile>
-    <ClCompile Include="Arc\FBXModel.cpp">
-      <Filter>FBX</Filter>
-    </ClCompile>
     <ClCompile Include="Arc\PLYDocument.cpp">
       <Filter>PLY</Filter>
     </ClCompile>
@@ -124,14 +88,11 @@
     <ClCompile Include="Arc\PLYElement.cpp">
       <Filter>PLY</Filter>
     </ClCompile>
-    <ClCompile Include="Arc\OBJObject.cpp">
-      <Filter>OBJ</Filter>
+    <ClCompile Include="Arc\XMLDocument.cpp">
+      <Filter>XML</Filter>
     </ClCompile>
-    <ClCompile Include="Arc\OBJMaterial.cpp">
-      <Filter>OBJ</Filter>
-    </ClCompile>
-    <ClCompile Include="Arc\FBXObjects.cpp">
-      <Filter>FBX</Filter>
+    <ClCompile Include="Arc\XMLElement.cpp">
+      <Filter>XML</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

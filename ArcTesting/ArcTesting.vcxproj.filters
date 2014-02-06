@@ -18,9 +18,6 @@
     <ClInclude Include="OBJDocumentTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="FBXDocumentTests.h">
-      <Filter>Tests</Filter>
-    </ClInclude>
     <ClInclude Include="PLYDocumentTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
