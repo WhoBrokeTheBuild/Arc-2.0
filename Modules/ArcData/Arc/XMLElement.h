@@ -41,7 +41,7 @@ public:
 		  m_Attrs(),
 		  m_Data(),
 		  m_Children(),
-		  m_Single()
+		  m_IsSingle()
 	{ }
 
 	inline XMLElement( const XMLElement& rhs )
@@ -50,7 +50,7 @@ public:
 		  m_Attrs(rhs.m_Attrs),
 		  m_Data(rhs.m_Data),
 		  m_Children(rhs.m_Children),
-		  m_Single(rhs.m_Single)
+		  m_IsSingle(rhs.m_IsSingle)
 	{
 		attachChildren();
 	}
@@ -62,7 +62,7 @@ public:
 		m_Attrs = rhs.m_Attrs;
 		m_Data = rhs.m_Data;
 		m_Children = rhs.m_Children;
-		m_Single = rhs.m_Single;
+		m_IsSingle = rhs.m_IsSingle;
 
 		attachChildren();
 	}
@@ -73,7 +73,7 @@ public:
 		  m_Attrs(),
 		  m_Data(),
 		  m_Children(),
-		  m_Single()
+		  m_IsSingle()
 	{ }
 
 	virtual inline string getClassName( void ) const { return "Arc XML Element"; }

@@ -56,9 +56,7 @@ bool Arc::XMLDocument::loadBuffer(Buffer& buffer)
 				break;
 			case '/':
 
-				if ()
-
-				m_Curr->setIsSingle(true);
+				//m_Curr->setIsSingle(true);
 
 				break;
 			}
@@ -77,4 +75,6 @@ bool Arc::XMLDocument::loadBuffer(Buffer& buffer)
 			}
 		}
 	}
+
+	return true;
 }
