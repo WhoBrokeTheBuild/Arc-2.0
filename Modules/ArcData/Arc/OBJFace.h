@@ -25,6 +25,7 @@
 #include <Arc/ManagedObject.h>
 
 #include <Arc/Buffer.h>
+#include <Arc/Vector3.h>
 
 #include "CSVRow.h"
 
@@ -46,36 +47,54 @@ public:
 	inline OBJFace( const OBJFace& rhs )
 		: mp_Document(rhs.mp_Document),
 		  m_VertexIndexes(rhs.m_VertexIndexes),
-		  m_NormalIndexes(rhs.m_NormalIndexes)
+		  m_NormalIndexes(rhs.m_NormalIndexes),
+		  m_TextureVertexIndexes(rhs.m_TextureVertexIndexes)
 	{ }
+
+	inline void operator=( const OBJFace& rhs )
+	{ 
+		mp_Document = rhs.mp_Document;
+		m_VertexIndexes = rhs.m_VertexIndexes;
+		m_NormalIndexes = rhs.m_NormalIndexes;
+		m_TextureVertexIndexes = rhs.m_TextureVertexIndexes;
+	}
 
 	virtual inline ~OBJFace( void ) { }
 
 	virtual inline string getClassName( void ) const { return "Arc OBJ Face"; }
 
-	inline bool isValid( void ) const { return (mp_Document != nullptr); }
-
 	inline int getNumVertices( void ) const { return m_VertexIndexes.getSize(); }
 
-	inline int getNumNormals( void ) const { return m_VertexIndexes.getSize(); }
+	inline int getNumNormals( void ) const { return m_NormalIndexes.getSize(); }
+
+	inline int getNumTextureVertices( void ) const { return m_TextureVertexIndexes.getSize(); }
 
 	Vector3 getVertex( const int& index ) const;
 
 	Vector3 getNormal( const int& index ) const;
+
+	Vector2 getTextureVertex( const int& index ) const;
+
+	inline bool hasVertices( void ) const { return ! m_VertexIndexes.isEmpty(); }
+
+	inline bool hasNormals( void ) const { return ! m_NormalIndexes.isEmpty(); }
+
+	inline bool hasTextureVertices( void ) const { return ! m_TextureVertexIndexes.isEmpty(); }
 
 private:
 
 	inline OBJFace( const OBJDocument* pDocument )
 		: mp_Document(pDocument),
 		  m_VertexIndexes(),
-		  m_NormalIndexes()
+		  m_NormalIndexes(),
+		  m_TextureVertexIndexes()
 	{ }
-
-	void addVertex( int vertexInd, int normalInd = -1 );
 
 	inline void addVertexIndex( const int& vertexIndex ) { m_VertexIndexes.add(vertexIndex); }
 
 	inline void addNormalIndex( const int& normalIndex ) { m_NormalIndexes.add(normalIndex); }
+
+	inline void addTextureVertexIndex( const int& texVertexIndex ) { m_TextureVertexIndexes.add(texVertexIndex); }
 
 	inline void setDocument( const OBJDocument* pDocument ) { mp_Document = pDocument; }
 
@@ -84,6 +103,8 @@ private:
 	ArrayList<int> m_VertexIndexes;
 
 	ArrayList<int> m_NormalIndexes;
+
+	ArrayList<int> m_TextureVertexIndexes;
 
 }; // class CSVDocument
 

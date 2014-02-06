@@ -28,8 +28,13 @@
 
 #include <Arc/Buffer.h>
 #include <Arc/ParseFunctions.h>
+#include <Arc/ArrayList.h>
+#include <Arc/Vector2.h>
+#include <Arc/Vector3.h>
 
 #include "OBJFace.h"
+#include "OBJObject.h"
+#include "OBJMaterial.h"
 
 namespace Arc
 {
@@ -39,60 +44,108 @@ class OBJDocument
 {
 public:
 
-	static OBJDocument LoadFile( const string& filename );
-
-	static OBJDocument LoadString( const string& data );
-
-	static OBJDocument LoadBuffer( Buffer& data );
+	OBJDocument( void )
+		: m_Filename(),
+		  m_Vertices(),
+		  m_Normals(),
+		  m_TexVertices(),
+		  m_Faces(),
+		  m_Objects(),
+		  m_Materials()
+	{ }
 
 	OBJDocument( const OBJDocument& rhs )
-		: m_Vertices(rhs.m_Vertices),
+		: m_Filename(),
+		  m_Vertices(rhs.m_Vertices),
 		  m_Normals(rhs.m_Normals),
-		  m_Faces(rhs.m_Faces)
+		  m_TexVertices(rhs.m_TexVertices),
+		  m_Faces(rhs.m_Faces),
+		  m_Objects(rhs.m_Objects),
+		  m_Materials(rhs.m_Materials)
 	{
-		OBJFace* pFace;
-		for (auto it = m_Faces.itBegin(); it != m_Faces.itEnd(); ++it)
-		{
-			pFace = &(*it);
-			pFace->setDocument(this);
-		}
+		resetChildPointers();
+	}
+
+	void operator=( const OBJDocument& rhs)
+	{
+		m_Filename = rhs.m_Filename;
+		m_Vertices = rhs.m_Vertices;
+		m_Normals = rhs.m_Normals;
+		m_TexVertices = rhs.m_TexVertices;
+		m_Faces = rhs.m_Faces;
+		m_Objects = rhs.m_Objects;
+		m_Materials = rhs.m_Materials;
+
+		resetChildPointers();
 	}
 
 	virtual inline ~OBJDocument( void ) { }
 
 	virtual inline string getClassName( void ) const { return "Arc OBJ Document"; }
 
+	void loadFile( const string& filename );
+
+	void loadString( const string& data );
+
+	void loadBuffer( Buffer& data );
+
+	void reset( void );
+
+	inline string getFilename( void ) const { return m_Filename; }
+
 	inline unsigned int getNumVertices( void ) const { return m_Vertices.getSize(); }
 
 	inline unsigned int getNumNormals( void ) const { return m_Normals.getSize(); }
 
+	inline unsigned int getNumTextureVertices( void ) const { return m_TexVertices.getSize(); }
+
 	inline unsigned int getNumFaces( void ) const { return m_Faces.getSize(); }
-
-	inline Vector3 getVertex( const int& index ) const { return (m_Vertices.hasIndex(index) ? m_Vertices[index] : Vector3::NEGATIVE_ONE); }
-
-	inline Vector3 getNormal( const int& index ) const { return (m_Normals.hasIndex(index) ? m_Normals[index] : Vector3::NEGATIVE_ONE); }
-
-	inline const OBJFace& getFace( const int& index ) const { return (m_Faces.hasIndex(index) ? m_Faces[index] : OBJFace::INVALID); }
 
 	inline void addVertex( const Vector3& vertex ) { m_Vertices.add(vertex); }
 
 	inline void addNormal( const Vector3& normal ) { m_Normals.add(normal); }
 
-	inline void addFace( const OBJFace& face ) { m_Faces.add(face); }
+	inline void addTextureVertex( const Vector2& texVertex ) { m_TexVertices.add(texVertex); }
+
+	inline OBJFace& addFace( void ) { m_Faces.add(OBJFace(this)); return m_Faces.getBack(); }
+
+	inline OBJObject& addObject( const string& name ) { m_Objects.add(name, OBJObject(this)); return m_Objects[name]; }
+
+	inline OBJMaterial& addMaterial( const string& name ) { m_Materials.add(name, OBJMaterial()); return m_Materials[name]; }
+
+	inline Vector3 getVertex( const int& index ) const { return (m_Vertices.hasIndex(index) ? m_Vertices[index] : Vector3::NEGATIVE_ONE); }
+
+	inline Vector3 getNormal( const int& index ) const { return (m_Normals.hasIndex(index) ? m_Normals[index] : Vector3::NEGATIVE_ONE); }
+
+	inline Vector2 getTextureVertex( const int& index ) const { return (m_TexVertices.hasIndex(index) ? m_TexVertices[index] : Vector2::NEGATIVE_ONE); }
+
+	inline OBJFace& getFace( const int& index ) { return (m_Faces.hasIndex(index) ? m_Faces[index] : OBJFace::INVALID); }
+
+	inline OBJObject& getObject( const string& name ) { return (m_Objects.containsKey(name) ? m_Objects[name] : OBJObject::INVALID); }
+
+	inline OBJMaterial& getMaterial( const string& name ) { return (m_Materials.containsKey(name) ? m_Materials[name] : OBJMaterial::INVALID); }
+
+	ArrayList<string> getObjectNames( void ) const;
 
 private:
 
-	OBJDocument( void )
-		: m_Vertices(),
-		  m_Normals(),
-		  m_Faces()
-	{ }
+	void resetChildPointers( void );
+
+	void loadMaterialFile( const string& filename );
+
+	string m_Filename;
 
 	ArrayList<Vector3> m_Vertices;
 
 	ArrayList<Vector3> m_Normals;
 
+	ArrayList<Vector2> m_TexVertices;
+
 	ArrayList<OBJFace> m_Faces;
+
+	Map<string, OBJObject> m_Objects;
+
+	Map<string, OBJMaterial> m_Materials;
 
 }; // class OBJDocument
 

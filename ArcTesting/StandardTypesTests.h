@@ -69,12 +69,12 @@ TestResult Test_Arc_TypeUInt64( void )
 
 void TestGroup_Arc_StandardTypes( TestGroup& test )
 {
-	test.addTest("Test_Arc_TypeInt8",   Test_Arc_TypeInt8);
-	test.addTest("Test_Arc_TypeUInt8",  Test_Arc_TypeUInt8);
-	test.addTest("Test_Arc_TypeInt16",  Test_Arc_TypeInt16);
-	test.addTest("Test_Arc_TypeUInt16", Test_Arc_TypeUInt16);
-	test.addTest("Test_Arc_TypeInt32",  Test_Arc_TypeInt32);
-	test.addTest("Test_Arc_TypeUInt32", Test_Arc_TypeUInt32);
-	test.addTest("Test_Arc_TypeInt64",  Test_Arc_TypeInt64);
-	test.addTest("Test_Arc_TypeUInt64", Test_Arc_TypeUInt64);
+	test.addTest("Arc_TypeInt8",   Test_Arc_TypeInt8);
+	test.addTest("Arc_TypeUInt8",  Test_Arc_TypeUInt8);
+	test.addTest("Arc_TypeInt16",  Test_Arc_TypeInt16);
+	test.addTest("Arc_TypeUInt16", Test_Arc_TypeUInt16);
+	test.addTest("Arc_TypeInt32",  Test_Arc_TypeInt32);
+	test.addTest("Arc_TypeUInt32", Test_Arc_TypeUInt32);
+	test.addTest("Arc_TypeInt64",  Test_Arc_TypeInt64);
+	test.addTest("Arc_TypeUInt64", Test_Arc_TypeUInt64);
 }

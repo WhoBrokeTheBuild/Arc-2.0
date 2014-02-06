@@ -12,6 +12,33 @@ string Arc::Arc_Basename( const string& path )
 	return parts[parts.getSize() - 1];
 }
 
+string Arc::Arc_Dirname( const string& path )
+{
+	if (path.size() <= 1)
+		return path;
+
+	string tmpPath = path;
+
+	char splitString = (tmpPath.find("\\") != StringBadPosition ? '\\' : '/');
+
+	tmpPath.erase(std::find(tmpPath.rbegin(), tmpPath.rend(), splitString).base(), tmpPath.end());
+
+	if (tmpPath.back() == splitString)
+		tmpPath.pop_back();
+
+	return tmpPath;
+}
+
+string Arc::Arc_FileExtension( const string& path )
+{
+	ArrayList<string> filenameParts = Arc_StringSplit(Arc_Basename(path), '.');
+
+	string ext = filenameParts.getBack();
+	Arc_StringToLower(ext);
+
+	return ext;
+}
+
 void Arc::Arc_StringToLower( string& str )
 {
 	for (unsigned int i = 0; i < str.length(); ++i)
@@ -207,3 +234,4 @@ string Arc::Arc_Substring( const string& str, const unsigned int& begin, const i
 
 	return str.substr(begin, fullMaxLength);
 }
+

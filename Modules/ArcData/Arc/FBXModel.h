@@ -24,6 +24,8 @@
 #include <Arc/ArcCore.h>
 #include <Arc/ManagedObject.h>
 
+#include <Arc/Vector3.h>
+
 #include "FBXProperty.h"
 
 namespace Arc

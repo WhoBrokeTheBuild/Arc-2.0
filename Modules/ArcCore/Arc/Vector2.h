@@ -46,6 +46,11 @@ public:
 
 	static Vector2 NEGATIVE_ONE;
 
+	inline Vector2( void )
+		: m_X(),
+		  m_Y()
+	{ }
+
 	inline Vector2( const float& x, const float& y )
 		: m_X(x),
 		  m_Y(y)
@@ -60,6 +65,12 @@ public:
 		: m_X(rhs.m_X),
 		  m_Y(rhs.m_Y)
 	{ }
+
+	virtual inline void operator=( const Vector2& rhs )
+	{
+		m_X = rhs.m_X;
+		m_Y = rhs.m_Y;
+	}
 
 	virtual inline ~Vector2( void ) { }
 
@@ -135,10 +146,41 @@ public:
 		return (float)std::sqrt(getLengthSquared());
 	}
 
-	virtual inline void operator=( const Vector2& rhs )
+	inline float getDot( const Vector2& rhs )
 	{
-		m_X = rhs.m_X;
-		m_Y = rhs.m_Y;
+		return (getX() * rhs.getX()) + (getY() * rhs.getY());
+	}
+
+	virtual inline Vector2 operator-( const Vector2& rhs )
+	{
+		Vector2 tmp;
+		tmp.m_X = m_X - rhs.m_X;
+		tmp.m_Y = m_Y - rhs.m_Y;
+		return tmp;
+	}
+
+	virtual inline Vector2 operator+( const Vector2& rhs )
+	{
+		Vector2 tmp;
+		tmp.m_X = m_X + rhs.m_X;
+		tmp.m_Y = m_Y + rhs.m_Y;
+		return tmp;
+	}
+
+	virtual inline Vector2 operator/( const Vector2& rhs )
+	{
+		Vector2 tmp;
+		tmp.m_X = m_X / rhs.m_X;
+		tmp.m_Y = m_Y / rhs.m_Y;
+		return tmp;
+	}
+
+	virtual inline Vector2 operator*( const Vector2& rhs )
+	{
+		Vector2 tmp;
+		tmp.m_X = m_X * rhs.m_X;
+		tmp.m_Y = m_Y * rhs.m_Y;
+		return tmp;
 	}
 
 	virtual inline Vector2& operator+=( const Vector2& rhs )

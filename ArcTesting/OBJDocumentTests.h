@@ -45,7 +45,8 @@ TestResult Arc_OBJDocument_SimpleCube( void )
 		{ 4, 0, 3, 7 },
 	};
 
-	OBJDocument doc = OBJDocument::LoadString(cube);
+	OBJDocument doc;
+	doc.loadString(cube);
 
 	if (doc.getNumVertices() != NUM_VERTICES)
 		return TestGroup::Failure("Invalid number of vertices");

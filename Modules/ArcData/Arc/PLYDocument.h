@@ -52,20 +52,46 @@ public:
 
 	static PLYFormat FORMAT_BINARY_BIG_ENDIAN;
 
-	static PLYDocument LoadFile( const string& filename );
-
-	static PLYDocument LoadString( const string& data );
-
-	static PLYDocument LoadBuffer( Buffer& data );
+	inline PLYDocument( void )
+		: m_Filename(),
+	      m_Version(),
+		  m_Format(),
+		  m_ElementTypesList(),
+		  m_ElementTypes(),
+		  m_Elements(),
+		  m_LastElementType(),
+		  m_Comments()
+	{ }
 
 	inline PLYDocument( const PLYDocument& rhs )
-		: m_Version(rhs.m_Version),
+		: m_Filename(rhs.m_Filename),
+	      m_Version(rhs.m_Version),
 		  m_Format(rhs.m_Format),
 		  m_ElementTypesList(rhs.m_ElementTypesList),
 		  m_ElementTypes(rhs.m_ElementTypes),
 		  m_Elements(rhs.m_Elements),
-		  m_LastElementType(rhs.m_LastElementType)
+		  m_LastElementType(rhs.m_LastElementType),
+		  m_Comments(rhs.m_Comments)
 	{
+		PLYElement* pElement;
+		for (auto it = m_Elements.itBegin(); it != m_Elements.itEnd(); ++it)
+		{
+			pElement = &(*it);
+			pElement->setDocument(this);
+		}
+	}
+
+	void operator=( const PLYDocument& rhs )
+	{
+		m_Filename = rhs.m_Filename;
+		m_Version = rhs.m_Version;
+		m_Format = rhs.m_Format;
+		m_ElementTypesList = rhs.m_ElementTypesList;
+		m_ElementTypes = rhs.m_ElementTypes;
+		m_Elements = rhs.m_Elements;
+		m_LastElementType = rhs.m_LastElementType;
+		m_Comments = rhs.m_Comments;
+
 		PLYElement* pElement;
 		for (auto it = m_Elements.itBegin(); it != m_Elements.itEnd(); ++it)
 		{
@@ -76,6 +102,16 @@ public:
 
 	virtual inline string getClassName( void ) const { return "Arc PLY Document"; }
 
+	void loadFile( const string& filename );
+
+	void loadString( const string& data );
+
+	void loadBuffer( Buffer& data );
+
+	void reset( void );
+
+	inline string getFilename( void ) const { return m_Filename; }
+
 	inline float getVersion( void ) const { return m_Version; }
 
 	inline void setVersion( const float& version ) { m_Version = version; }
@@ -84,54 +120,39 @@ public:
 
 	inline void setFormat( const PLYFormat& format ) { m_Format = format; }
 
-	inline PLYElementType& getElementType( const string & name )
-	{
-		return (m_ElementTypes.containsKey(name) ? m_ElementTypes[name] : PLYElementType::INVALID);
-	}
+	PLYElementType& getElementType( const string & name );
 
-	inline PLYElementType& getElementType( const int& index )
-	{
-		return (m_ElementTypesList.hasIndex(index) ? getElementType(m_ElementTypesList[index]) : PLYElementType::INVALID);
-	}
+	PLYElementType& getElementType( const int& index );
 
 	PLYElement& addElement( const string& type );
 
-	inline PLYElement& addElement( const int& index )
-	{
-		return (m_ElementTypesList.hasIndex(index) ? addElement(m_ElementTypesList[index]) : PLYElement::INVALID); 
-	}
+	PLYElement& addElement( const int& index );
 
 	ArrayList<PLYElement> getElementsOfType( const string& type );
 
-	inline ArrayList<PLYElement> getElementsOfType( const int& index )
-	{
-		return (m_ElementTypesList.hasIndex(index) ? getElementsOfType(m_ElementTypesList[index]) : ArrayList<PLYElement>()); 
-	}
+	ArrayList<PLYElement> getElementsOfType( const int& index );
+
+	inline void addComment( const string& comment ) { m_Comments.add(comment); }
+
+	inline ArrayList<string> getComments( void ) { return m_Comments; }
 
 private:
 
-	inline PLYDocument( void )
-		: m_Version(),
-		  m_Format(),
-		  m_ElementTypesList(),
-		  m_ElementTypes(),
-		  m_Elements(),
-		  m_LastElementType()
-	{ }
+	void loadHeader( Buffer& data );
 
-	static PLYDocument LoadHeader( Buffer& data );
+	void loadAscii( Buffer& data );
 
-	static void LoadAscii( PLYDocument& doc, Buffer& data );
+	void loadBinaryBigEndian( Buffer& data );
 
-	static void LoadBinaryBigEndian( PLYDocument& doc, Buffer& data );
-
-	static void LoadBinaryLittleEndian( PLYDocument& doc, Buffer& data );
+	void loadBinaryLittleEndian( Buffer& data );
 
 	void addElementType( const string& name, const unsigned int& count );
 
 	bool hasLastElementType( void ) const;
 
 	PLYElementType& getLastElementType( void );
+
+	string m_Filename;
 
 	float m_Version;
 
@@ -144,6 +165,8 @@ private:
 	ArrayList<PLYElement> m_Elements;
 
 	string m_LastElementType;
+
+	ArrayList<string> m_Comments;
 
 }; // class PLYDocument
 

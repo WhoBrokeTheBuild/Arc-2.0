@@ -22,6 +22,25 @@ TestResult Test_Arc_Basename( void )
 	return TestGroup::Success();
 }
 
+TestResult Test_Arc_Dirname( void )
+{
+	string filePath = "C:\\Testing\\Directory\\File.txt";
+	string dirname = Arc_Dirname(filePath);
+
+	if (dirname != "C:\\Testing\\Directory")
+		return TestGroup::Failure("Invalid Result for Windows-Style Paths");
+
+	filePath = "/Testing/Directory/File.txt";
+	dirname = Arc_Dirname(filePath);
+
+	if (dirname != "/Testing/Directory")
+		return TestGroup::Failure("Invalid Result for Linux-Style Paths");
+
+	return TestGroup::Success();
+}
+
+// TODO: Add Test_Arc_FileExtension
+
 TestResult Test_Arc_StringGetLower( void )
 {
 	string testToLower = "aBcDeFg";
@@ -269,6 +288,7 @@ TestResult Test_Arc_StringReplaceNext( void )
 void TestGroup_Arc_StringFunctions( TestGroup& test )
 {
 	test.addTest("Arc_Basename",          Test_Arc_Basename);
+	test.addTest("Arc_Dirname",           Test_Arc_Dirname);
 
 	test.addTest("Arc_StringGetLower",    Test_Arc_StringGetLower);
 	test.addTest("Arc_StringToLower",     Test_Arc_StringToLower);

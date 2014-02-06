@@ -50,6 +50,8 @@ public:
 
 	inline FBXModel& getModel( const string& id ) { return (hasModel(id) ? m_Models[id] : FBXModel::INVALID); }
 
+	ArrayList<string> getModelNames( void ) const;
+
 private:
 
 	Map<string, FBXModel> m_Models;

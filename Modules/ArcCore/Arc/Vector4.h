@@ -45,6 +45,11 @@ public:
 
 	static Vector4 NEGATIVE_ONE;
 
+	inline Vector4( void )
+		: Vector3(),
+		  m_W()
+	{ }
+
 	inline Vector4( const float& x, const float& y, const float& z, const float& w )
 		: Vector3(x, y, z),
 		  m_W(w)
@@ -120,6 +125,51 @@ public:
 	virtual inline float getLengthSquared( void )
 	{
 		return (m_X * m_X) + (m_Y * m_Y) + (m_Z * m_Z) + (m_W * m_W);
+	}
+
+	inline float getDot( const Vector4& rhs )
+	{
+		return (getX() * rhs.getX()) + (getY() * rhs.getY()) + (getZ() * rhs.getZ()) + (getW() * rhs.getW());
+	}
+
+	virtual inline Vector4 operator-( const Vector4& rhs )
+	{
+		Vector4 tmp;
+		tmp.m_X = m_X - rhs.m_X;
+		tmp.m_Y = m_Y - rhs.m_Y;
+		tmp.m_Z = m_Z - rhs.m_Z;
+		tmp.m_W = m_W - rhs.m_W;
+		return tmp;
+	}
+
+	virtual inline Vector4 operator+( const Vector4& rhs )
+	{
+		Vector4 tmp;
+		tmp.m_X = m_X + rhs.m_X;
+		tmp.m_Y = m_Y + rhs.m_Y;
+		tmp.m_Z = m_Z + rhs.m_Z;
+		tmp.m_W = m_W + rhs.m_W;
+		return tmp;
+	}
+
+	virtual inline Vector4 operator/( const Vector4& rhs )
+	{
+		Vector4 tmp;
+		tmp.m_X = m_X / rhs.m_X;
+		tmp.m_Y = m_Y / rhs.m_Y;
+		tmp.m_Z = m_Z / rhs.m_Z;
+		tmp.m_W = m_W / rhs.m_W;
+		return tmp;
+	}
+
+	virtual inline Vector4 operator*( const Vector4& rhs )
+	{
+		Vector4 tmp;
+		tmp.m_X = m_X * rhs.m_X;
+		tmp.m_Y = m_Y * rhs.m_Y;
+		tmp.m_Z = m_Z * rhs.m_Z;
+		tmp.m_W = m_W * rhs.m_W;
+		return tmp;
 	}
 
 	virtual inline void operator=( const Vector4& rhs )

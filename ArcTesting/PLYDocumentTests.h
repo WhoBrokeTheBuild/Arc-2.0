@@ -54,7 +54,8 @@ TestResult Arc_PLYDocument_SimpleCube( void )
 		{ 4, 0, 3, 7 },
 	};
 
-	PLYDocument doc = PLYDocument::LoadString(cube);
+	PLYDocument doc;
+	doc.loadString(cube);
 
 	ArrayList<PLYElement> cubeVerts = doc.getElementsOfType("vertex");
 	ArrayList<PLYElement> cubeFaces = doc.getElementsOfType("face");

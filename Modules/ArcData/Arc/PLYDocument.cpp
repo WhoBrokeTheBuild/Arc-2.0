@@ -12,50 +12,48 @@ Arc::PLYFormat Arc::PLYDocument::FORMAT_BINARY_LITTLE_ENDIAN = "PLYFormat.binary
 
 Arc::PLYFormat Arc::PLYDocument::FORMAT_BINARY_BIG_ENDIAN = "PLYFormat.binaryBigEndian";
 
-Arc::PLYDocument Arc::PLYDocument::LoadFile( const string& filename )
+void Arc::PLYDocument::loadFile( const string& filename )
 {
-	Buffer buff = Buffer::LoadFromFile(filename);
-	return PLYDocument::LoadBuffer(buff);
+	m_Filename = filename;
+	Buffer buff = Buffer::LoadFromFile(m_Filename);
+	loadBuffer(buff);
 }
 
-Arc::PLYDocument Arc::PLYDocument::LoadString( const string& data )
+void Arc::PLYDocument::loadString( const string& data )
 {
 	Buffer buff = Buffer(data);
-	return PLYDocument::LoadBuffer(buff);
+	loadBuffer(buff);
 }
 
-Arc::PLYDocument Arc::PLYDocument::LoadBuffer( Buffer& data )
+void Arc::PLYDocument::loadBuffer( Buffer& data )
 {
-	PLYDocument doc = PLYDocument::LoadHeader(data);
+	reset();
+	loadHeader(data);
 
-	if (doc.getFormat() == PLYDocument::FORMAT_ASCII)
+	if (getFormat() == PLYDocument::FORMAT_ASCII)
 	{
-		LoadAscii(doc, data);
+		loadAscii(data);
 	}
-	else if (doc.getFormat() == PLYDocument::FORMAT_BINARY_BIG_ENDIAN)
+	else if (getFormat() == PLYDocument::FORMAT_BINARY_BIG_ENDIAN)
 	{
-		LoadBinaryBigEndian(doc, data);
+		loadBinaryBigEndian(data);
 	}
-	else if (doc.getFormat() == PLYDocument::FORMAT_BINARY_LITTLE_ENDIAN)
+	else if (getFormat() == PLYDocument::FORMAT_BINARY_LITTLE_ENDIAN)
 	{
-		LoadBinaryLittleEndian(doc, data);
+		loadBinaryLittleEndian(data);
 	}
-
-	return doc;
 }
 
-Arc::PLYDocument Arc::PLYDocument::LoadHeader( Buffer& data )
+void Arc::PLYDocument::loadHeader( Buffer& data )
 {
 	data.resetReadIndex();
-
-	PLYDocument doc;
 
 	string line;
 
 	line = data.readNextLine();
 
 	if (line != "ply")
-		return PLYDocument::INVALID;
+		return;
 
 	while ( ! data.endOfBuffer())
 	{
@@ -70,17 +68,15 @@ Arc::PLYDocument Arc::PLYDocument::LoadHeader( Buffer& data )
 			continue;
 
 		if (parts[0] == "comment")
+		{
+			addComment(Arc_Substring(line, 7));
 			continue;
+		}
 
 		if (parts[0] == "format")
 		{
 			if (parts.getSize() >= 3)
 			{
-				if (parts[1] != "ascii")
-				{
-					return PLYDocument::INVALID;
-				}
-
 				PLYFormat format = PLYDocument::INVALID_FORMAT;
 
 				if (parts[1] == "ascii")
@@ -96,8 +92,8 @@ Arc::PLYDocument Arc::PLYDocument::LoadHeader( Buffer& data )
 					format = PLYDocument::FORMAT_BINARY_BIG_ENDIAN;
 				}
 
-				doc.setFormat(format);
-				doc.setVersion(Arc_ParseFloat(parts[2]));
+				setFormat(format);
+				setVersion(Arc_ParseFloat(parts[2]));
 			}
 			else
 			{
@@ -108,7 +104,7 @@ Arc::PLYDocument Arc::PLYDocument::LoadHeader( Buffer& data )
 		{
 			if (parts.getSize() >= 3)
 			{
-				doc.addElementType(parts[1], (unsigned)Arc_ParseInt(parts[2]));
+				addElementType(parts[1], (unsigned)Arc_ParseInt(parts[2]));
 			}
 			else
 			{
@@ -117,13 +113,13 @@ Arc::PLYDocument Arc::PLYDocument::LoadHeader( Buffer& data )
 		}
 		else if (parts[0] == "property")
 		{
-			if (parts.getSize() >= 3 && doc.hasLastElementType())
+			if (parts.getSize() >= 3 && hasLastElementType())
 			{
 				if (parts[1] == "list")
 				{
 					if (parts.getSize() >= 5)
 					{
-						PLYElementType& elmType = doc.getLastElementType();
+						PLYElementType& elmType = getLastElementType();
 						elmType.setIsList(true);
 						elmType.setListSizeType(parts[2]);
 						elmType.setListType(parts[3]);
@@ -136,7 +132,7 @@ Arc::PLYDocument Arc::PLYDocument::LoadHeader( Buffer& data )
 				}
 				else
 				{
-					doc.getLastElementType().addPropertyType(parts[1], parts[2]);
+					getLastElementType().addPropertyType(parts[1], parts[2]);
 				}
 			}
 			else
@@ -146,8 +142,6 @@ Arc::PLYDocument Arc::PLYDocument::LoadHeader( Buffer& data )
 		}
 
 	}
-
-	return doc;
 }
 
 void Arc::PLYDocument::addElementType( const string& name, const unsigned int& count )
@@ -168,6 +162,11 @@ Arc::PLYElement& Arc::PLYDocument::addElement( const string& type )
 	return m_Elements.getBack();
 }
 
+Arc::PLYElement& Arc::PLYDocument::addElement( const int& index )
+{
+	return (m_ElementTypesList.hasIndex(index) ? addElement(m_ElementTypesList[index]) : PLYElement::INVALID);
+}
+
 bool Arc::PLYDocument::hasLastElementType( void ) const
 {
 	return ( ! m_ElementTypes.isEmpty() );
@@ -181,7 +180,7 @@ Arc::PLYElementType& Arc::PLYDocument::getLastElementType( void )
 	return m_ElementTypes[m_LastElementType];
 }
 
-void Arc::PLYDocument::LoadAscii( PLYDocument& doc, Buffer& data )
+void Arc::PLYDocument::loadAscii( Buffer& data )
 {
 	string line;
 
@@ -192,15 +191,15 @@ void Arc::PLYDocument::LoadAscii( PLYDocument& doc, Buffer& data )
 	{
 		line = data.readNextLine();
 
-		if (recordIndex >= doc.getElementType(elementIndex).getExpectedCount())
+		if (recordIndex >= getElementType(elementIndex).getExpectedCount())
 		{
 			elementIndex++;
 			recordIndex = 0;
 		}
 
-		PLYElementType& type = doc.getElementType(elementIndex);
+		PLYElementType& type = getElementType(elementIndex);
 
-		PLYElement& elm = doc.addElement(elementIndex);
+		PLYElement& elm = addElement(elementIndex);
 		recordIndex++;
 
 		ArrayList<string> parts = Arc_StringSplit(line, ' ');
@@ -383,12 +382,12 @@ void Arc::PLYDocument::LoadAscii( PLYDocument& doc, Buffer& data )
 	}
 }
 
-void Arc::PLYDocument::LoadBinaryBigEndian( PLYDocument& doc, Buffer& data )
+void Arc::PLYDocument::loadBinaryBigEndian( Buffer& data )
 {
 	throw std::exception("The method or operation is not implemented.");
 }
 
-void Arc::PLYDocument::LoadBinaryLittleEndian( PLYDocument& doc, Buffer& data )
+void Arc::PLYDocument::loadBinaryLittleEndian( Buffer& data )
 {
 	throw std::exception("The method or operation is not implemented.");
 }
@@ -403,4 +402,29 @@ Arc::ArrayList<Arc::PLYElement> Arc::PLYDocument::getElementsOfType( const strin
 			elms.add(*it);
 
 	return elms;
+}
+
+Arc::ArrayList<Arc::PLYElement> Arc::PLYDocument::getElementsOfType( const int& index )
+{
+	return (m_ElementTypesList.hasIndex(index) ? getElementsOfType(m_ElementTypesList[index]) : ArrayList<PLYElement>());
+}
+
+Arc::PLYElementType& Arc::PLYDocument::getElementType( const string & name )
+{
+	return (m_ElementTypes.containsKey(name) ? m_ElementTypes[name] : PLYElementType::INVALID);
+}
+
+Arc::PLYElementType& Arc::PLYDocument::getElementType( const int& index )
+{
+	return (m_ElementTypesList.hasIndex(index) ? getElementType(m_ElementTypesList[index]) : PLYElementType::INVALID);
+}
+
+void Arc::PLYDocument::reset( void )
+{
+	m_Version = 0;
+	m_Format = INVALID_FORMAT;
+	m_ElementTypesList.clear();
+	m_ElementTypes.clear();
+	m_Elements.clear();
+	m_LastElementType = PLYPropertyTypes::PROP_TYPE_INVALID;
 }

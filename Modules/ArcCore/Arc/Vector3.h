@@ -45,6 +45,11 @@ public:
 
 	static Vector3 NEGATIVE_ONE;
 
+	inline Vector3( void )
+		: Vector2(),
+		  m_Z()
+	{ }
+
 	inline Vector3( const float& x, const float& y, const float& z )
 		: Vector2(x, y),
 		  m_Z(z)
@@ -120,6 +125,58 @@ public:
 	virtual inline float getLengthSquared( void )
 	{
 		return (m_X * m_X) + (m_Y * m_Y) + (m_Z * m_Z);
+	}
+
+	inline float getDot( const Vector3& rhs )
+	{
+		return (getX() * rhs.getX()) + (getY() * rhs.getY()) + (getZ() * rhs.getZ());
+	}
+
+	inline Vector3 getCross( Vector3& other )
+	{
+		Vector3 result;
+
+		result.setX( (getY() * other.getZ()) - (getZ() * other.getY()) );
+		result.setY( (getZ() * other.getX()) - (getX() * other.getZ()) );
+		result.setZ( (getX() * other.getY()) - (getY() * other.getX()) );
+
+		return result;
+	}
+
+	virtual inline Vector3 operator-( const Vector3& rhs )
+	{
+		Vector3 tmp;
+		tmp.m_X = m_X - rhs.m_X;
+		tmp.m_Y = m_Y - rhs.m_Y;
+		tmp.m_Z = m_Z - rhs.m_Z;
+		return tmp;
+	}
+
+	virtual inline Vector3 operator+( const Vector3& rhs )
+	{
+		Vector3 tmp;
+		tmp.m_X = m_X + rhs.m_X;
+		tmp.m_Y = m_Y + rhs.m_Y;
+		tmp.m_Z = m_Z + rhs.m_Z;
+		return tmp;
+	}
+
+	virtual inline Vector3 operator/( const Vector3& rhs )
+	{
+		Vector3 tmp;
+		tmp.m_X = m_X / rhs.m_X;
+		tmp.m_Y = m_Y / rhs.m_Y;
+		tmp.m_Z = m_Z / rhs.m_Z;
+		return tmp;
+	}
+
+	virtual inline Vector3 operator*( const Vector3& rhs )
+	{
+		Vector3 tmp;
+		tmp.m_X = m_X * rhs.m_X;
+		tmp.m_Y = m_Y * rhs.m_Y;
+		tmp.m_Z = m_Z * rhs.m_Z;
+		return tmp;
 	}
 
 	virtual inline void operator=( const Vector3& rhs )

@@ -49,7 +49,8 @@ TestResult Arc_FBXDocument_ASCII_Header( void )
 	flags.add("FlagTestOff", false);
 	flags.add("FlagTestOn", true);
 
-	FBXDocument doc = FBXDocument::LoadString(header, FBXDocument::FBX_TYPE_ASCII);
+	FBXDocument doc;
+	doc.loadString(header, FBXDocument::FBX_TYPE_ASCII);
 
 	if (doc.getHeader().getVersion() != VERSION)
 		return TestGroup::Failure("Invalid version");
@@ -142,7 +143,8 @@ TestResult Arc_FBXDocument_ASCII_SimpleCube( void )
 		{ 4, 0, 3, 7 },
 	};
 
-	FBXDocument doc = FBXDocument::LoadString(cube, FBXDocument::FBX_TYPE_ASCII);
+	FBXDocument doc;
+	doc.loadString(cube, FBXDocument::FBX_TYPE_ASCII);
 
 	if ( ! doc.getObjects().hasModel("Cube"))
 		return TestGroup::Failure("Object not loaded");

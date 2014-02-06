@@ -49,11 +49,13 @@ public:
 
 	static FBXType FBX_TYPE_BINARY;
 
-	static FBXDocument LoadFile( const string& filename, const FBXType& type );
-
-	static FBXDocument LoadString( const string& data, const FBXType& type );
-
-	static FBXDocument LoadBuffer( Buffer& data, const FBXType& type );
+	FBXDocument( void )
+		: m_Header(),
+		  m_Definitions(),
+		  m_Objects(),
+		  m_CreationTime(),
+		  m_Creator()
+	{ }
 
 	FBXDocument( const FBXDocument& rhs )
 		: m_Header(rhs.m_Header),
@@ -66,6 +68,12 @@ public:
 	virtual inline ~FBXDocument( void ) { }
 
 	virtual inline string getClassName( void ) const { return "Arc FBX Document"; }
+
+	void loadFile( const string& filename, const FBXType& type );
+	
+	void loadString( const string& data, const FBXType& type );
+	
+	void loadBuffer( Buffer& data, const FBXType& type );
 
 	inline FBXHeader& getHeader( void ) { return m_Header; }
 
@@ -83,14 +91,11 @@ public:
 
 private:
 
-	FBXDocument( void )
-	{ }
-
 	static void StripQuotes( string& str );
 
-	static FBXDocument LoadBufferASCII( Buffer& data );
+	void loadBufferASCII( Buffer& data );
 
-	static FBXDocument LoadBufferBinary( Buffer& data );
+	void loadBufferBinary( Buffer& data );
 
 	FBXHeader m_Header;
 

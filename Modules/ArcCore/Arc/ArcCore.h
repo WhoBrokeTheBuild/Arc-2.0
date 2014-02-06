@@ -26,20 +26,11 @@
 
 #include "ArcCoreVersion.h"
 
-// Collections
-#include "ArrayList.h"
-#include "Map.h"
-
 // Functions
 #include "MathFunctions.h"
 #include "StringFunctions.h"
 #include "RandomFunctions.h"
 #include "ParseFunctions.h"
-
-// Geometry
-#include "Vector2.h"
-#include "Vector3.h"
-#include "Vector4.h"
 
 #include "MemoryTracker.h"
 

@@ -6,37 +6,34 @@ Arc::FBXType Arc::FBXDocument::FBX_TYPE_ASCII = "FBXType.ascii";
 
 Arc::FBXType Arc::FBXDocument::FBX_TYPE_BINARY = "FBXType.binary";
 
-Arc::FBXDocument Arc::FBXDocument::LoadFile( const string& filename, const FBXType& type )
+void Arc::FBXDocument::loadFile( const string& filename, const FBXType& type )
 {
     Buffer buff = Buffer::LoadFromFile(filename);
-	return FBXDocument::LoadBuffer(buff, type);
+	loadBuffer(buff, type);
 }
 
-Arc::FBXDocument Arc::FBXDocument::LoadString( const string& data, const FBXType& type )
+void Arc::FBXDocument::loadString( const string& data, const FBXType& type )
 {
     Buffer buff = Buffer(data);
-	return FBXDocument::LoadBuffer(buff, type);
+	loadBuffer(buff, type);
 }
 
-Arc::FBXDocument Arc::FBXDocument::LoadBuffer( Buffer& data, const FBXType& type )
+void Arc::FBXDocument::loadBuffer( Buffer& data, const FBXType& type )
 {
 	if (type == FBX_TYPE_ASCII)
 	{
-		return LoadBufferASCII(data);
+		loadBufferASCII(data);
 	}
 	else if (type == FBX_TYPE_BINARY)
 	{
-		return LoadBufferBinary(data);
+		loadBufferBinary(data);
 	}
-
-	return FBXDocument::INVALID;
 }
 
-Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
+void Arc::FBXDocument::loadBufferASCII( Buffer& data )
 {
 	data.resetReadIndex();
 
-	FBXDocument doc;
 	string line;
 	string objName = "";
 	string objNameExt = "";
@@ -130,11 +127,11 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 
 			if (key == "CreationTime")
 			{
-				doc.setCreationTime(val);
+				setCreationTime(val);
 			}
 			else if (key == "Creator")
 			{
-				doc.setCreator(val);
+				setCreator(val);
 			}
 		}
 		else
@@ -149,52 +146,52 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 
 					if (key == "Version")
 					{
-						doc.getHeader().getTimeStamp().setVersion(intVal);
+						getHeader().getTimeStamp().setVersion(intVal);
 					}
 					else if (key == "Year")
 					{
-						doc.getHeader().getTimeStamp().setYear(intVal);
+						getHeader().getTimeStamp().setYear(intVal);
 					}
 					else if (key == "Month")
 					{
-						doc.getHeader().getTimeStamp().setMonth(intVal);
+						getHeader().getTimeStamp().setMonth(intVal);
 					}
 					else if (key == "Day")
 					{
-						doc.getHeader().getTimeStamp().setDay(intVal);
+						getHeader().getTimeStamp().setDay(intVal);
 					}
 					else if (key == "Hour")
 					{
-						doc.getHeader().getTimeStamp().setHours(intVal);
+						getHeader().getTimeStamp().setHours(intVal);
 					}
 					else if (key == "Minute")
 					{
-						doc.getHeader().getTimeStamp().setMinutes(intVal);
+						getHeader().getTimeStamp().setMinutes(intVal);
 					}
 					else if (key == "Second")
 					{
-						doc.getHeader().getTimeStamp().setSeconds(intVal);
+						getHeader().getTimeStamp().setSeconds(intVal);
 					}
 					else if (key == "Millisecond")
 					{
-						doc.getHeader().getTimeStamp().setMilliseconds(intVal);
+						getHeader().getTimeStamp().setMilliseconds(intVal);
 					}
 				}
 				if (path.contains("OtherFlags") && key != "OtherFlags")
 				{
-					doc.getHeader().setFlag(key, Arc_ParseBool(val));
+					getHeader().setFlag(key, Arc_ParseBool(val));
 				}
 				else if (key == "FBXHeaderVersion")
 				{
-					doc.getHeader().setHeaderVersion(Arc_ParseInt(val));
+					getHeader().setHeaderVersion(Arc_ParseInt(val));
 				}
 				else if (key == "FBXVersion")
 				{
-					doc.getHeader().setVersion(Arc_ParseInt(val));
+					getHeader().setVersion(Arc_ParseInt(val));
 				}
 				else if (key == "Creator")
 				{
-					doc.getHeader().setCreator(val);
+					getHeader().setCreator(val);
 				}
 			}
 			else if (path.contains("Definitions") && key != "Definitions")
@@ -205,11 +202,11 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 				{
 					string typeName = objNameExt;
 					StripQuotes(typeName);
-					doc.getDefinitions().setTypeCount(typeName, intVal);
+					getDefinitions().setTypeCount(typeName, intVal);
 				}
 				else if (key == "Version")
 				{
-					doc.getDefinitions().setVersion(intVal);
+					getDefinitions().setVersion(intVal);
 				}
 				else if (key == "Count")
 				{
@@ -238,9 +235,9 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 						StripQuotes(modelName);
 						StripQuotes(modelID);
 
-						doc.getObjects().addModel(modelID);
+						getObjects().addModel(modelID);
 
-						FBXModel& model = doc.getObjects().getModel(modelID);
+						FBXModel& model = getObjects().getModel(modelID);
 
 						if (model.getID() == "")
 							continue;
@@ -249,7 +246,7 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 					}
 					else
 					{
-						FBXModel& model = doc.getObjects().getModel(modelID);
+						FBXModel& model = getObjects().getModel(modelID);
 
 						if (model.getID() == "")
 							continue;
@@ -322,13 +319,11 @@ Arc::FBXDocument Arc::FBXDocument::LoadBufferASCII( Buffer& data )
 			}
 		}
 	}
-
-	return doc;
 }
 
-Arc::FBXDocument Arc::FBXDocument::LoadBufferBinary( Buffer& data )
+void Arc::FBXDocument::loadBufferBinary( Buffer& data )
 {
-	return FBXDocument::INVALID;
+	
 }
 
 void Arc::FBXDocument::StripQuotes( string& str )

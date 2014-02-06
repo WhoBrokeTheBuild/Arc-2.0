@@ -32,6 +32,10 @@ extern const size_t StringBadPosition;
 
 string Arc_Basename( const string& path );
 
+string Arc_Dirname( const string& path );
+
+string Arc_FileExtension( const string& path );
+
 void Arc_StringToLower( string& str );
 
 void Arc_StringToUpper( string& str );
