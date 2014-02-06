@@ -67,30 +67,11 @@
   <ItemGroup>
     <ClInclude Include="Arc\ArcData.h" />
     <ClInclude Include="Arc\ArcDataVersion.h" />
-    <ClInclude Include="Arc\FBXDefinitions.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXModel.h" />
-    <ClInclude Include="Arc\FBXHeader.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Arc\CSVDocument.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Arc\CSVRow.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXDocument.h" />
-    <ClInclude Include="Arc\FBXObjects.h" />
-    <ClInclude Include="Arc\FBXProperty.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Arc\FBXTimeStamp.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -109,21 +90,21 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Arc\XMLDocument.h" />
+    <ClInclude Include="Arc\XMLElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
     <ClCompile Include="Arc\CSVDocument.cpp" />
     <ClCompile Include="Arc\CSVRow.cpp" />
-    <ClCompile Include="Arc\FBXDefinitions.cpp" />
-    <ClCompile Include="Arc\FBXDocument.cpp" />
-    <ClCompile Include="Arc\FBXModel.cpp" />
-    <ClCompile Include="Arc\FBXProperty.cpp" />
     <ClCompile Include="Arc\OBJDocument.cpp" />
     <ClCompile Include="Arc\OBJFace.cpp" />
     <ClCompile Include="Arc\PLYDocument.cpp" />
     <ClCompile Include="Arc\PLYElement.cpp" />
     <ClCompile Include="Arc\PLYElementType.cpp" />
     <ClCompile Include="Arc\PLYPropertyTypes.cpp" />
+    <ClCompile Include="Arc\XMLDocument.cpp" />
+    <ClCompile Include="Arc\XMLElement.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

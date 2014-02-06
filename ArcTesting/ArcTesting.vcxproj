@@ -75,7 +75,6 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FBXDocumentTests.h" />
     <ClInclude Include="OBJDocumentTests.h" />
     <ClInclude Include="PLYDocumentTests.h" />
     <ClInclude Include="RandomFunctionsTests.h" />
