@@ -30,17 +30,25 @@ using std::string;
 
 #if defined(ARC_OS_WINDOWS)
 
-typedef signed char        int8_t;
-typedef short              int16_t;
-typedef int                int32_t;
-typedef long long          int64_t;
-typedef unsigned char      uint8_t;
-typedef unsigned short     uint16_t;
-typedef unsigned int       uint32_t;
-typedef unsigned long long uint64_t;
+typedef signed char        Arc_int8_t;
+typedef short              Arc_int16_t;
+typedef int                Arc_int32_t;
+typedef long long          Arc_int64_t;
+typedef unsigned char      Arc_uint8_t;
+typedef unsigned short     Arc_uint16_t;
+typedef unsigned int       Arc_uint32_t;
+typedef unsigned long long Arc_uint64_t;
 
 #elif defined(ARC_OS_LINUX) || defined(ARC_OS_MAC)
 
+typedef signed char        Arc_int8_t;
+typedef short              Arc_int16_t;
+typedef int                Arc_int32_t;
+typedef long long          Arc_int64_t;
+typedef unsigned char      Arc_uint8_t;
+typedef unsigned short     Arc_uint16_t;
+typedef unsigned int       Arc_uint32_t;
+typedef unsigned long long Arc_uint64_t;
 
 #endif
 

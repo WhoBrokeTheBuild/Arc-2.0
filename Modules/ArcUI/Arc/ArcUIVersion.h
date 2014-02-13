@@ -31,17 +31,17 @@ namespace Arc
 #define ARC_UI_MINOR_VERSION 1
 #define ARC_UI_PATCH_VERSION 0
 
-inline uint8_t ArcUI_GetMajorVersion( void )
+inline Arc_uint8_t ArcUI_GetMajorVersion( void )
 {
 	return ARC_UI_MAJOR_VERSION;
 }
 
-inline uint8_t ArcUI_GetMinorVersion( void )
+inline Arc_uint8_t ArcUI_GetMinorVersion( void )
 {
 	return ARC_UI_MINOR_VERSION;
 }
 
-inline uint8_t ArcUI_GetPatchVersion( void )
+inline Arc_uint8_t ArcUI_GetPatchVersion( void )
 {
 	return ARC_UI_PATCH_VERSION;
 }
@@ -72,7 +72,7 @@ inline string ArcUI_GetVersionString( void )
 	return string(version);
 }
 
-inline bool ArcUI_AboveVersion( uint8_t major, uint8_t minor, uint8_t patch )
+inline bool ArcUI_AboveVersion( Arc_uint8_t major, Arc_uint8_t minor, Arc_uint8_t patch )
 {
 	return ( (major >= ARC_UI_MAJOR_VERSION) && (minor >= ARC_UI_MINOR_VERSION) && (patch >= ARC_UI_PATCH_VERSION) );
 }

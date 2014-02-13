@@ -5,7 +5,7 @@ using namespace Arc;
 
 TestResult Test_Arc_TypeInt8( void )
 {
-	if (sizeof(int8_t) != 1)
+	if (sizeof(Arc_int8_t) != 1)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();
@@ -13,7 +13,7 @@ TestResult Test_Arc_TypeInt8( void )
 
 TestResult Test_Arc_TypeUInt8( void )
 {
-	if (sizeof(uint8_t) != 1)
+	if (sizeof(Arc_uint8_t) != 1)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();
@@ -21,7 +21,7 @@ TestResult Test_Arc_TypeUInt8( void )
 
 TestResult Test_Arc_TypeInt16( void )
 {
-	if (sizeof(int16_t) != 2)
+	if (sizeof(Arc_int16_t) != 2)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();
@@ -29,7 +29,7 @@ TestResult Test_Arc_TypeInt16( void )
 
 TestResult Test_Arc_TypeUInt16( void )
 {
-	if (sizeof(uint16_t) != 2)
+	if (sizeof(Arc_uint16_t) != 2)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();
@@ -37,7 +37,7 @@ TestResult Test_Arc_TypeUInt16( void )
 
 TestResult Test_Arc_TypeInt32( void )
 {
-	if (sizeof(int32_t) != 4)
+	if (sizeof(Arc_int32_t) != 4)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();
@@ -45,7 +45,7 @@ TestResult Test_Arc_TypeInt32( void )
 
 TestResult Test_Arc_TypeUInt32( void )
 {
-	if (sizeof(uint32_t) != 4)
+	if (sizeof(Arc_uint32_t) != 4)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();
@@ -53,7 +53,7 @@ TestResult Test_Arc_TypeUInt32( void )
 
 TestResult Test_Arc_TypeInt64( void )
 {
-	if (sizeof(int64_t) != 8)
+	if (sizeof(Arc_int64_t) != 8)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();
@@ -61,7 +61,7 @@ TestResult Test_Arc_TypeInt64( void )
 
 TestResult Test_Arc_TypeUInt64( void )
 {
-	if (sizeof(uint64_t) != 8)
+	if (sizeof(Arc_uint64_t) != 8)
 		return TestGroup::Failure("Invalid Result");
 
 	return TestGroup::Success();

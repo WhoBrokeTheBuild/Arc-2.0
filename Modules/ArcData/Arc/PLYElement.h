@@ -122,21 +122,21 @@ public:
 		return (m_DoubleData.containsKey(name) ? m_CharData[name] : 0.0);
 	}
 
-	inline int8_t getInt8Data( const string& name ) { return getCharData(name); }
+	inline Arc_int8_t getInt8Data( const string& name ) { return getCharData(name); }
 
-	inline uint8_t getUInt8Data( const string& name ) { return getUCharData(name); }
+	inline Arc_uint8_t getUInt8Data( const string& name ) { return getUCharData(name); }
 
-	inline int16_t getInt16Data( const string& name ) { return getShortData(name); }
+	inline Arc_int16_t getInt16Data( const string& name ) { return getShortData(name); }
 
-	inline uint16_t getUInt16Data( const string& name ) { return getUShortData(name); }
+	inline Arc_uint16_t getUInt16Data( const string& name ) { return getUShortData(name); }
 
-	inline int32_t getInt32Data( const string& name ) { return getIntData(name); }
+	inline Arc_int32_t getInt32Data( const string& name ) { return getIntData(name); }
 
-	inline uint32_t getUInt32Data( const string& name ) { return getUIntData(name); }
+	inline Arc_uint32_t getUInt32Data( const string& name ) { return getUIntData(name); }
 
-	inline int64_t getInt64Data( const string& name ) { return getLongData(name); }
+	inline Arc_int64_t getInt64Data( const string& name ) { return getLongData(name); }
 
-	inline uint64_t getUInt64Data( const string& name ) { return getULongData(name); }
+	inline Arc_uint64_t getUInt64Data( const string& name ) { return getULongData(name); }
 
 	inline float getFloat32Data( const string& name ) { return getFloatData(name); }
 
@@ -192,21 +192,21 @@ public:
 		(m_DoubleData.containsKey(name) ? m_DoubleData[name] = data : m_DoubleData.add(name, data));
 	}
 
-	inline void setInt8Data( const string& name, const int8_t& data ) { setCharData(name, (char)data); }
+	inline void setInt8Data( const string& name, const Arc_int8_t& data ) { setCharData(name, (char)data); }
 
-	inline void setUInt8Data( const string& name, const uint8_t& data ) { setUCharData(name, (unsigned char)data); }
+	inline void setUInt8Data( const string& name, const Arc_uint8_t& data ) { setUCharData(name, (unsigned char)data); }
 
-	inline void setInt16Data( const string& name, const int16_t& data ) { setShortData(name, (short)data); }
+	inline void setInt16Data( const string& name, const Arc_int16_t& data ) { setShortData(name, (short)data); }
 
-	inline void setUInt16Data( const string& name, const uint16_t& data ) { setUShortData(name, (unsigned short)data); }
+	inline void setUInt16Data( const string& name, const Arc_uint16_t& data ) { setUShortData(name, (unsigned short)data); }
 
-	inline void setInt32Data( const string& name, const int32_t& data ) { setIntData(name, (int)data); }
+	inline void setInt32Data( const string& name, const Arc_int32_t& data ) { setIntData(name, (int)data); }
 
-	inline void setUInt32Data( const string& name, const uint32_t& data ) { setUIntData(name, (unsigned int)data); }
+	inline void setUInt32Data( const string& name, const Arc_uint32_t& data ) { setUIntData(name, (unsigned int)data); }
 
-	inline void setInt64Data( const string& name, const int64_t& data ) { setLongData(name, (long)data); }
+	inline void setInt64Data( const string& name, const Arc_int64_t& data ) { setLongData(name, (long)data); }
 
-	inline void setUInt64Data( const string& name, const uint64_t& data ) { setULongData(name, (unsigned long)data); }
+	inline void setUInt64Data( const string& name, const Arc_uint64_t& data ) { setULongData(name, (unsigned long)data); }
 
 	inline void setFloat32Data( const string& name, const float& data ) { setFloatData(name, data); }
 
@@ -332,21 +332,21 @@ public:
 		return (m_DoubleDataList.hasIndex(index) ? m_DoubleDataList[index] : 0.0);
 	}
 
-	inline int8_t getInt8DataFromList( const int& index ) const { return getCharDataFromList(index); }
+	inline Arc_int8_t getInt8DataFromList( const int& index ) const { return getCharDataFromList(index); }
 
-	inline uint8_t getUInt8DataFromList( const int& index ) const { return getUCharDataFromList(index); }
+	inline Arc_uint8_t getUInt8DataFromList( const int& index ) const { return getUCharDataFromList(index); }
 
-	inline int16_t getInt16DataFromList( const int& index ) const { return getShortDataFromList(index); }
+	inline Arc_int16_t getInt16DataFromList( const int& index ) const { return getShortDataFromList(index); }
 
-	inline uint16_t getUInt16DataFromList( const int& index ) const { return getUShortDataFromList(index); }
+	inline Arc_uint16_t getUInt16DataFromList( const int& index ) const { return getUShortDataFromList(index); }
 
-	inline int32_t getInt32DataFromList( const int& index ) const { return getIntDataFromList(index); }
+	inline Arc_int32_t getInt32DataFromList( const int& index ) const { return getIntDataFromList(index); }
 
-	inline uint32_t getUInt32DataFromList( const int& index ) const { return getUIntDataFromList(index); }
+	inline Arc_uint32_t getUInt32DataFromList( const int& index ) const { return getUIntDataFromList(index); }
 
-	inline int64_t getInt64DataFromList( const int& index ) const { return getLongDataFromList(index); }
+	inline Arc_int64_t getInt64DataFromList( const int& index ) const { return getLongDataFromList(index); }
 
-	inline uint64_t getUInt64DataFromList( const int& index ) const { return getULongDataFromList(index); }
+	inline Arc_uint64_t getUInt64DataFromList( const int& index ) const { return getULongDataFromList(index); }
 
 	inline float getFloat32DataFromList( const int& index ) const { return getFloatDataFromList(index); }
 

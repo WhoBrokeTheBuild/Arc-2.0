@@ -31,17 +31,17 @@ namespace Arc
 #define ARC_SCRIPT_MINOR_VERSION 1
 #define ARC_SCRIPT_PATCH_VERSION 0
 
-inline uint8_t ArcScript_GetMajorVersion( void )
+inline Arc_uint8_t ArcScript_GetMajorVersion( void )
 {
 	return ARC_SCRIPT_MAJOR_VERSION;
 }
 
-inline uint8_t ArcScript_GetMinorVersion( void )
+inline Arc_uint8_t ArcScript_GetMinorVersion( void )
 {
 	return ARC_SCRIPT_MINOR_VERSION;
 }
 
-inline uint8_t ArcScript_GetPatchVersion( void )
+inline Arc_uint8_t ArcScript_GetPatchVersion( void )
 {
 	return ARC_SCRIPT_PATCH_VERSION;
 }
@@ -72,7 +72,7 @@ inline string ArcScript_GetVersionString( void )
 	return string(version);
 }
 
-inline bool ArcScript_AboveVersion( uint8_t major, uint8_t minor, uint8_t patch )
+inline bool ArcScript_AboveVersion( Arc_uint8_t major, Arc_uint8_t minor, Arc_uint8_t patch )
 {
 	return ( (major >= ARC_SCRIPT_MAJOR_VERSION) && (minor >= ARC_SCRIPT_MINOR_VERSION) && (patch >= ARC_SCRIPT_PATCH_VERSION) );
 }

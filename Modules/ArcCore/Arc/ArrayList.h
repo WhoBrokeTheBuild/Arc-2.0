@@ -81,7 +81,7 @@ public:
 
 	bool contains( const T& item ) const;
 
-	int getIndexOf( T& item ) const;
+	int getIndexOf( const T& item ) const;
 
 	bool hasIndex( const int& index ) const;
 
@@ -166,12 +166,17 @@ bool Arc::ArrayList<T>::contains( const T& item ) const
 }
 
 template <class T>
-int Arc::ArrayList<T>::getIndexOf( T& item ) const
+int Arc::ArrayList<T>::getIndexOf( const T& item ) const
 {
 	if (isEmpty())
 		return -1;
 
+	auto it = find(itConstBegin(), itConstEnd(), item);
+	
+	if (it == itConstEnd())
+		return -1;
 
+	return it - itConstBegin();
 }
 
 template <class T>

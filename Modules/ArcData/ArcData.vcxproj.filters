@@ -61,6 +61,12 @@
     <ClInclude Include="Arc\XMLElement.h">
       <Filter>XML</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\OBJMaterial.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\OBJObject.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcData.cpp" />
@@ -93,6 +99,12 @@
     </ClCompile>
     <ClCompile Include="Arc\XMLElement.cpp">
       <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\OBJMaterial.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\OBJObject.cpp">
+      <Filter>OBJ</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

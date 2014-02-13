@@ -35,23 +35,23 @@ namespace Arc
 
 typedef struct Arc_Version
 {
-	uint8_t Major;
-	uint8_t Minor;
-	uint8_t Patch;
+	Arc_uint8_t Major;
+	Arc_uint8_t Minor;
+	Arc_uint8_t Patch;
 
 } Arc_Version;
 
-inline uint8_t Arc_GetMajorVersion( void )
+inline Arc_uint8_t Arc_GetMajorVersion( void )
 {
 	return ARC_CORE_MAJOR_VERSION;
 }
 
-inline uint8_t Arc_GetMinorVersion( void )
+inline Arc_uint8_t Arc_GetMinorVersion( void )
 {
 	return ARC_CORE_MINOR_VERSION;
 }
 
-inline uint8_t Arc_GetPatchVersion( void )
+inline Arc_uint8_t Arc_GetPatchVersion( void )
 {
 	return ARC_CORE_PATCH_VERSION;
 }
@@ -82,7 +82,7 @@ inline string Arc_GetVersionString( void )
 	return string(version);
 }
 
-inline bool Arc_AboveVersion( uint8_t major, uint8_t minor, uint8_t patch )
+inline bool Arc_AboveVersion( Arc_uint8_t major, Arc_uint8_t minor, Arc_uint8_t patch )
 {
 	return ( (major >= ARC_CORE_MAJOR_VERSION) && (minor >= ARC_CORE_MINOR_VERSION) && (patch >= ARC_CORE_PATCH_VERSION) );
 }

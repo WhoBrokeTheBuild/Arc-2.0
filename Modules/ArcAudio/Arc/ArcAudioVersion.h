@@ -31,17 +31,17 @@ namespace Arc
 #define ARC_AUDIO_MINOR_VERSION 1
 #define ARC_AUDIO_PATCH_VERSION 0
 
-inline uint8_t ArcAudio_GetMajorVersion( void )
+inline Arc_uint8_t ArcAudio_GetMajorVersion( void )
 {
 	return ARC_AUDIO_MAJOR_VERSION;
 }
 
-inline uint8_t ArcAudio_GetMinorVersion( void )
+inline Arc_uint8_t ArcAudio_GetMinorVersion( void )
 {
 	return ARC_AUDIO_MINOR_VERSION;
 }
 
-inline uint8_t ArcAudio_GetPatchVersion( void )
+inline Arc_uint8_t ArcAudio_GetPatchVersion( void )
 {
 	return ARC_AUDIO_PATCH_VERSION;
 }
@@ -72,7 +72,7 @@ inline string ArcAudio_GetVersionString( void )
 	return string(version);
 }
 
-inline bool ArcAudio_AboveVersion( uint8_t major, uint8_t minor, uint8_t patch )
+inline bool ArcAudio_AboveVersion( Arc_uint8_t major, Arc_uint8_t minor, Arc_uint8_t patch )
 {
 	return ( (major >= ARC_AUDIO_MAJOR_VERSION) && (minor >= ARC_AUDIO_MINOR_VERSION) && (patch >= ARC_AUDIO_PATCH_VERSION) );
 }

@@ -124,7 +124,7 @@ public:
     inline bool isEmpty( void ) const { return (m_Size == 0); }
 
 	// Get the index of a value
-    K& getIndexOf( T& item ) const;
+    K getIndexOf( T& item ) const;
 
     inline size_t getSize( void ) const { return m_Size; }
 
@@ -212,7 +212,7 @@ bool Arc::Map<K, T, Sort>::containsValue( const T& value ) const
 }
 
 template <class K, class T, typename Sort>
-K& Arc::Map<K, T, Sort>::getIndexOf( T& item ) const
+K Arc::Map<K, T, Sort>::getIndexOf( T& item ) const
 {
     for (auto it = itConstBegin(); it != itConstEnd(); ++it)
     {

@@ -77,6 +77,8 @@
     </ClInclude>
     <ClInclude Include="Arc\OBJDocument.h" />
     <ClInclude Include="Arc\OBJFace.h" />
+    <ClInclude Include="Arc\OBJMaterial.h" />
+    <ClInclude Include="Arc\OBJObject.h" />
     <ClInclude Include="Arc\PLYDocument.h" />
     <ClInclude Include="Arc\PLYElement.h">
       <SubType>
@@ -99,6 +101,8 @@
     <ClCompile Include="Arc\CSVRow.cpp" />
     <ClCompile Include="Arc\OBJDocument.cpp" />
     <ClCompile Include="Arc\OBJFace.cpp" />
+    <ClCompile Include="Arc\OBJMaterial.cpp" />
+    <ClCompile Include="Arc\OBJObject.cpp" />
     <ClCompile Include="Arc\PLYDocument.cpp" />
     <ClCompile Include="Arc\PLYElement.cpp" />
     <ClCompile Include="Arc\PLYElementType.cpp" />

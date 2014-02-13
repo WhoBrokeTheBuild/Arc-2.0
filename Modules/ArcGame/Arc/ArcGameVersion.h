@@ -31,17 +31,17 @@ namespace Arc
 #define ARC_AUDIO_MINOR_VERSION 1
 #define ARC_AUDIO_PATCH_VERSION 0
 
-	inline uint8_t ArcGame_GetMajorVersion( void )
+	inline Arc_uint8_t ArcGame_GetMajorVersion( void )
 	{
 		return ARC_AUDIO_MAJOR_VERSION;
 	}
 
-	inline uint8_t ArcGame_GetMinorVersion( void )
+	inline Arc_uint8_t ArcGame_GetMinorVersion( void )
 	{
 		return ARC_AUDIO_MINOR_VERSION;
 	}
 
-	inline uint8_t ArcGame_GetPatchVersion( void )
+	inline Arc_uint8_t ArcGame_GetPatchVersion( void )
 	{
 		return ARC_AUDIO_PATCH_VERSION;
 	}
@@ -72,7 +72,7 @@ namespace Arc
 		return string(version);
 	}
 
-	inline bool ArcGame_AboveVersion( uint8_t major, uint8_t minor, uint8_t patch )
+	inline bool ArcGame_AboveVersion( Arc_uint8_t major, Arc_uint8_t minor, Arc_uint8_t patch )
 	{
 		return ( (major >= ARC_AUDIO_MAJOR_VERSION) && (minor >= ARC_AUDIO_MINOR_VERSION) && (patch >= ARC_AUDIO_PATCH_VERSION) );
 	}

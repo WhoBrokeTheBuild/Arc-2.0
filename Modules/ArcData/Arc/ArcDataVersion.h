@@ -31,17 +31,17 @@ namespace Arc
 #define ARC_DATA_MINOR_VERSION 1
 #define ARC_DATA_PATCH_VERSION 7
 
-inline uint8_t ArcData_GetMajorVersion( void )
+inline Arc_uint8_t ArcData_GetMajorVersion( void )
 {
 	return ARC_DATA_MAJOR_VERSION;
 }
 
-inline uint8_t ArcData_GetMinorVersion( void )
+inline Arc_uint8_t ArcData_GetMinorVersion( void )
 {
 	return ARC_DATA_MINOR_VERSION;
 }
 
-inline uint8_t ArcData_GetPatchVersion( void )
+inline Arc_uint8_t ArcData_GetPatchVersion( void )
 {
 	return ARC_DATA_PATCH_VERSION;
 }
@@ -72,7 +72,7 @@ inline string ArcData_GetVersionString( void )
 	return string(version);
 }
 
-inline bool ArcData_AboveVersion( uint8_t major, uint8_t minor, uint8_t patch )
+inline bool ArcData_AboveVersion( Arc_uint8_t major, Arc_uint8_t minor, Arc_uint8_t patch )
 {
 	return ( (major >= ARC_DATA_MAJOR_VERSION) && (minor >= ARC_DATA_MINOR_VERSION) && (patch >= ARC_DATA_PATCH_VERSION) );
 }
