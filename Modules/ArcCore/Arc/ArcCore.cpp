@@ -12,6 +12,7 @@ bool Arc::Arc_InitCore( void )
 	if ( ! success)
 		goto error;
 
+	return true;
 
 error:
 
