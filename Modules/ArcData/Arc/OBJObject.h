@@ -67,7 +67,7 @@ public:
 
 	virtual inline string getClassName( void ) const { return "Arc OBJ Object"; }
 
-	inline unsigned int getNumFaces( void ) const { return m_FaceEndInd - m_FaceStartInd; }
+	inline unsigned int getNumFaces( void ) const { return (m_FaceEndInd - m_FaceStartInd) + 1; }
 
 	OBJFace& getFace( const int& index );
 

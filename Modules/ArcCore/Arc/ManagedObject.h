@@ -52,7 +52,7 @@ public:
 
 	// Required because of the placement new operator, should not be used
 	inline void operator delete  ( void *ptr, int lineNumber, const char *filename ) { ::operator delete(ptr); }
-	inline void operator delete[]( void *ptr, int lineNumber, const char *filename ) { ::operator delete(ptr); }
+	inline void operator delete[]( void *ptr, int lineNumber, const char *filename ) { ::operator delete[](ptr); }
 
 #ifdef ARC_DEBUG_BUILD
 
