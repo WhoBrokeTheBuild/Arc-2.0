@@ -9,6 +9,9 @@ string Arc::Arc_Basename( const string& path )
 
 	ArrayList<string> parts = Arc_StringSplit(path, splitString);
 
+	if (parts.isEmpty())
+		return "";
+
 	return parts[parts.getSize() - 1];
 }
 

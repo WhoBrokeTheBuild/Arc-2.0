@@ -21,7 +21,6 @@ using namespace Arc;
 
 int main( int argc, char* argv[] )
 {
-	
 	cout << "Using Arc Version: " << Arc_GetVersionString() << endl;
 	cout << "Using Arc Audio Version: " << ArcAudio_GetVersionString() << endl;
 	cout << "Using Arc Data Version: " << ArcData_GetVersionString() << endl;

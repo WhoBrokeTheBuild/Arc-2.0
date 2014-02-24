@@ -149,8 +149,10 @@ public:
 
 	bool writeToStream( std::ostream& stream ) const;
 
-	inline void setEndOfUsed( unsigned int index ) { m_EndOfUsed = Arc_Clamp((int)index, 0, (int)m_Buffer.getSize() - 1); }
-	inline void setReadIndex( unsigned int index ) { m_ReadIndex = Arc_Clamp((int)index, 0, (int)m_Buffer.getSize() - 1); }
+	inline void setEndOfUsed( unsigned long index ) { m_EndOfUsed = Arc_Clamp(index, (unsigned long)0, (unsigned long)m_Buffer.getSize() - 1); }
+	inline void setReadIndex( unsigned long index ) { m_ReadIndex = Arc_Clamp(index, (unsigned long)0, (unsigned long)m_Buffer.getSize() - 1); }
+
+	inline unsigned long getReadIndex( void ) const { return m_ReadIndex; }
 
 	inline void resetReadIndex( void ) { setReadIndex(0); }
 
