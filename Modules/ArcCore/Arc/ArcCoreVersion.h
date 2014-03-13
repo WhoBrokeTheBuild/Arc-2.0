@@ -31,7 +31,7 @@ namespace Arc
 
 #define ARC_CORE_MAJOR_VERSION 2
 #define ARC_CORE_MINOR_VERSION 0
-#define ARC_CORE_PATCH_VERSION 10
+#define ARC_CORE_PATCH_VERSION 11
 
 typedef struct Arc_Version
 {

@@ -1,7 +1,7 @@
 #include "StringFunctions.h"
 
 const size_t Arc::StringBadPosition = string::npos;
-const size_t Arc::StringBadLength = string::npos;
+const size_t Arc::StringBadLength   = string::npos;
 
 string Arc::Arc_Basename( const string& path )
 {

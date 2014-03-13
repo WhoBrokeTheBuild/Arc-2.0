@@ -132,6 +132,10 @@ public:
 
 	ArrayList<T> getValues( void ) const;
 
+	inline void insert( Iterator& first, Iterator& last ) { m_Map.insert(first, last);  }
+
+	inline void insert( ConstIterator& first, ConstIterator& last ) const { m_Map.insert(first, last);  }
+
 }; // class Map<T, K, Sort>
 
 } // namespace Arc

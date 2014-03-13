@@ -61,7 +61,7 @@ bool Arc::Buffer::appendDataFromStream( std::istream& stream )
 	if (stream.bad())
 		return false;
 
-	const int TMP_BUFFER_SIZE = 1024;
+	const int TMP_BUFFER_SIZE = 4096;
 
 	char tmp_buffer[TMP_BUFFER_SIZE];
 	std::streamsize size = getFullSize();
