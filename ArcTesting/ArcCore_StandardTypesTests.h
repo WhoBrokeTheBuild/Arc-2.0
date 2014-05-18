@@ -1,9 +1,10 @@
-#include <Arc/Types.h>
 #include <Arc/TestGroup.h>
+
+#include <Arc/Types.h>
 
 using namespace Arc;
 
-TestResult Test_Arc_TypeInt8( void )
+TestResult Test_ArcCore_TypeInt8( void )
 {
 	if (sizeof(Arc_int8_t) != 1)
 		return TestGroup::Failure("Invalid Result");
@@ -11,7 +12,7 @@ TestResult Test_Arc_TypeInt8( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_TypeUInt8( void )
+TestResult Test_ArcCore_TypeUInt8( void )
 {
 	if (sizeof(Arc_uint8_t) != 1)
 		return TestGroup::Failure("Invalid Result");
@@ -19,7 +20,7 @@ TestResult Test_Arc_TypeUInt8( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_TypeInt16( void )
+TestResult Test_ArcCore_TypeInt16( void )
 {
 	if (sizeof(Arc_int16_t) != 2)
 		return TestGroup::Failure("Invalid Result");
@@ -27,7 +28,7 @@ TestResult Test_Arc_TypeInt16( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_TypeUInt16( void )
+TestResult Test_ArcCore_TypeUInt16( void )
 {
 	if (sizeof(Arc_uint16_t) != 2)
 		return TestGroup::Failure("Invalid Result");
@@ -35,7 +36,7 @@ TestResult Test_Arc_TypeUInt16( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_TypeInt32( void )
+TestResult Test_ArcCore_TypeInt32( void )
 {
 	if (sizeof(Arc_int32_t) != 4)
 		return TestGroup::Failure("Invalid Result");
@@ -43,7 +44,7 @@ TestResult Test_Arc_TypeInt32( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_TypeUInt32( void )
+TestResult Test_ArcCore_TypeUInt32( void )
 {
 	if (sizeof(Arc_uint32_t) != 4)
 		return TestGroup::Failure("Invalid Result");
@@ -51,7 +52,7 @@ TestResult Test_Arc_TypeUInt32( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_TypeInt64( void )
+TestResult Test_ArcCore_TypeInt64( void )
 {
 	if (sizeof(Arc_int64_t) != 8)
 		return TestGroup::Failure("Invalid Result");
@@ -59,7 +60,7 @@ TestResult Test_Arc_TypeInt64( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_TypeUInt64( void )
+TestResult Test_ArcCore_TypeUInt64( void )
 {
 	if (sizeof(Arc_uint64_t) != 8)
 		return TestGroup::Failure("Invalid Result");
@@ -67,14 +68,14 @@ TestResult Test_Arc_TypeUInt64( void )
 	return TestGroup::Success();
 }
 
-void TestGroup_Arc_StandardTypes( TestGroup& test )
+void TestGroup_ArcCore_StandardTypes( TestGroup& test )
 {
-	test.addTest("Arc_TypeInt8",   Test_Arc_TypeInt8);
-	test.addTest("Arc_TypeUInt8",  Test_Arc_TypeUInt8);
-	test.addTest("Arc_TypeInt16",  Test_Arc_TypeInt16);
-	test.addTest("Arc_TypeUInt16", Test_Arc_TypeUInt16);
-	test.addTest("Arc_TypeInt32",  Test_Arc_TypeInt32);
-	test.addTest("Arc_TypeUInt32", Test_Arc_TypeUInt32);
-	test.addTest("Arc_TypeInt64",  Test_Arc_TypeInt64);
-	test.addTest("Arc_TypeUInt64", Test_Arc_TypeUInt64);
+	test.addTest("ArcCore_TypeInt8",   Test_ArcCore_TypeInt8);
+	test.addTest("ArcCore_TypeUInt8",  Test_ArcCore_TypeUInt8);
+	test.addTest("ArcCore_TypeInt16",  Test_ArcCore_TypeInt16);
+	test.addTest("ArcCore_TypeUInt16", Test_ArcCore_TypeUInt16);
+	test.addTest("ArcCore_TypeInt32",  Test_ArcCore_TypeInt32);
+	test.addTest("ArcCore_TypeUInt32", Test_ArcCore_TypeUInt32);
+	test.addTest("ArcCore_TypeInt64",  Test_ArcCore_TypeInt64);
+	test.addTest("ArcCore_TypeUInt64", Test_ArcCore_TypeUInt64);
 }

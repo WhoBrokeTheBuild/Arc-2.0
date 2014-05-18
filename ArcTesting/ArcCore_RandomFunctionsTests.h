@@ -1,11 +1,12 @@
-#include <Arc/RandomFunctions.h>
 #include <Arc/TestGroup.h>
+
+#include <Arc/RandomFunctions.h>
 
 using namespace Arc;
 
 const int TEST_ARC_RAND_SAMPLE_SIZE = 200;
 
-TestResult Test_Arc_RandInt( void )
+TestResult Test_ArcCore_RandInt( void )
 {
 	bool passed = true;
 	int intMin = -10, intMax = 10;
@@ -23,7 +24,7 @@ TestResult Test_Arc_RandInt( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_RandFloat( void )
+TestResult Test_ArcCore_RandFloat( void )
 {
 	bool passed = true;
 	float fltMin = -10.0f, fltMax = 10.0f;
@@ -41,7 +42,7 @@ TestResult Test_Arc_RandFloat( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_Arc_RandDouble( void )
+TestResult Test_ArcCore_RandDouble( void )
 {
 	bool passed = true;
 	double dblMin = -10.0, dblMax = 10.0;
@@ -59,9 +60,9 @@ TestResult Test_Arc_RandDouble( void )
 	return TestGroup::Success();
 }
 
-void TestGroup_Arc_RandomFunctions( TestGroup& test )
+void TestGroup_ArcCore_RandomFunctions( TestGroup& test )
 {
-	test.addTest("Arc_RandInt",    Test_Arc_RandInt);
-	test.addTest("Arc_RandFloat",  Test_Arc_RandFloat);
-	test.addTest("Arc_RandDouble", Test_Arc_RandDouble);
+	test.addTest("ArcCore_RandInt",    Test_ArcCore_RandInt);
+	test.addTest("ArcCore_RandFloat",  Test_ArcCore_RandFloat);
+	test.addTest("ArcCore_RandDouble", Test_ArcCore_RandDouble);
 }

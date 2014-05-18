@@ -75,11 +75,12 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OBJDocumentTests.h" />
-    <ClInclude Include="PLYDocumentTests.h" />
-    <ClInclude Include="RandomFunctionsTests.h" />
-    <ClInclude Include="StandardTypesTests.h" />
-    <ClInclude Include="StringFunctionsTests.h" />
+    <ClInclude Include="ArcData_OBJDocumentTests.h" />
+    <ClInclude Include="ArcData_PLYDocumentTests.h" />
+    <ClInclude Include="ArcCore_RandomFunctionsTests.h" />
+    <ClInclude Include="ArcCore_StandardTypesTests.h" />
+    <ClInclude Include="ArcCore_StringFunctionsTests.h" />
+    <ClInclude Include="ArcNet_IPAddressTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

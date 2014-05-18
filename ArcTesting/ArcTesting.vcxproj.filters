@@ -9,19 +9,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StringFunctionsTests.h">
+    <ClInclude Include="ArcData_OBJDocumentTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="RandomFunctionsTests.h">
+    <ClInclude Include="ArcData_PLYDocumentTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="OBJDocumentTests.h">
+    <ClInclude Include="ArcCore_RandomFunctionsTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="PLYDocumentTests.h">
+    <ClInclude Include="ArcCore_StandardTypesTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="StandardTypesTests.h">
+    <ClInclude Include="ArcCore_StringFunctionsTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcNet_IPAddressTests.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>

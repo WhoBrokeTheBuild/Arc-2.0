@@ -67,15 +67,15 @@
   <ItemGroup>
     <ClInclude Include="Arc\ArcNet.h" />
     <ClInclude Include="Arc\ArcNetVersion.h" />
-    <ClInclude Include="IPAddress.h" />
-    <ClInclude Include="ServerSocket.h" />
-    <ClInclude Include="Socket.h" />
+    <ClInclude Include="Arc\IPAddress.h" />
+    <ClInclude Include="Arc\ServerSocket.h" />
+    <ClInclude Include="Arc\Socket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcNet.cpp" />
-    <ClCompile Include="IPAddress.cpp" />
-    <ClCompile Include="ServerSocket.cpp" />
-    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="Arc\IPAddress.cpp" />
+    <ClCompile Include="Arc\ServerSocket.cpp" />
+    <ClCompile Include="Arc\Socket.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

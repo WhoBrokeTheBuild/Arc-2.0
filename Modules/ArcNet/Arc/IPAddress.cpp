@@ -16,5 +16,5 @@ Arc::IPAddress::IPAddress( const string& addr )
 		return;
 
 	for (unsigned int i = 0; i < 4; ++i)
-		m_Quads[i] = (Arc_uint8_t)Arc_ParseInt(strQuads[i]);
+		m_Quads[i] = (Arc_uint8_t)Arc_Clamp(Arc_ParseInt(strQuads[i]), 0, 255);
 }

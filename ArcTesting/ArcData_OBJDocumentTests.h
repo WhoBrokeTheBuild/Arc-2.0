@@ -1,9 +1,10 @@
-#include <Arc/OBJDocument.h>
 #include <Arc/TestGroup.h>
+
+#include <Arc/OBJDocument.h>
 
 using namespace Arc;
 
-TestResult Arc_OBJDocument_SimpleCube( void )
+TestResult Test_ArcData_OBJDocument_SimpleCube( void )
 {
 	const string cube =
 		"# This is a test comment\n"
@@ -95,7 +96,7 @@ TestResult Arc_OBJDocument_SimpleCube( void )
 	return TestGroup::Success();
 }
 
-void TestGroup_Arc_OBJDocument( TestGroup& test )
+void TestGroup_ArcData_OBJDocument( TestGroup& test )
 {
-	test.addTest("Arc_OBJDocument_SimpleCube", Arc_OBJDocument_SimpleCube);
+	test.addTest("ArcData_OBJDocument_SimpleCube", Test_ArcData_OBJDocument_SimpleCube);
 }

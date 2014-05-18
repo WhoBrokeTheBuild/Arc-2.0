@@ -3,7 +3,7 @@
 
 using namespace Arc;
 
-TestResult Arc_PLYDocument_SimpleCube( void )
+TestResult Test_ArcData_PLYDocument_SimpleCube( void )
 {
 	const string cube =
 		"ply\n"
@@ -107,7 +107,7 @@ TestResult Arc_PLYDocument_SimpleCube( void )
 	return TestGroup::Success();
 }
 
-void TestGroup_Arc_PLYDocument( TestGroup& test )
+void TestGroup_ArcData_PLYDocument( TestGroup& test )
 {
-	test.addTest("Arc_PLYDocument_SimpleCube", Arc_PLYDocument_SimpleCube);
+	test.addTest("ArcData_PLYDocument_SimpleCube", Test_ArcData_PLYDocument_SimpleCube);
 }

@@ -10,11 +10,14 @@
 #include <Arc/ArcGame.h>
 #include <Arc/ArcScript.h>
 
-#include "StandardTypesTests.h"
-#include "StringFunctionsTests.h"
-#include "RandomFunctionsTests.h"
-#include "OBJDocumentTests.h"
-#include "PLYDocumentTests.h"
+#include "ArcCore_StandardTypesTests.h"
+#include "ArcCore_StringFunctionsTests.h"
+#include "ArcCore_RandomFunctionsTests.h"
+
+#include "ArcData_OBJDocumentTests.h"
+#include "ArcData_PLYDocumentTests.h"
+
+#include "ArcNet_IPAddressTests.h"
 
 using namespace std;
 using namespace Arc;
@@ -37,11 +40,14 @@ int main( int argc, char* argv[] )
 
 	TestGroup unitTests;
 
-	TestGroup_Arc_StandardTypes(unitTests);
-	TestGroup_Arc_StringFunctions(unitTests);
-	TestGroup_Arc_RandomFunctions(unitTests);
-	TestGroup_Arc_OBJDocument(unitTests);
-	TestGroup_Arc_PLYDocument(unitTests);
+	TestGroup_ArcCore_StandardTypes(unitTests);
+	TestGroup_ArcCore_StringFunctions(unitTests);
+	TestGroup_ArcCore_RandomFunctions(unitTests);
+
+	TestGroup_ArcData_OBJDocument(unitTests);
+	TestGroup_ArcData_PLYDocument(unitTests);
+
+	TestGroup_ArcNet_IPAddress(unitTests);
 
 	unitTests.runTests(true);
 

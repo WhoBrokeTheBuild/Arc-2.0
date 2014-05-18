@@ -43,10 +43,15 @@ public:
 
 	inline IPAddress( const Arc_uint8_t& a, const Arc_uint8_t& b, const Arc_uint8_t& c, const Arc_uint8_t& d )
 	{
-		m_Quads[0] = a;
-		m_Quads[1] = b;
-		m_Quads[2] = c;
-		m_Quads[3] = d;
+		m_Quads[0] = Arc_Clamp(a, (Arc_uint8_t)0, (Arc_uint8_t)255);
+		m_Quads[1] = Arc_Clamp(b, (Arc_uint8_t)0, (Arc_uint8_t)255);
+		m_Quads[2] = Arc_Clamp(c, (Arc_uint8_t)0, (Arc_uint8_t)255);
+		m_Quads[3] = Arc_Clamp(d, (Arc_uint8_t)0, (Arc_uint8_t)255);
+	}
+
+	inline IPAddress( const IPAddress& rhs )
+	{
+		memcpy(m_Quads, rhs.m_Quads, sizeof(Arc_uint8_t) * 4);
 	}
 
 	virtual inline ~IPAddress( void ) { }
@@ -65,6 +70,16 @@ public:
 	{
 		return !(*this == rhs);
 	}
+
+	inline Arc_uint8_t getA( void ) const { return m_Quads[0]; }
+	inline Arc_uint8_t getB( void ) const { return m_Quads[1]; }
+	inline Arc_uint8_t getC( void ) const { return m_Quads[2]; }
+	inline Arc_uint8_t getD( void ) const { return m_Quads[3]; }
+
+	inline void setA( Arc_uint8_t a ) { m_Quads[0] = a; }
+	inline void setB( Arc_uint8_t b ) { m_Quads[1] = b; }
+	inline void setC( Arc_uint8_t c ) { m_Quads[2] = c; }
+	inline void setD( Arc_uint8_t d ) { m_Quads[3] = d; }
 
 protected:
 
