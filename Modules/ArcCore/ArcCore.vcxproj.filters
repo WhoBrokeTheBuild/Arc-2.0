@@ -25,6 +25,9 @@
     <Filter Include="Data">
       <UniqueIdentifier>{66a1dec8-04ba-41b0-a5e2-622aaf9b43c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{6c515a19-b6ae-4569-8565-6a5bf9fdfe91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arc\ArcCoreVersion.h">
@@ -79,6 +82,9 @@
     <ClInclude Include="Arc\ParseFunctions.h">
       <Filter>Utilities\Functions</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\Log.h">
+      <Filter>Logging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\StringFunctions.cpp">
@@ -108,6 +114,9 @@
     </ClCompile>
     <ClCompile Include="Arc\ParseFunctions.cpp">
       <Filter>Utilities\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\Log.cpp">
+      <Filter>Logging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

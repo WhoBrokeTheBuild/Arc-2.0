@@ -29,7 +29,7 @@ namespace Arc
 
 #define ARC_NET_MAJOR_VERSION 0
 #define ARC_NET_MINOR_VERSION 1
-#define ARC_NET_PATCH_VERSION 0
+#define ARC_NET_PATCH_VERSION 5
 
 inline Arc_uint8_t ArcNet_GetMajorVersion( void )
 {

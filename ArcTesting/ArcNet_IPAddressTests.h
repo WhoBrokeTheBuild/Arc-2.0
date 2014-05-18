@@ -38,13 +38,13 @@ TestResult Test_ArcNet_IPAddress_operator_equals( void )
 	return TestGroup::Success();
 }
 
-TestResult Test_ArcNet_IPAddress_operator_not_equals( void )
-{
-	if ()
-		return TestGroup::Failure("");
-
-	return TestGroup::Success();
-}
+//TestResult Test_ArcNet_IPAddress_operator_not_equals( void )
+//{
+//	if ()
+//		return TestGroup::Failure("");
+//
+//	return TestGroup::Success();
+//}
 
 void TestGroup_ArcNet_IPAddress( TestGroup& test )
 {

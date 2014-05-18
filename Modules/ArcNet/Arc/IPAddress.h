@@ -23,16 +23,26 @@
 
 #include <Arc/ManagedObject.h>
 
+#include <Arc/MathFunctions.h>
+
 namespace Arc
 {
+
+class Socket;
 
 struct IPAddress
 	: public ManagedObject
 {
+
+	friend class Socket;
+
 public:
 
 	// Constant value of 0.0.0.0
 	const static IPAddress ZERO;
+
+	// Constant value of 255.255.255.255
+	const static IPAddress MAX;
 
 	inline IPAddress( void )
 	{
@@ -88,6 +98,8 @@ protected:
 	inline Arc_uint8_t* getRawData( void ) { return m_Quads; }
 
 }; // class IPAddress
+
+IPAddress Arc_HostnameLookup( const string& hostname );
 
 }; // namespace Arc
 

@@ -13,6 +13,8 @@
     <ClInclude Include="Arc\IPAddress.h" />
     <ClInclude Include="Arc\ServerSocket.h" />
     <ClInclude Include="Arc\Socket.h" />
+    <ClInclude Include="Arc\SocketType.h" />
+    <ClInclude Include="Arc\SocketState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcNet.cpp" />

@@ -9,6 +9,7 @@
 #include <Arc/ArcUI.h>
 #include <Arc/ArcGame.h>
 #include <Arc/ArcScript.h>
+#include <Arc/Log.h>
 
 #include "ArcCore_StandardTypesTests.h"
 #include "ArcCore_StringFunctionsTests.h"
@@ -24,15 +25,18 @@ using namespace Arc;
 
 int main( int argc, char* argv[] )
 {
-	cout << "Using Arc Version: " << Arc_GetVersionString() << endl;
-	cout << "Using Arc Audio Version: " << ArcAudio_GetVersionString() << endl;
-	cout << "Using Arc Data Version: " << ArcData_GetVersionString() << endl;
-	cout << "Using Arc Effect Version: " << ArcEffect_GetVersionString() << endl;
-	cout << "Using Arc Graphics Version: " << ArcGraphics_GetVersionString() << endl;
-	cout << "Using Arc Net Version: " << ArcNet_GetVersionString() << endl;
-	cout << "Using Arc UI Version: " << ArcUI_GetVersionString() << endl;
-	cout << "Using Arc Game Version: " << ArcGame_GetVersionString() << endl;
-	cout << "Using Arc Scripting Version: " << ArcScript_GetVersionString() << endl << endl;
+	Log::AddInfoOutput("stdout");
+	Log::AddErrorOutput("stderr");
+
+	Log::InfoFmt("Main", "Using Arc Version: %s", Arc_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Audio Version: %s", ArcAudio_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Data Version: %s", ArcData_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Effect Version: %s", ArcEffect_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Graphics Version: %s", ArcGraphics_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Net Version: %s", ArcNet_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc UI Version: %s", ArcUI_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Game Version: %s", ArcGame_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Scripting Version: %s", ArcScript_GetVersionString().c_str());
 	
 	Arc_InitCore();
 
@@ -57,6 +61,8 @@ int main( int argc, char* argv[] )
 		Arc_PrintMemoryAllocations();
 
 	system("PAUSE");
+
+	Log::CloseOutputs();
 
 	return 0;
 }

@@ -18,16 +18,35 @@
  * 
  */
 
-#ifndef ARC_NET_ARC_NET
-#define ARC_NET_ARC_NET
+#ifndef ARC_NET_SOCKET_STATE_H
+#define ARC_NET_SOCKET_STATE_H
 
-#include "ArcNetVersion.h"
+#include <string>
+
+using std::string;
 
 namespace Arc
 {
 
-bool Arc_InitNet( void );
+enum SocketState
+{
+	INVALID_SOCKET_STATE = -1,
+
+	SOCKET_STATE_CLOSED,
+	SOCKET_STATE_OPEN,
+	SOCKET_STATE_ERROR,
+
+	NUM_SOCKET_STATES
+
+}; // enum SocketType
+
+const string SOCKET_STATE_NAMES[NUM_SOCKET_STATES] = 
+{
+	"Closed",
+	"Open",
+	"Error"
+};
 
 } // namespace Arc
 
-#endif // ARC_NET_ARC_NET
+#endif // ARC_NET_SOCKET_STATE_H
