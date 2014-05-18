@@ -10,8 +10,14 @@
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Arc\ArcNet.h" />
+    <ClInclude Include="IPAddress.h" />
+    <ClInclude Include="Socket.h" />
+    <ClInclude Include="ServerSocket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcNet.cpp" />
+    <ClCompile Include="IPAddress.cpp" />
+    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="ServerSocket.cpp" />
   </ItemGroup>
 </Project>

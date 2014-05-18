@@ -2,8 +2,9 @@
 
 short Arc::Arc_ParseShort( const string& str )
 {
-	std::stringstream ss;
-	ss << str;
+	static std::stringstream ss;
+	ss.clear();
+	ss.str(str);
 
 	short val;
 	ss >> val;
@@ -13,8 +14,9 @@ short Arc::Arc_ParseShort( const string& str )
 
 int Arc::Arc_ParseInt( const string& str )
 {
-	std::stringstream ss;
-	ss << str;
+	static std::stringstream ss;
+	ss.clear();
+	ss.str(str);
 
 	int val;
 	ss >> val;
@@ -24,8 +26,9 @@ int Arc::Arc_ParseInt( const string& str )
 
 long Arc::Arc_ParseLong( const string& str )
 {
-	std::stringstream ss;
-	ss << str;
+	static std::stringstream ss;
+	ss.clear();
+	ss.str(str);
 
 	long val;
 	ss >> val;
@@ -35,8 +38,9 @@ long Arc::Arc_ParseLong( const string& str )
 
 float Arc::Arc_ParseFloat( const string& str )
 {
-	std::stringstream ss;
-	ss << str;
+	static std::stringstream ss;
+	ss.clear();
+	ss.str(str);
 
 	float val;
 	ss >> val;
@@ -46,8 +50,9 @@ float Arc::Arc_ParseFloat( const string& str )
 
 double Arc::Arc_ParseDouble( const string& str )
 {
-	std::stringstream ss;
-	ss << str;
+	static std::stringstream ss;
+	ss.clear();
+	ss.str(str);
 
 	double val;
 	ss >> val;

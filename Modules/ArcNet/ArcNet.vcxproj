@@ -67,9 +67,15 @@
   <ItemGroup>
     <ClInclude Include="Arc\ArcNet.h" />
     <ClInclude Include="Arc\ArcNetVersion.h" />
+    <ClInclude Include="IPAddress.h" />
+    <ClInclude Include="ServerSocket.h" />
+    <ClInclude Include="Socket.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcNet.cpp" />
+    <ClCompile Include="IPAddress.cpp" />
+    <ClCompile Include="ServerSocket.cpp" />
+    <ClCompile Include="Socket.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
