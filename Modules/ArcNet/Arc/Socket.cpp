@@ -58,7 +58,7 @@ bool Arc::Socket::connectTo( const string& hostname, unsigned int port, SocketTy
 	return connectTo(Arc_HostnameLookup(hostname), port, type);
 }
 
-bool Arc::Socket::disconnect( void )
+void Arc::Socket::disconnect( void )
 {
 #if defined(ARC_OS_WINDOWS)
 
@@ -73,15 +73,15 @@ bool Arc::Socket::disconnect( void )
 
 int Arc::Socket::sendString( const string& data, const bool& withNullTerm /*= true */ )
 {
-
+	return 0;
 }
 
 int Arc::Socket::sendBuffer( const char* buffer, const int& length )
 {
-
+	return 0;
 }
 
 int Arc::Socket::sendBuffer( const Buffer& buffer )
 {
-
+	return 0;
 }

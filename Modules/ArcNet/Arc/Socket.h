@@ -80,7 +80,7 @@ public:
 	bool connectTo( IPAddress addr, unsigned int port, SocketType type );
 	bool connectTo( const string& hostname, unsigned int port, SocketType type );
 
-	bool disconnect( void );
+	void disconnect( void );
 
 	inline bool isOpen( void ) const { return (m_State == SOCKET_STATE_OPEN); }
 	inline bool isClosed( void ) const { return (m_State == SOCKET_STATE_CLOSED); }
@@ -92,75 +92,91 @@ public:
 	int sendBuffer( const char* buffer, const int& length );
 	int sendBuffer( const Buffer& buffer );
 
-	bool sendBool( const bool& data );
-	bool sendChar( const char& data );
-	bool sendShort( const short& data );
-	bool sendInt( const int& data );
-	bool sendLong( const long& data );
-	bool sendFloat( const float& data );
-	bool sendDouble( const double& data );
+	inline bool sendBool  ( const bool& data )   { return sendData(data); }
+	inline bool sendChar  ( const char& data )   { return sendData(data); }
+	inline bool sendShort ( const short& data )  { return sendData(data); }
+	inline bool sendInt   ( const int& data )    { return sendData(data); }
+	inline bool sendLong  ( const long& data )   { return sendData(data); }
+	inline bool sendFloat ( const float& data )  { return sendData(data); }
+	inline bool sendDouble( const double& data ) { return sendData(data); }
 
-	bool sendInt8( const Arc_int8_t& data );
-	bool sendUInt8( const Arc_uint8_t& data );
-	bool sendInt16( const Arc_int16_t& data );
-	bool sendUInt16( const Arc_uint16_t& data );
-	bool sendInt32( const Arc_int32_t& data );
-	bool sendUInt32( const Arc_uint32_t& data );
+	inline bool sendInt8  ( const Arc_int8_t& data )   { return sendData(data); }
+	inline bool sendUInt8 ( const Arc_uint8_t& data )  { return sendData(data); }
+	inline bool sendInt16 ( const Arc_int16_t& data )  { return sendData(data); }
+	inline bool sendUInt16( const Arc_uint16_t& data ) { return sendData(data); }
+	inline bool sendInt32 ( const Arc_int32_t& data )  { return sendData(data); }
+	inline bool sendUInt32( const Arc_uint32_t& data ) { return sendData(data); }
 
-	int recvString( const string& data, const bool& withNullTerm = true );
-	int recvBuffer( const char* buffer, const int& length );
-	int recvBuffer( const Buffer& buffer );
-
-	bool recvBool( const bool& data );
-	bool recvChar( const char& data );
-	bool recvShort( const short& data );
-	bool recvInt( const int& data );
-	bool recvLong( const long& data );
-	bool recvFloat( const float& data );
-	bool recvDouble( const double& data );
-
-	bool recvInt8( const Arc_int8_t& data );
-	bool recvUInt8( const Arc_uint8_t& data );
-	bool recvInt16( const Arc_int16_t& data );
-	bool recvUInt16( const Arc_uint16_t& data );
-	bool recvInt32( const Arc_int32_t& data );
-	bool recvUInt32( const Arc_uint32_t& data );
+	//int recvString( const string& data, const bool& withNullTerm = true );
+	//int recvBuffer( const char* buffer, const int& length );
+	//int recvBuffer( const Buffer& buffer );
+	//
+	//bool recvBool( const bool& data );
+	//bool recvChar( const char& data );
+	//bool recvShort( const short& data );
+	//bool recvInt( const int& data );
+	//bool recvLong( const long& data );
+	//bool recvFloat( const float& data );
+	//bool recvDouble( const double& data );
+	//
+	//bool recvInt8( const Arc_int8_t& data );
+	//bool recvUInt8( const Arc_uint8_t& data );
+	//bool recvInt16( const Arc_int16_t& data );
+	//bool recvUInt16( const Arc_uint16_t& data );
+	//bool recvInt32( const Arc_int32_t& data );
+	//bool recvUInt32( const Arc_uint32_t& data );
 
 protected:
+
+	template <typename T>
+	bool sendData( const T& data )
+	{
+		int bytes = send(m_Socket, (char*)&data, sizeof(T), 0);
+
+		if (bytes == 0)
+		{
+			//setError("recv() failed");
+			m_State = SOCKET_STATE_ERROR;
+			disconnect();
+			return false;
+		}
+
+		return true;
+	}
 	
 #if defined(ARC_OS_WINDOWS)
 
-		// The windows system reference to the socket
-        SOCKET m_Socket;
+	// The windows system reference to the socket
+    SOCKET m_Socket;
 
-		/* 
-		 * @returns: The windows system reference to the socket
-		 */
-        SOCKET getWinSocket( void ) const { return m_Socket; }
+	/* 
+		* @returns: The windows system reference to the socket
+		*/
+    SOCKET getWinSocket( void ) const { return m_Socket; }
 
 #elif defined(ARC_OS_LINUX)
 
-		// The linux system reference to the socket
-        int m_Socket;
+	// The linux system reference to the socket
+    int m_Socket;
 		
-		/* 
-		 * @returns: The linux system reference to the socket
-		 */
-        int getUnixSocket( void ) const { return m_Socket; }
+	/* 
+		* @returns: The linux system reference to the socket
+		*/
+    int getUnixSocket( void ) const { return m_Socket; }
 
 #endif
 
-		// The address of the destination host
-		IPAddress			m_Address;
+	// The address of the destination host
+	IPAddress			m_Address;
 
-		// The port to connect to on the destination host
-		unsigned int		m_Port;
+	// The port to connect to on the destination host
+	unsigned int		m_Port;
 
-		// The type of socket (TCP, UDP)
-		SocketType			m_Type;
+	// The type of socket (TCP, UDP)
+	SocketType			m_Type;
 
-		// The state of the socket (Open, Closed, Error)
-		SocketState			m_State;
+	// The state of the socket (Open, Closed, Error)
+	SocketState			m_State;
 
 }; // class Socket
 

@@ -99,6 +99,7 @@ public:
 			{
 				passed = false;
 				if (verbose)
+					//Log::InfoFmt("TestGroup", )
 					std::cout << "[FAIL]" << std::endl
 					          << "\tReason: " << m_TestResults[it->first].m_Message
 							  << std::endl;
