@@ -28,6 +28,8 @@ namespace Arc
 
 bool Arc_InitNet( void );
 
+void Arc_TermNet( void );
+
 } // namespace Arc
 
 #endif // ARC_NET_ARC_NET

@@ -11,6 +11,8 @@
 #include <Arc/ArcScript.h>
 #include <Arc/Log.h>
 
+#include <Arc/Socket.h>
+
 #include "ArcCore_StandardTypesTests.h"
 #include "ArcCore_StringFunctionsTests.h"
 #include "ArcCore_RandomFunctionsTests.h"
@@ -59,6 +61,20 @@ int main( int argc, char* argv[] )
 
 	if (Arc_GetMemoryAllocationCount() > 0)
 		Arc_PrintMemoryAllocations();
+
+	Arc_InitNet();
+
+	Socket sock;
+	sock.connectTo("www.google.com", 80, SOCKET_TYPE_TCP);
+	sock.sendChar('G');
+	sock.sendChar('E');
+	sock.sendChar('T');
+	sock.sendChar(' ');
+	sock.sendChar('/');
+	sock.sendChar('\n');
+	sock.sendChar('\n');
+
+	Arc_TermNet();
 
 	system("PAUSE");
 

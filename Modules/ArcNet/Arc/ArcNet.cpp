@@ -19,6 +19,8 @@
 
 bool Arc::Arc_InitNet( void )
 {
+#if defined(ARC_OS_WINDOWS)
+
 	int res = 0;
 	WSAData wsa;
 
@@ -28,6 +30,16 @@ bool Arc::Arc_InitNet( void )
 		Log::ErrorFmt("Arc_InitNet", "WSAStartup failed with error code: %d", res);
 		return false;
 	}
+#endif 
 
 	return true;
+}
+
+void Arc::Arc_TermNet( void )
+{
+#if defined(ARC_OS_WINDOWS)
+
+	WSACleanup();
+
+#endif 
 }
