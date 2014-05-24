@@ -65,14 +65,9 @@ int main( int argc, char* argv[] )
 	Arc_InitNet();
 
 	Socket sock;
-	sock.connectTo("www.google.com", 80, SOCKET_TYPE_TCP);
-	sock.sendChar('G');
-	sock.sendChar('E');
-	sock.sendChar('T');
-	sock.sendChar(' ');
-	sock.sendChar('/');
-	sock.sendChar('\n');
-	sock.sendChar('\n');
+	sock.connectTo(IPAddress(127, 0, 0, 1), 1234, SOCKET_TYPE_TCP);
+
+	sock.disconnect();
 
 	Arc_TermNet();
 

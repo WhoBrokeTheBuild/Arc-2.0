@@ -69,16 +69,14 @@ public:
 		  m_Port(0),
 		  m_Type(INVALID_SOCKET_TYPE),
 		  m_State(SOCKET_STATE_CLOSED)
-	{
-
-	}
+	{ }
 
 	inline ~Socket( void ) { disconnect(); }
 
 	virtual inline string getClassName( void ) const { return "Socket"; }
 
-	bool connectTo( IPAddress addr, unsigned int port, SocketType type );
-	bool connectTo( const string& hostname, unsigned int port, SocketType type );
+	bool connectTo( const IPAddress& addr, const unsigned int& port, const SocketType& type );
+	bool connectTo( const string& hostname, const unsigned int& port, const SocketType& type );
 
 	void disconnect( void );
 
@@ -86,11 +84,24 @@ public:
 	inline bool isClosed( void ) const { return (m_State == SOCKET_STATE_CLOSED); }
 	inline bool hasError( void ) const { return (m_State == SOCKET_STATE_ERROR); }
 
+	bool hasData( int timeoutMS = -1 );
+
 	inline SocketState getState( void ) const { return m_State; }
 
-	int sendString( const string& data, const bool& withNullTerm = true );
-	int sendBuffer( const char* buffer, const int& length );
-	int sendBuffer( const Buffer& buffer );
+	inline int sendString( const string& data, const bool& withNullTerm = true )
+	{
+		return sendBuffer(data.c_str(), data.length() + (withNullTerm ? 1 : 0));
+	}
+
+	inline int sendBuffer( const Buffer& buffer )
+	{
+		return sendBuffer(buffer.getRawBuffer(), buffer.getUsedSize());
+	}
+
+	inline int sendBuffer( const char* buffer, const unsigned int& length )
+	{
+		return send(m_Socket, buffer, length, 0);
+	}
 
 	inline bool sendBool  ( const bool& data )   { return sendData(data); }
 	inline bool sendChar  ( const char& data )   { return sendData(data); }
@@ -107,10 +118,11 @@ public:
 	inline bool sendInt32 ( const Arc_int32_t& data )  { return sendData(data); }
 	inline bool sendUInt32( const Arc_uint32_t& data ) { return sendData(data); }
 
-	//int recvString( const string& data, const bool& withNullTerm = true );
-	//int recvBuffer( const char* buffer, const int& length );
-	//int recvBuffer( const Buffer& buffer );
-	//
+	string recvString( void );
+
+	int recvBuffer( const char* buffer, const int& length );
+	int recvBuffer( const Buffer& buffer );
+	
 	//bool recvBool( const bool& data );
 	//bool recvChar( const char& data );
 	//bool recvShort( const short& data );

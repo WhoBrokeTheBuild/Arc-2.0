@@ -1,6 +1,6 @@
 #include "Socket.h"
 
-bool Arc::Socket::connectTo( IPAddress addr, unsigned int port, SocketType type )
+bool Arc::Socket::connectTo( const IPAddress& addr, const unsigned int& port, const SocketType& type )
 {
 	m_Address = addr;
 	m_Port = port;
@@ -53,7 +53,7 @@ bool Arc::Socket::connectTo( IPAddress addr, unsigned int port, SocketType type 
 	return true;
 }
 
-bool Arc::Socket::connectTo( const string& hostname, unsigned int port, SocketType type )
+bool Arc::Socket::connectTo( const string& hostname, const unsigned int& port, const SocketType& type )
 {
 	return connectTo(Arc_HostnameLookup(hostname), port, type);
 }
@@ -69,19 +69,32 @@ void Arc::Socket::disconnect( void )
 	close(m_Socket);
 
 #endif
+
+	m_State = SOCKET_STATE_CLOSED;
 }
 
-int Arc::Socket::sendString( const string& data, const bool& withNullTerm /*= true */ )
+bool Arc::Socket::hasData( int timeoutMS /*= -1*/ )
 {
-	return 0;
-}
+	fd_set fds;
+	FD_ZERO(&fds);
+	FD_SET(m_Socket, &fds);
 
-int Arc::Socket::sendBuffer( const char* buffer, const int& length )
-{
-	return 0;
-}
+	int timeoutSec = timeoutMS / 1000;
+	int timeoutUS = (timeoutMS % 1000) * 1000;
 
-int Arc::Socket::sendBuffer( const Buffer& buffer )
-{
-	return 0;
+	timeval tv;
+	tv.tv_sec = timeoutSec;
+	tv.tv_usec = timeoutUS;
+
+	int result = select(m_Socket + 1, &fds, 0, 0, &tv);
+
+	if (result < 0)
+	{
+		m_State = SOCKET_STATE_ERROR;
+		//setError("select() failed");
+		disconnect();
+		return false;
+	}
+
+	return (result == 1);
 }
