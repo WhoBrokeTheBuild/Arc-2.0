@@ -151,3 +151,21 @@ string Arc::Socket::recvString(void)
 
 	return buf;
 }
+
+string Arc::Socket::recvLine(void)
+{
+	string buf;
+	char ch;
+
+	while (true)
+	{
+		ch = recvChar();
+
+		if (ch == '\r') continue;
+		if (ch == '\n') break;
+
+		buf += ch;
+	} 
+
+	return buf;
+}

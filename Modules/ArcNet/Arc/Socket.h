@@ -125,6 +125,7 @@ public:
 	inline bool sendUInt32( const Arc_uint32_t& data ) { return sendData(data); }
 
 	string recvString( void );
+	string recvLine( void );
 
 	int recvBuffer( const char* buffer, const int& length );
 	int recvBuffer( const Buffer& buffer );

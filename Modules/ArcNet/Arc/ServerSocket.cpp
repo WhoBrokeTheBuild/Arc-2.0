@@ -6,6 +6,8 @@
 bool Arc::ServerSocket::bindLocal( unsigned int port, SocketType type )
 {
 	m_Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	m_Type = type;
+	m_Port = port;
 
 	if (m_Socket == INVALID_SOCKET)
 	{
@@ -63,6 +65,7 @@ bool Arc::ServerSocket::bindLocal( unsigned int port, SocketType type )
 	}
 
 	freeaddrinfo(result);
+	m_State = SOCKET_STATE_OPEN;
 	return true;
 }
 

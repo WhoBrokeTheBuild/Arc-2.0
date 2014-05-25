@@ -63,27 +63,6 @@ int main( int argc, char* argv[] )
 	if (Arc_GetMemoryAllocationCount() > 0)
 		Arc_PrintMemoryAllocations();
 
-	Arc_InitNet();
-
-	ServerSocket ss;
-	ss.bindLocal(1234, SOCKET_TYPE_TCP);
-
-	Socket sock;
-	sock.connectTo(IPAddress(127, 0, 0, 1), 1234, SOCKET_TYPE_TCP);
-
-	Socket* client = ss.acceptClient();
-	cout << "Connection from " << client->getAddress().toString() << endl;
-
-	client->sendString("Hello, World!\n");
-
-	cout << sock.recvString() << endl;
-
-	sock.disconnect();
-
-	delete client;
-
-	Arc_TermNet();
-
 	system("PAUSE");
 
 	Log::CloseOutputs();

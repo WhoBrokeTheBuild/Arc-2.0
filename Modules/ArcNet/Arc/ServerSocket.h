@@ -76,6 +76,10 @@ public:
 
 	virtual inline string getClassName( void ) const { return "Server Socket"; }
 
+	inline bool isOpen( void ) const { return (m_State == SOCKET_STATE_OPEN); }
+	inline bool isClosed( void ) const { return (m_State == SOCKET_STATE_CLOSED); }
+	inline bool hasError( void ) const { return (m_State == SOCKET_STATE_ERROR); }
+
 	bool bindLocal( unsigned int port, SocketType type );
 
 	Socket* acceptClient( void );
