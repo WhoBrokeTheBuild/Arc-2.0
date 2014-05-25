@@ -58,6 +58,8 @@
 namespace Arc
 {
 
+class Socket;
+
 class ServerSocket
 	: public ManagedObject
 {
@@ -75,6 +77,8 @@ public:
 	virtual inline string getClassName( void ) const { return "Server Socket"; }
 
 	bool bindLocal( unsigned int port, SocketType type );
+
+	Socket* acceptClient( void );
 
 	void disconnect( void );
 

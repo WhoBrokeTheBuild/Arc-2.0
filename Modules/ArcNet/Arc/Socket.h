@@ -55,12 +55,17 @@
 
 #endif
 
+#include "ServerSocket.h"
+
 namespace Arc
 {
 
 class Socket
 	: public ManagedObject
 {
+
+	friend class ServerSocket;
+
 public:
 
 	inline Socket( void )
@@ -87,6 +92,7 @@ public:
 	bool hasData( int timeoutMS = -1 );
 
 	inline SocketState getState( void ) const { return m_State; }
+	inline IPAddress getAddress( void ) const { return m_Address; }
 
 	inline int sendString( const string& data, const bool& withNullTerm = true )
 	{
@@ -123,22 +129,32 @@ public:
 	int recvBuffer( const char* buffer, const int& length );
 	int recvBuffer( const Buffer& buffer );
 	
-	//bool recvBool( const bool& data );
-	//bool recvChar( const char& data );
-	//bool recvShort( const short& data );
-	//bool recvInt( const int& data );
-	//bool recvLong( const long& data );
-	//bool recvFloat( const float& data );
-	//bool recvDouble( const double& data );
-	//
-	//bool recvInt8( const Arc_int8_t& data );
-	//bool recvUInt8( const Arc_uint8_t& data );
-	//bool recvInt16( const Arc_int16_t& data );
-	//bool recvUInt16( const Arc_uint16_t& data );
-	//bool recvInt32( const Arc_int32_t& data );
-	//bool recvUInt32( const Arc_uint32_t& data );
+	bool   recvBool  ( void ) { return recvData<bool>(); }
+	char   recvChar  ( void ) { return recvData<char>(); }
+	short  recvShort ( void ) { return recvData<short>(); }
+	int    recvInt   ( void ) { return recvData<int>(); }
+	long   recvLong  ( void ) { return recvData<long>(); }
+	float  recvFloat ( void ) { return recvData<float>(); }
+	double recvDouble( void ) { return recvData<double>(); }
+	
+	Arc_int8_t   recvInt8  ( void ) { return recvData<Arc_int8_t>(); }
+	Arc_uint8_t  recvUInt8 ( void ) { return recvData<Arc_uint8_t>(); }
+	Arc_int16_t  recvInt16 ( void ) { return recvData<Arc_int16_t>(); }
+	Arc_uint16_t recvUInt16( void ) { return recvData<Arc_uint16_t>(); }
+	Arc_int32_t  recvInt32 ( void ) { return recvData<Arc_int32_t>(); }
+	Arc_uint32_t recvUInt32( void ) { return recvData<Arc_uint32_t>(); }
 
 protected:
+
+#if defined(ARC_OS_WINDOWS)
+
+	Socket( const SOCKET& socket, const SocketType& type );
+
+#elif defined(ARC_OS_LINUX)
+
+	Socket( const int& socket, const SocketType& type );
+
+#endif;
 
 	template <typename T>
 	bool sendData( const T& data )
@@ -147,13 +163,31 @@ protected:
 
 		if (bytes == 0)
 		{
-			//setError("recv() failed");
 			m_State = SOCKET_STATE_ERROR;
+			//setError("recv() failed");
 			disconnect();
 			return false;
 		}
 
 		return true;
+	}
+
+	template <typename T>
+	T recvData( void )
+	{
+		T buffer;
+
+		int bytes = recv(m_Socket, (char*)&buffer, sizeof(T), 0);
+
+		if (bytes == 0)
+		{
+			m_State = SOCKET_STATE_ERROR;
+			//setError("recv() failed");
+			disconnect();
+			return T();
+		}
+
+		return buffer;
 	}
 	
 #if defined(ARC_OS_WINDOWS)

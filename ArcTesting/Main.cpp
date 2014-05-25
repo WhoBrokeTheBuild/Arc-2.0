@@ -12,6 +12,7 @@
 #include <Arc/Log.h>
 
 #include <Arc/Socket.h>
+#include <Arc/ServerSocket.h>
 
 #include "ArcCore_StandardTypesTests.h"
 #include "ArcCore_StringFunctionsTests.h"
@@ -64,10 +65,22 @@ int main( int argc, char* argv[] )
 
 	Arc_InitNet();
 
+	ServerSocket ss;
+	ss.bindLocal(1234, SOCKET_TYPE_TCP);
+
 	Socket sock;
 	sock.connectTo(IPAddress(127, 0, 0, 1), 1234, SOCKET_TYPE_TCP);
 
+	Socket* client = ss.acceptClient();
+	cout << "Connection from " << client->getAddress().toString() << endl;
+
+	client->sendString("Hello, World!\n");
+
+	cout << sock.recvString() << endl;
+
 	sock.disconnect();
+
+	delete client;
 
 	Arc_TermNet();
 

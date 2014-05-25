@@ -68,6 +68,8 @@ public:
 
 	virtual inline string getClassName( void ) const { return "IP Address"; }
 
+	string toString( void ) const;
+
 	inline bool operator==( const IPAddress& rhs ) const
 	{
 		return ( m_Quads[0] == rhs.m_Quads[0] &&

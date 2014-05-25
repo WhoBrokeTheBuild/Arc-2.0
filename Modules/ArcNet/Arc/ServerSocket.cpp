@@ -1,6 +1,7 @@
 #include "ServerSocket.h"
 
 #include <sstream>
+#include "Socket.h"
 
 bool Arc::ServerSocket::bindLocal( unsigned int port, SocketType type )
 {
@@ -11,7 +12,7 @@ bool Arc::ServerSocket::bindLocal( unsigned int port, SocketType type )
 		m_State = SOCKET_STATE_ERROR;
 		//setError("socket() failed");
 		disconnect();
-		return;
+		return false;
 	}
 
 	struct addrinfo *result = nullptr;
@@ -36,7 +37,7 @@ bool Arc::ServerSocket::bindLocal( unsigned int port, SocketType type )
 		//setError("getaddrinfo() failed");
 		disconnect();
 		freeaddrinfo(result);
-		return;
+		return false;
 	}
 
 	res = bind(m_Socket, result->ai_addr, (int)result->ai_addrlen);
@@ -47,7 +48,7 @@ bool Arc::ServerSocket::bindLocal( unsigned int port, SocketType type )
 		//setError("bind() failed");
 		disconnect();
 		freeaddrinfo(result);
-		return;
+		return false;
 	}
 
 	res = listen(m_Socket, SOMAXCONN);
@@ -58,10 +59,11 @@ bool Arc::ServerSocket::bindLocal( unsigned int port, SocketType type )
 		//setError("listen() failed");
 		disconnect();
 		freeaddrinfo(result);
-		return;
+		return false;
 	}
 
 	freeaddrinfo(result);
+	return true;
 }
 
 void Arc::ServerSocket::disconnect( void )
@@ -77,4 +79,30 @@ void Arc::ServerSocket::disconnect( void )
 #endif
 
 	m_State = SOCKET_STATE_CLOSED;
+}
+
+Arc::Socket* Arc::ServerSocket::acceptClient( void )
+{
+#if defined(ARC_OS_WINDOWS)
+
+	SOCKET client;
+
+#elif defined(ARC_OS_LINUX)
+
+	int client;
+
+#endif
+
+	client = accept(m_Socket, NULL, NULL);
+
+	if (client == INVALID_SOCKET)
+	{
+		m_State = SOCKET_STATE_ERROR;
+		//setError("accept() failed");
+		disconnect();
+		return nullptr;
+	}
+
+	Socket* pSocket = New Socket(client, m_Type);
+	return pSocket;
 }
