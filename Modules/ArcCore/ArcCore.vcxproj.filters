@@ -85,6 +85,9 @@
     <ClInclude Include="Arc\Log.h">
       <Filter>Logging</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\FileFunctions.h">
+      <Filter>Utilities\Functions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\StringFunctions.cpp">
@@ -117,6 +120,9 @@
     </ClCompile>
     <ClCompile Include="Arc\Log.cpp">
       <Filter>Logging</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc\FileFunctions.cpp">
+      <Filter>Utilities\Functions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
