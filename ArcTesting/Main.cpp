@@ -12,6 +12,7 @@
 #include <Arc/Log.h>
 
 #include <Arc/Socket.h>
+#include <Arc/ServerSocket.h>
 
 #include "ArcCore_StandardTypesTests.h"
 #include "ArcCore_StringFunctionsTests.h"
@@ -61,15 +62,6 @@ int main( int argc, char* argv[] )
 
 	if (Arc_GetMemoryAllocationCount() > 0)
 		Arc_PrintMemoryAllocations();
-
-	Arc_InitNet();
-
-	Socket sock;
-	sock.connectTo(IPAddress(127, 0, 0, 1), 1234, SOCKET_TYPE_TCP);
-
-	sock.disconnect();
-
-	Arc_TermNet();
 
 	system("PAUSE");
 

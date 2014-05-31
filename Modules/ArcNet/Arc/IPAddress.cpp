@@ -6,6 +6,8 @@
 #include <Arc/StringFunctions.h>
 #include <Arc/ParseFunctions.h>
 
+#include <sstream>
+
 const Arc::IPAddress Arc::IPAddress::ZERO = Arc::IPAddress(0, 0, 0, 0);
 const Arc::IPAddress Arc::IPAddress::MAX = Arc::IPAddress(255, 255, 255, 255);
 
@@ -20,6 +22,18 @@ Arc::IPAddress::IPAddress( const string& addr )
 
 	for (unsigned int i = 0; i < 4; ++i)
 		m_Quads[i] = (Arc_uint8_t)Arc_Clamp(Arc_ParseInt(strQuads[i]), 0, 255);
+}
+
+string Arc::IPAddress::toString(void) const
+{
+	std::stringstream ss;
+	ss << "IP Address ["
+		<< (int)m_Quads[0] << "."
+		<< (int)m_Quads[1] << "."
+		<< (int)m_Quads[2] << "."
+		<< (int)m_Quads[3] << "]";
+
+	return ss.str();
 }
 
 Arc::IPAddress Arc::Arc_HostnameLookup( const string& hostname )

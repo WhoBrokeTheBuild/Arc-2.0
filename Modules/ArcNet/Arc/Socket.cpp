@@ -98,3 +98,74 @@ bool Arc::Socket::hasData( int timeoutMS /*= -1*/ )
 
 	return (result == 1);
 }
+
+#if defined(ARC_OS_WINDOWS)
+
+Arc::Socket::Socket( const SOCKET& socket, const SocketType& type ) 
+
+#elif defined(ARC_OS_LINUX)
+
+Arc::Socket::Socket( const int& socket, const SocketType& type ) 
+
+#endif;
+	: m_Socket(socket),
+	  m_Address(),
+	  m_Port(0),
+	  m_Type(type),
+	  m_State(SOCKET_STATE_OPEN)
+{
+	char buf[INET_ADDRSTRLEN] = "";
+	struct sockaddr_in name;
+	socklen_t len = sizeof(name);
+	int res;
+
+	res = getpeername(socket, (struct sockaddr *)&name, &len);
+
+	if (res == 0)
+	{
+		inet_ntop(AF_INET, &name.sin_addr, buf, sizeof buf);
+	}
+	else
+	{
+		m_State = SOCKET_STATE_ERROR;
+		//setError("getpeername() failed");
+		disconnect();
+		return;
+	}
+
+	m_Address = IPAddress(inet_ntoa(name.sin_addr));
+	m_Port = name.sin_port;
+}
+
+string Arc::Socket::recvString(void)
+{
+	string buf;
+	char ch;
+
+	do 
+	{
+		ch = recvChar();
+		buf += ch;
+	} 
+	while (ch != 0);
+
+	return buf;
+}
+
+string Arc::Socket::recvLine(void)
+{
+	string buf;
+	char ch;
+
+	while (true)
+	{
+		ch = recvChar();
+
+		if (ch == '\r') continue;
+		if (ch == '\n') break;
+
+		buf += ch;
+	} 
+
+	return buf;
+}
