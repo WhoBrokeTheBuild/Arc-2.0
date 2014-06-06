@@ -162,7 +162,7 @@ string Arc::Socket::recvLine(void)
 		ch = recvChar();
 
 		if (ch == '\r') continue;
-		if (ch == '\n') break;
+		if (ch == '\n' || ch == '\0') break;
 
 		buf += ch;
 	} 
