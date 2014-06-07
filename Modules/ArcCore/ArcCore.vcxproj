@@ -17,6 +17,7 @@
     </ClInclude>
     <ClInclude Include="Arc\ArcCoreVersion.h" />
     <ClInclude Include="Arc\Buffer.h" />
+    <ClInclude Include="Arc\ConsoleFunctions.h" />
     <ClInclude Include="Arc\FileFunctions.h" />
     <ClInclude Include="Arc\Log.h" />
     <ClInclude Include="Arc\ParseFunctions.h">
@@ -53,6 +54,7 @@
   <ItemGroup>
     <ClCompile Include="Arc\ArcCore.cpp" />
     <ClCompile Include="Arc\Buffer.cpp" />
+    <ClCompile Include="Arc\ConsoleFunctions.cpp" />
     <ClCompile Include="Arc\FileFunctions.cpp" />
     <ClCompile Include="Arc\Log.cpp" />
     <ClCompile Include="Arc\ManagedObject.cpp" />

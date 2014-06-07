@@ -4,14 +4,23 @@
     <Filter Include="Utilities">
       <UniqueIdentifier>{b0cb4f4c-8d04-4920-8448-9a29f367e5bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Integration">
+      <UniqueIdentifier>{cf3ab845-e007-4fee-9d4a-95ac02622316}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arc\ArcScript.h" />
     <ClInclude Include="Arc\ArcScriptVersion.h">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\ArcNet_Func.h">
+      <Filter>Integration</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arc\ArcScript.cpp" />
+    <ClCompile Include="Arc\ArcNet_Func.cpp">
+      <Filter>Integration</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

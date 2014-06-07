@@ -28,4 +28,7 @@
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Test.lua" />
+  </ItemGroup>
 </Project>
