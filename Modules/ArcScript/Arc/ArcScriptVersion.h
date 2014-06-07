@@ -29,7 +29,7 @@ namespace Arc
 
 #define ARC_SCRIPT_MAJOR_VERSION 0
 #define ARC_SCRIPT_MINOR_VERSION 1
-#define ARC_SCRIPT_PATCH_VERSION 0
+#define ARC_SCRIPT_PATCH_VERSION 2
 
 inline Arc_uint8_t ArcScript_GetMajorVersion( void )
 {

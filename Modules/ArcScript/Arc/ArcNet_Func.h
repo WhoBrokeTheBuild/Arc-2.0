@@ -18,32 +18,27 @@
  * 
  */
 
-#ifndef ARC_SCRIPT_ARC_SCRIPT
-#define ARC_SCRIPT_ARC_SCRIPT
+#ifndef ARC_SCRIPT_ARC_NET_FUNC_H
+#define ARC_SCRIPT_ARC_NET_FUNC_H
 
-#include "ArcScriptVersion.h"
-
-extern "C"
-{
-	#include <lua.h>
-	#include <lualib.h>
-	#include <lauxlib.h>
-}
+#include "ArcScript.h"
 
 namespace Arc
 {
 
-bool Arc_InitScript( void );
-void Arc_TermScript( void );
+bool Arc_InitArcNetScript( void );
 
-int Arc_lua_pause( lua_State* pState );
-int Arc_lua_log_info( lua_State* pState );
-int Arc_lua_log_error( lua_State* pState );
+int Arc_lua_socket_create( lua_State* pState );
+int Arc_lua_socket_destroy( lua_State* pState );
 
-void Arc_RunScript( const string& filename );
+int Arc_lua_socket_connect( lua_State* pState );
+int Arc_lua_socket_disconnect( lua_State* pState );
 
-extern lua_State *gp_LuaState;
+int Arc_lua_socket_sendString( lua_State* pState );
+int Arc_lua_socket_recvLine( lua_State* pState );
+
+int Arc_lua_socket_isOpen( lua_State* pState );
 
 }
 
-#endif // ARC_SCRIPT_ARC_SCRIPT
+#endif // ARC_SCRIPT_ARC_NET_FUNC_H

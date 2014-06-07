@@ -18,23 +18,29 @@
  *
  */
 
-#ifndef ARC_CORE_FILE_FUNCTIONS_H
-#define ARC_CORE_FILE_FUNCTIONS_H
+#ifndef ARC_CORE_CONSOLE_FUNCTIONS_H
+#define ARC_CORE_CONSOLE_FUNCTIONS_H
 
 #include <string>
+#include <iostream>
 
 using std::string;
+using std::cout;
+using std::cin;
 
 namespace Arc
 {
 
-	//bool Arc_FileExists( const string& filename );
-	//bool Arc_DirExists( const string& filename );
-	//
-	//bool Arc_IsDir( const string& filename );
-	//
-	//bool Arc_CreateDir( const string& filename );
+inline void Arc_Pause( const string& msg = "Press enter to continue" )
+{
+	static string tmp;
+
+	cout << msg;
+	cin.clear();
+	getline(cin, tmp);
+	cout << "\n";
+}
 
 }
 
-#endif // ARC_CORE_FILE_FUNCTIONS_H
+#endif // ARC_CORE_CONSOLE_FUNCTIONS_H

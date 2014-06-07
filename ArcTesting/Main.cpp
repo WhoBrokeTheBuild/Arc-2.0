@@ -11,6 +11,8 @@
 #include <Arc/ArcScript.h>
 #include <Arc/Log.h>
 
+#include <Arc/ArcNet_Func.h>
+
 #include <Arc/Socket.h>
 #include <Arc/ServerSocket.h>
 
@@ -26,22 +28,8 @@
 using namespace std;
 using namespace Arc;
 
-int main( int argc, char* argv[] )
+void run_unit_tests( void )
 {
-	Log::AddInfoOutput("stdout");
-	Log::AddErrorOutput("stderr");
-
-	Log::InfoFmt("Main", "Using Arc Version: %s", Arc_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc Audio Version: %s", ArcAudio_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc Data Version: %s", ArcData_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc Effect Version: %s", ArcEffect_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc Graphics Version: %s", ArcGraphics_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc Net Version: %s", ArcNet_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc UI Version: %s", ArcUI_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc Game Version: %s", ArcGame_GetVersionString().c_str());
-	Log::InfoFmt("Main", "Using Arc Scripting Version: %s", ArcScript_GetVersionString().c_str());
-	
-	Arc_InitCore();
 
 	cout << "== Running Unit Tests ==" << endl << endl;
 
@@ -62,10 +50,42 @@ int main( int argc, char* argv[] )
 
 	if (Arc_GetMemoryAllocationCount() > 0)
 		Arc_PrintMemoryAllocations();
+}
 
-	system("PAUSE");
+int main( int argc, char* argv[] )
+{
+	Log::AddInfoOutput("stdout");
+	Log::AddErrorOutput("stderr");
+	Log::AddInfoOutput("info.log");
+	Log::AddErrorOutput("error.log");
+
+	Log::InfoFmt("Main", "Using Arc Version: %s", Arc_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Audio Version: %s", ArcAudio_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Data Version: %s", ArcData_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Effect Version: %s", ArcEffect_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Graphics Version: %s", ArcGraphics_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Net Version: %s", ArcNet_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc UI Version: %s", ArcUI_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Game Version: %s", ArcGame_GetVersionString().c_str());
+	Log::InfoFmt("Main", "Using Arc Script Version: %s", ArcScript_GetVersionString().c_str());
+
+	Arc_InitCore();
+	Arc_InitNet();
+	Arc_InitScript();
+	Arc_InitArcNetScript();
+
+	//run_unit_tests();
+
+	Log::Info("Main", "Entering Lua Script");
+	Arc_RunScript("Assets/Test.lua");
+	Log::Info("Main", "Returned from Lua Script");
+
+	Arc_TermScript();
+	Arc_TermNet();
 
 	Log::CloseOutputs();
+
+	system("PAUSE");
 
 	return 0;
 }
