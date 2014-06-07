@@ -4,6 +4,7 @@
 
 #if defined(ARC_OS_WINDOWS)
 
+#define NOGDI
 #include <Windows.h>
 
 #elif defined(ARC_OS_LINUX)
@@ -32,6 +33,7 @@ bool Arc::Arc_CreateDir( const string& filename )
 #if defined(ARC_OS_WINDOWS)
 
 	CreateDirectory(filename.c_str(), NULL);
+	return true; // TODO: FIX
 
 #elif defined(ARC_OS_LINUX)
 
