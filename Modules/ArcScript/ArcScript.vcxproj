@@ -40,14 +40,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../ArcCore;$(IncludePath)</IncludePath>
     <OutDir>..\..\Debug\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../Libraries/lua/include/;../../Modules/ArcNet/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Libraries/lua/include/;../ArcCore/;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -67,7 +66,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Arc\ArcNet_Func.h" />
     <ClInclude Include="Arc\ArcScript.h" />
     <ClInclude Include="Arc\ArcScriptVersion.h">
       <SubType>
@@ -75,7 +73,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Arc\ArcNet_Func.cpp" />
     <ClCompile Include="Arc\ArcScript.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

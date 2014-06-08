@@ -43,14 +43,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Modules\ArcCore;..\Modules\ArcAudio;..\Modules\ArcData;..\Modules\ArcEffect;..\Modules\ArcGraphics;..\Modules\ArcNet;..\Modules\ArcUI;..\Modules\ArcGame;..\Modules\ArcScript;..\Libraries\lua\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Modules\ArcCore;..\Modules\ArcAudio;..\Modules\ArcData;..\Modules\ArcEffect;..\Modules\ArcGraphics;..\Modules\ArcNet;..\Modules\ArcUI;..\Modules\ArcGame;..\Modules\ArcScript;..\Modules\ArcInterop;..\Libraries\lua\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../Debug/;../Libraries/lua/lib/x86</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ArcCore.lib;ArcAudio.lib;ArcData.lib;ArcEffect.lib;ArcGraphics.lib;ArcNet.lib;ArcUI.lib;ArcGame.lib;ArcScript.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ArcCore.lib;ArcAudio.lib;ArcData.lib;ArcEffect.lib;ArcGraphics.lib;ArcNet.lib;ArcUI.lib;ArcGame.lib;ArcScript.lib;ArcInterop_ScriptNet.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
@@ -83,6 +83,8 @@
     <ClInclude Include="ArcNet_IPAddressTests.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Arc_IPAddress.lua" />
+    <None Include="Arc_Socket.lua" />
     <None Include="Assets\Test.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

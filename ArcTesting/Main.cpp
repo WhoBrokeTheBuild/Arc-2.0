@@ -11,7 +11,7 @@
 #include <Arc/ArcScript.h>
 #include <Arc/Log.h>
 
-#include <Arc/ArcNet_Func.h>
+#include <Arc/ArcInterop_ScriptNet.h>
 
 #include <Arc/Socket.h>
 #include <Arc/ServerSocket.h>
@@ -72,7 +72,7 @@ int main( int argc, char* argv[] )
 	Arc_InitCore();
 	Arc_InitNet();
 	Arc_InitScript();
-	Arc_InitArcNetScript();
+	Arc_InteropInit_ScriptNet();
 
 	//run_unit_tests();
 

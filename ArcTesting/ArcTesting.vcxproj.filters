@@ -30,5 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Test.lua" />
+    <None Include="Arc_IPAddress.lua" />
+    <None Include="Arc_Socket.lua" />
   </ItemGroup>
 </Project>

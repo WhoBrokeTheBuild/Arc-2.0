@@ -28,6 +28,9 @@
     <Filter Include="Logging">
       <UniqueIdentifier>{6c515a19-b6ae-4569-8565-6a5bf9fdfe91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Filesystem">
+      <UniqueIdentifier>{b754ddc1-8a0b-4486-a48f-34ebe35e4337}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arc\ArcCoreVersion.h">
