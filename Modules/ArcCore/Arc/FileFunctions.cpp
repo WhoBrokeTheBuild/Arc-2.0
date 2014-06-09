@@ -27,22 +27,6 @@
 //{
 //
 //}
-<<<<<<< HEAD
-
-bool Arc::Arc_CreateDir( const string& filename )
-{
-#if defined(ARC_OS_WINDOWS)
-
-	CreateDirectory(filename.c_str(), NULL);
-	return true; // TODO: FIX
-
-#elif defined(ARC_OS_LINUX)
-
-
-
-#endif 
-}
-=======
 //
 //bool Arc::Arc_CreateDir( const string& filename )
 //{
@@ -58,4 +42,3 @@ bool Arc::Arc_CreateDir( const string& filename )
 //
 //	return true;
 //}
->>>>>>> 31d5b0baba1f407cbc87e47ece69a1f37e13a14f
